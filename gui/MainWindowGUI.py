@@ -36,15 +36,15 @@ class Ui_MainWindow(object):
         self.tabWidget.setObjectName("tabWidget")
 
 
-        tab1.Tab1Create.intiate(Ui_MainWindow)
+        tab1.Tab1Create().intiate(Ui_MainWindow)
         self.tabWidget.addTab(self.tab1, "")
 
 
 
-        tab2.Tab2Create.intiate(Ui_MainWindow)
+        tab2.Tab2Create().intiate(Ui_MainWindow)
         self.tabWidget.addTab(self.tab2, "")
 
-        tab3.Tab3Create.intiate(Ui_MainWindow)
+        tab3.Tab3Create().intiate(Ui_MainWindow)
         self.tabWidget.addTab(self.tab3, "")
 
 
@@ -103,6 +103,8 @@ class Ui_MainWindow(object):
         self.menuSettings.setTitle(_translate("MainWindow", "Settings"))
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.menuAbout.setTitle(_translate("MainWindow", "About"))
+
+
 
 
 

@@ -6,7 +6,7 @@ class Tab1Create:
 
 
 
-    def intiate(Ui_MainWindow):
+    def intiate(self,Ui_MainWindow):
         Ui_MainWindow.tab1 = QtWidgets.QWidget()
         Ui_MainWindow.tab1.setObjectName("tab1")
         Ui_MainWindow.horizontalLayout = QtWidgets.QHBoxLayout(Ui_MainWindow.tab1)
@@ -199,6 +199,7 @@ class Tab1Create:
         Ui_MainWindow.verticalLayout_2.addLayout(Ui_MainWindow.horizontalLayout_2)
         Ui_MainWindow.horizontalLayout.addLayout(Ui_MainWindow.verticalLayout_2)
         Tab1Create.__retranslate_ui(Ui_MainWindow)
+
         
         
     def __retranslate_ui(Ui_MainWindow):
@@ -227,7 +228,9 @@ class Tab1Create:
 
 
 
+
     def __set_tool_tips(Ui_MainWindow):
+
         pass
 
 

@@ -13,8 +13,6 @@ def main():
     main_window=MainWindow()
     main_window.show()
     sys.exit(app.exec())
-    i=(input("yes"))
-    if(i=='x'):
-        tab1.Tab1Create.dosomething(GUITrail.MainWindowGUI.Ui_MainWindow)
+
 
 main()

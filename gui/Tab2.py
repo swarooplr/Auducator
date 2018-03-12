@@ -4,7 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Tab2Create:
 
-    def intiate(Ui_MainWindow):
+    def intiate(self,Ui_MainWindow):
         
         Ui_MainWindow.tab2 = QtWidgets.QWidget()
         Ui_MainWindow.tab2.setObjectName("tab2")
