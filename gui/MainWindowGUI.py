@@ -12,6 +12,9 @@ import gui.Tab1 as tab1
 import gui.Tab2 as tab2
 import gui.Tab3 as tab3
 
+from controller.tab2_controller.commands import SelectBook,SelectLabelAudio,SelectPage,SelectChapter,DeleteElements,SaveLabel,AddNewLabel
+
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -47,17 +50,6 @@ class Ui_MainWindow(object):
         tab3.Tab3Create().intiate(Ui_MainWindow)
         self.tabWidget.addTab(self.tab3, "")
 
-
-
-        #self.set_up_tab1()
-        #self.set_up_tab2()
-        #self.set_up_tab3()
-
-
-
-
-
-
         self.verticalLayout.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -81,8 +73,11 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
+        self.set_up_invoker()
         self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+
 
 
 
@@ -103,6 +98,25 @@ class Ui_MainWindow(object):
         self.menuSettings.setTitle(_translate("MainWindow", "Settings"))
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.menuAbout.setTitle(_translate("MainWindow", "About"))
+
+
+    def set_up_invoker(self):
+
+         self.invoker_tab2.set_select_book_command(SelectBook.SelectBookCommand(None,self))
+         self.invoker_tab2.set_select_chapter_command(SelectChapter.SelectChapterCommand(None,self))
+         self.invoker_tab2.set_select_page_command(SelectPage.SelectPageCommand(None,self))
+         self.invoker_tab2.set_select_label_command(SelectLabelAudio.SelectLabelCommand(None,self))
+         self.invoker_tab2.set_delete_page_command(DeleteElements.DeletePageCommand(None,self))
+         self.invoker_tab2.set_delete_label_command(DeleteElements.DeleteLabelCommand(None,self))
+         self.invoker_tab2.set_select_audio_label_command(SelectLabelAudio.SelectAudioFileLabelCommand(None,self))
+         self.invoker_tab2.set_select_audio_description_command(SelectLabelAudio.SelectAudioFileDescribeCommand(None,self))
+         self.invoker_tab2.set_save_label_command(SaveLabel.SaveLabelCommand(None,self))
+         self.invoker_tab2.set_add_new_label_command(AddNewLabel.AddNewLabelCommand(None,self))
+
+
+
+
+
 
 
 

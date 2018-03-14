@@ -200,6 +200,7 @@ class Tab1Create:
         Ui_MainWindow.horizontalLayout.addLayout(Ui_MainWindow.verticalLayout_2)
         Tab1Create.__retranslate_ui(Ui_MainWindow)
 
+
         
         
     def __retranslate_ui(Ui_MainWindow):
@@ -232,6 +233,10 @@ class Tab1Create:
     def __set_tool_tips(Ui_MainWindow):
 
         pass
+
+
+
+
 
 
 

@@ -2,10 +2,11 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+import controller.tab2_controller.Invoker as invoker
 class Tab2Create:
 
     def intiate(self,Ui_MainWindow):
-        
+
         Ui_MainWindow.tab2 = QtWidgets.QWidget()
         Ui_MainWindow.tab2.setObjectName("tab2")
         Ui_MainWindow.verticalLayout_6 = QtWidgets.QVBoxLayout(Ui_MainWindow.tab2)
@@ -217,10 +218,19 @@ class Tab2Create:
         Ui_MainWindow.verticalLayout_6.addLayout(Ui_MainWindow.horizontalLayout_10)
 
         Tab2Create.__retranslate_ui(Ui_MainWindow)
+        Tab2Create.__set_up_click_events(Ui_MainWindow)
 
         Ui_MainWindow.tab2_label_listwidget.addItem("help mee")
         Ui_MainWindow.tab2_label_listwidget.addItem("go die")
+        Ui_MainWindow.tab2_chapter_select_combobox.addItem("help")
+        Ui_MainWindow.tab2_chapter_select_combobox.addItem("helpit")
         
+
+
+
+
+
+
     def __retranslate_ui(Ui_MainWindow):
         _translate = QtCore.QCoreApplication.translate
         Ui_MainWindow.tab2_groupBox_9.setTitle(_translate("MainWindow", "Book"))
@@ -243,7 +253,7 @@ class Tab2Create:
         Ui_MainWindow.tab2_description_select_audio_button.setText(_translate("MainWindow", "Select Audio File"))
         Ui_MainWindow.tab2_description_audio_file.setText(_translate("MainWindow", "No File Selected"))
         Ui_MainWindow.tab2_save_label_button.setText(_translate("MainWindow", "Save Label"))
-    
+
 
 
 
@@ -251,4 +261,31 @@ class Tab2Create:
 
     def __set_tool_tips(Ui_MainWindow):
         pass
+
+    def __set_up_click_events(Ui_MainWindow):
+        Ui_MainWindow.invoker_tab2=invoker.Invoker(Ui_MainWindow)
+
+        Ui_MainWindow.tab2_select_book_button.clicked.connect(Ui_MainWindow.invoker_tab2.select_book)
+        Ui_MainWindow.tab2_save_label_button.clicked.connect(Ui_MainWindow.invoker_tab2.save_label)
+        Ui_MainWindow.tab2_label_select_audio_button.clicked.connect(Ui_MainWindow.invoker_tab2.select_audio_label)
+        Ui_MainWindow.tab2_description_select_audio_button.clicked.connect(Ui_MainWindow.invoker_tab2.select_audio_description)
+        Ui_MainWindow.tab2_delete_label_button.clicked.connect(Ui_MainWindow.invoker_tab2.delete_label)
+        Ui_MainWindow.tab2_delete_page_button.clicked.connect(Ui_MainWindow.invoker_tab2.delete_page)
+        Ui_MainWindow.tab2_add_label_button.clicked.connect(Ui_MainWindow.invoker_tab2.add_new_label)
+
+        Ui_MainWindow.tab2_label_listwidget.itemClicked.connect(Ui_MainWindow.invoker_tab2.select_label)
+        Ui_MainWindow.tab2_page_listwidget.itemClicked.connect(Ui_MainWindow.invoker_tab2.select_page)
+
+
+        Ui_MainWindow.tab2_chapter_select_combobox.activated.connect(Ui_MainWindow.invoker_tab2.select_chapter)
+
+
+
+
+
+
+
+
+
+
 
