@@ -38,9 +38,12 @@ class Label:
 
 
 class Page:
-    def __init__(self, page_name, label_list=[]):
+    def __init__(self, page_name,page_file_path, label_list=[]):
         self.page_name= page_name
         self.label_list= label_list
+        self.page_file_path=page_file_path
+        self.page_width=1280
+        self.page_height=720
 
     def set_label_list(self,label_list):
         self.label_list=label_list
@@ -54,11 +57,18 @@ class Page:
     def remove_label(self,label):
         self.label_list.remove(label)
 
+    def set_page_width(self,width):
+        self.page_width=width
+
+    def set_page_height(self,height):
+        self.page_width=height
+
 
 class Chapter:
-    def __init__(self, chapter_name, page_list=[]):
+    def __init__(self, chapter_name, chapter_path,page_list=[]):
         self.chapter_name= chapter_name
         self.page_list= page_list
+        self.chapter_path=chapter_path
 
     def set_page_list(self,page_list):
         self.page_list= page_list
@@ -73,8 +83,8 @@ class Chapter:
         self.page_list.remove(page)
 
 class Book:
-    def __init__(self, book_name, chapter_list=[]):
-        self.book_name= book_name
+    def __init__(self, book_folder_path, chapter_list=[]):
+        self.book_folder_path= book_folder_path
         self.chapter_list= chapter_list
 
     def set_chapter_list(self,chapter_list):
