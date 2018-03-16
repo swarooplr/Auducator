@@ -38,7 +38,7 @@ class Label:
 
 
 class Page:
-    def __init__(self, page_name,page_file_path, label_list=[]):
+    def __init__(self, page_name,page_file_path, label_list):
         self.page_name= page_name
         self.label_list= label_list
         self.page_file_path=page_file_path
@@ -65,7 +65,7 @@ class Page:
 
 
 class Chapter:
-    def __init__(self, chapter_name, chapter_path,page_list=[]):
+    def __init__(self, chapter_name, chapter_path,page_list):
         self.chapter_name= chapter_name
         self.page_list= page_list
         self.chapter_path=chapter_path

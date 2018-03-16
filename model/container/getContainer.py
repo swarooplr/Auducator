@@ -14,6 +14,7 @@ def loadBook(book_folder_path):
                 _book.add_chapter(loadChapter(f[0],f[1]))
             except:
                 pass
+        return _book
     except:
         pass
     pass
@@ -21,15 +22,19 @@ def loadBook(book_folder_path):
 
 def loadChapter(chapter_name,chapter_folder_path):
     try:
-        print(chapter_name,chapter_folder_path)
-        _chapter = model.container.Chapter(chapter_name,chapter_folder_path)
+        print(chapter_name,chapter_folder_path,)
+        _chapter = model.container.Chapter(chapter_name,chapter_folder_path,[])
         _subfolders = [(f.name,f.path) for f in os.scandir(chapter_folder_path) if f.is_dir() ]
+
         for f in _subfolders:
             try:
+                print(f[0],f[1])
                 _chapter.add_page(loadPage(f[0],f[1]))
             except:
                 pass
-
+        l=[]
+        l=_chapter.page_list
+        print(len(l))
         return _chapter
     except:
         pass
@@ -39,7 +44,8 @@ def loadChapter(chapter_name,chapter_folder_path):
 def loadPage(page_name,page_folder_path):
     try:
         print(page_name,page_folder_path)
-        _page=model.container.Page(page_name,page_folder_path)
+        _page=model.container.Page(page_name,page_folder_path,[])
+        print("here")
         _config_file=open(str(page_folder_path)+"/config.txt","r")
         _config=json.load(_config_file)
         _config_file.close()

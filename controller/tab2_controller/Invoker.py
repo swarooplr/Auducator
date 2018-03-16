@@ -18,6 +18,9 @@ class Invoker:
     def set_current_page(self,current_page):
         self.current_page=current_page
 
+    def set_current_label(self,current_label):
+        self.current_label=current_label
+
     def set_select_book_command(self,select_book_command):
         self.select_book_command=select_book_command
 

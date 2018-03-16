@@ -220,11 +220,11 @@ class Tab2Create:
         Tab2Create.__retranslate_ui(Ui_MainWindow)
         Tab2Create.__set_up_click_events(Ui_MainWindow)
 
-        Ui_MainWindow.tab2_label_listwidget.addItem("help mee")
-        Ui_MainWindow.tab2_label_listwidget.addItem("go die")
-        Ui_MainWindow.tab2_chapter_select_combobox.addItem("help")
-        Ui_MainWindow.tab2_chapter_select_combobox.addItem("helpit")
-        
+
+
+
+
+
 
 
 
