@@ -13,7 +13,7 @@ import gui.Tab2 as tab2
 import gui.Tab3 as tab3
 
 from controller.tab2_controller.commands import SelectBook,SelectLabelAudio,SelectPage,SelectChapter,DeleteElements,SaveLabel,AddNewLabel
-from controller.tab2_controller import Invoker as invoker2
+from controller.tab3_controller.commands import SelectBook as SelectBook3,SelectChapter as SelectChapter3,PlayPage as PlayPage3
 
 
 
@@ -103,7 +103,7 @@ class Ui_MainWindow(object):
 
     def set_up_invoker(self):
 
-         #invok2=invoker2.Invoker(self)
+         #tab2 invoker
          self.invoker_tab2.set_select_book_command(SelectBook.SelectBookCommand(self.invoker_tab2,self))
          self.invoker_tab2.set_select_chapter_command(SelectChapter.SelectChapterCommand(self.invoker_tab2,self))
          self.invoker_tab2.set_select_page_command(SelectPage.SelectPageCommand(self.invoker_tab2,self))
@@ -114,6 +114,13 @@ class Ui_MainWindow(object):
          self.invoker_tab2.set_select_audio_description_command(SelectLabelAudio.SelectAudioFileDescribeCommand(self.invoker_tab2,self))
          self.invoker_tab2.set_save_label_command(SaveLabel.SaveLabelCommand(self.invoker_tab2,self))
          self.invoker_tab2.set_add_new_label_command(AddNewLabel.AddNewLabelCommand(self.invoker_tab2,self))
+
+
+         #tab3 invoker
+         self.invoker_tab3.set_select_book_command(SelectBook3.SelectBookCommand(self.invoker_tab3,self))
+         self.invoker_tab3.set_select_chapter_command(SelectChapter3.SelectChapterCommand(self.invoker_tab3,self))
+         #self.invoker_tab3.set_select_page_command(SelectPage.SelectPageCommand(self.invoker_tab3,self))
+         self.invoker_tab3.set_play_page_command(PlayPage3.PlayPageCommand(self.invoker_tab3,self))
 
 
 

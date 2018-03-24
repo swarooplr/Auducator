@@ -11,6 +11,7 @@ class Label:
         self.x2 = x2
         self.y1 = y1
         self.y2 = y2
+        self.saved=True
 
     def set_coordinates(self, x1, x2, y1, y2):
         self.x1 = x1
@@ -36,6 +37,25 @@ class Label:
     def set_play_audio_description(self, status=True):
         self.play_audio_description = status
 
+    def set_saved(self,status):
+        self.saved = status
+
+    def to_dict(self):
+        _dict={}
+        _dict["label_text"]=self.label_text
+        _dict["description_text"]=self.description_text
+        _dict["label_audio"]=self.label_audio
+        _dict["description_audio"]=self.description_audio
+        _dict["x1"]=self.x1
+        _dict["x2"]=self.x2
+        _dict["y1"]=self.y1
+        _dict["y2"]=self.y2
+        _dict["play_audio_label"]=self.play_audio_label
+        _dict["play_audio_description"]=self.play_audio_description
+
+        return _dict
+
+
 
 class Page:
     def __init__(self, page_name,page_file_path, label_list):
@@ -44,6 +64,7 @@ class Page:
         self.page_file_path=page_file_path
         self.page_width=1280
         self.page_height=720
+        self.page_image_name=" "
 
     def set_label_list(self,label_list):
         self.label_list=label_list
@@ -63,6 +84,8 @@ class Page:
     def set_page_height(self,height):
         self.page_width=height
 
+    def set_page_image_name(self,name):
+        self.page_image_name=name
 
 class Chapter:
     def __init__(self, chapter_name, chapter_path,page_list):
@@ -83,7 +106,7 @@ class Chapter:
         self.page_list.remove(page)
 
 class Book:
-    def __init__(self, book_folder_path, chapter_list=[]):
+    def __init__(self, book_folder_path, chapter_list):
         self.book_folder_path= book_folder_path
         self.chapter_list= chapter_list
 

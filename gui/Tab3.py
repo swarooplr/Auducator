@@ -2,6 +2,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+import controller.tab3_controller.Invoker as invoker
 class Tab3Create:
 
     def intiate(self,Ui_MainWindow):
@@ -86,6 +87,7 @@ class Tab3Create:
         Ui_MainWindow.tab3_page_preview.setObjectName("tab3_page_preview")
         Ui_MainWindow.horizontalLayout_22.addWidget(Ui_MainWindow.tab3_page_preview)
         Ui_MainWindow.verticalLayout_12.addLayout(Ui_MainWindow.horizontalLayout_22)
+
         Ui_MainWindow.horizontalLayout_23 = QtWidgets.QHBoxLayout()
         Ui_MainWindow.horizontalLayout_23.setObjectName("horizontalLayout_23")
         Ui_MainWindow.tab3_auto_play_button = QtWidgets.QPushButton(Ui_MainWindow.tab3_groupBox_8)
@@ -96,6 +98,7 @@ class Tab3Create:
         Ui_MainWindow.tab3_auto_play_button.setSizePolicy(sizePolicy)
         Ui_MainWindow.tab3_auto_play_button.setObjectName("tab3_auto_play_button")
         Ui_MainWindow.horizontalLayout_23.addWidget(Ui_MainWindow.tab3_auto_play_button)
+
         Ui_MainWindow.tab3_play_page_button = QtWidgets.QPushButton(Ui_MainWindow.tab3_groupBox_8)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -104,7 +107,18 @@ class Tab3Create:
         Ui_MainWindow.tab3_play_page_button.setSizePolicy(sizePolicy)
         Ui_MainWindow.tab3_play_page_button.setObjectName("tab3_play_page_button")
         Ui_MainWindow.horizontalLayout_23.addWidget(Ui_MainWindow.tab3_play_page_button)
+
+        Ui_MainWindow.tab3_play_stop_button = QtWidgets.QPushButton(Ui_MainWindow.tab3_groupBox_8)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(Ui_MainWindow.tab3_play_stop_button.sizePolicy().hasHeightForWidth())
+        Ui_MainWindow.tab3_play_stop_button.setSizePolicy(sizePolicy)
+        Ui_MainWindow.tab3_play_stop_button.setObjectName("tab3_play_stop_button")
+        Ui_MainWindow.horizontalLayout_23.addWidget(Ui_MainWindow.tab3_play_stop_button)
+
         Ui_MainWindow.verticalLayout_12.addLayout(Ui_MainWindow.horizontalLayout_23)
+
         Ui_MainWindow.horizontalLayout_20.addWidget(Ui_MainWindow.tab3_groupBox_8)
         Ui_MainWindow.verticalLayout_11 = QtWidgets.QVBoxLayout()
         Ui_MainWindow.verticalLayout_11.setObjectName("verticalLayout_11")
@@ -237,6 +251,7 @@ class Tab3Create:
 
         Tab3Create.__retranslate_ui(Ui_MainWindow)
         Tab3Create.__set_tool_tips(Ui_MainWindow)
+        Tab3Create.__set_up_click_events(Ui_MainWindow)
     
     
     def __retranslate_ui(Ui_MainWindow):
@@ -250,6 +265,7 @@ class Tab3Create:
         Ui_MainWindow.tab3_page_preview.setText(_translate("MainWindow", "Page Preview"))
         Ui_MainWindow.tab3_auto_play_button.setText(_translate("MainWindow", "Auto Play"))
         Ui_MainWindow.tab3_play_page_button.setText(_translate("MainWindow", "Play Page"))
+        Ui_MainWindow.tab3_play_stop_button.setText(_translate("MainWindow", "Stop Play"))
         Ui_MainWindow.tab3_groupBox_14.setTitle(_translate("MainWindow", "Tracking Option"))
         Ui_MainWindow.tab3_test_color_button.setText(_translate("MainWindow", "Test Color Detection"))
         Ui_MainWindow.tab3_test_page_button.setText(_translate("MainWindow", "Test Page Detection"))
@@ -271,6 +287,17 @@ class Tab3Create:
     def __set_tool_tips(Ui_MainWindow):
         pass
 
+
+    def __set_up_click_events(Ui_MainWindow):
+        Ui_MainWindow.invoker_tab3=invoker.Invoker(Ui_MainWindow)
+
+        Ui_MainWindow.tab3_select_book.clicked.connect(Ui_MainWindow.invoker_tab3.select_book)
+
+        #Ui_MainWindow.tab3_page_listwidget.itemClicked.connect(Ui_MainWindow.invoker_tab3.select_page)
+
+        Ui_MainWindow.tab3_select_chapter_combobox.activated.connect(Ui_MainWindow.invoker_tab3.select_chapter)
+
+        Ui_MainWindow.tab3_play_page_button.clicked.connect(Ui_MainWindow.invoker_tab3.play_page)
 
 
 

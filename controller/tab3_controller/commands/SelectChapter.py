@@ -1,5 +1,5 @@
-import controller.tab2_controller.commands as commands
-import controller.tab2_controller.commands.ResetUI as reset_ui
+import controller.tab3_controller.commands as commands
+import controller.tab3_controller.commands.ResetUI as reset_ui
 import controller.Inspectors as inspector
 class SelectChapterCommand(commands.BaseCommand):
 
@@ -12,8 +12,8 @@ class SelectChapterCommand(commands.BaseCommand):
     def execute(self):
         try:
             print(self)
-            #self.gui.tab2_page_listwidget.clear()
-            _selected_chapter=str(self.gui.tab2_chapter_select_combobox.currentText())
+            #self.gui.tab3_page_listwidget.clear()
+            _selected_chapter=str(self.gui.tab3_select_chapter_combobox.currentText())
             print("_selected chapter",_selected_chapter)
             _chapter=self.get_selected_chapter(_selected_chapter)
             print("chapter returned",len(_chapter.page_list))
@@ -43,10 +43,10 @@ class SelectChapterCommand(commands.BaseCommand):
     @inspector.bookselected
     @inspector.chapterselected
     def load_page_list_to_ui(self):
-        self.gui.tab2_page_listwidget.clear()
+        self.gui.tab3_page_listwidget.clear()
         for p in self.context.current_chapter.page_list:
             print(p)
-            self.gui.tab2_page_listwidget.addItem(p.page_name)
+            self.gui.tab3_page_listwidget.addItem(p.page_name)
 
     def reset_context(self):
         self.context.set_current_page(None)

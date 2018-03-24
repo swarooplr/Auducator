@@ -1,7 +1,1 @@
-{
-'imagewidth':640,
-'imageheight':480,
-'label_list':[],
-'image_name':'himalayas.png',
-'file_path':'himalayas'
-}
+{"imageheight": 480, "label_list": [{"label_audio": "Nickelback - Far Away.mp3", "description_audio": "Nickelback - How You Remind Me.mp3", "play_audio_label": true, "y2": 266.2532467532467, "play_audio_description": true, "label_text": "loose it ", "x1": 389.62987012987014, "description_text": "hemp memme", "x2": 523.3961038961039, "y1": 201.31818181818176}, {"label_audio": " ", "description_audio": " ", "play_audio_label": false, "y2": 349.37012987012986, "play_audio_description": false, "label_text": "sdfsf", "x1": 350.66883116883116, "description_text": " sf", "x2": 136.38311688311683, "y1": 489.62987012987014}, {"label_audio": " ", "description_audio": "C:/Users/swaroop/PycharmProjects/Auducator/miscellaneous/Geography/Config/ch1-mountains/himalayas/Nickelback - How You Remind Me.mp3", "play_audio_label": false, "y2": 405.21428571428567, "play_audio_description": false, "label_text": "pplay", "x1": 272.7467532467532, "description_text": " goo wadf", "x2": 116.90259740259731, "y1": 477.9415584415584}, {"label_audio": " ", "description_audio": " ", "play_audio_label": false, "y2": 171.4480519480519, "play_audio_description": false, "label_text": "gold", "x1": 309.1103896103896, "description_text": " help", "x2": 31.188311688311614, "y1": 468.8506493506494}], "imagename": "himalayas.png", "imagewidth": 640}

@@ -30,3 +30,4 @@ class ResetUICommand(commands.BaseCommand):
             pass
     def unexcute(self):
         pass
+        self.rest_ui.execute()

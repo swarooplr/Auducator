@@ -1,5 +1,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QIcon, QPixmap
+from PIL import Image
 
 import controller.tab2_controller.commands as commands
 import controller.Inspectors as inspector
@@ -59,6 +61,15 @@ class SelectLabelCommand(commands.BaseCommand):
                 self.gui.tab2_description_audio_file.setText(_label.description_audio.split('/')[-1])
 
         """ load image here"""
+        im = Image.open(self.context.current_page.page_file_path+"\\"+self.context.current_page.page_image_name)
+        print(im.size)
+
+        crop_rectangle = (_label.x1,_label.x2,_label.y1,_label.y2)
+        cropped_im = im.crop(crop_rectangle)
+
+        cropped_im.save("cropped_image.png")
+        pixmap = QPixmap('cropped_image.png')
+        self.gui.tab2_label_preview.setPixmap(pixmap)
 
 
 
@@ -88,7 +99,7 @@ class SelectAudioFileLabelCommand(commands.BaseCommand):
     def get_audio_file(self):
         file = (QtWidgets.QFileDialog.getOpenFileName(self.gui, "Select Book Folder"))[0]
         print(file)
-        self.gui.tab2_label_audio_file.setText(file.split('/')[-1])
+        self.gui.tab2_label_audio_file.setText(file)
 
 
 
@@ -118,4 +129,4 @@ class SelectAudioFileDescribeCommand(commands.BaseCommand):
     def get_audio_file(self):
         file = (QtWidgets.QFileDialog.getOpenFileName(self.gui, "Select Book Folder"))[0]
         print(file)
-        self.gui.tab2_description_audio_file.setText(file.split('/')[-1])
+        self.gui.tab2_description_audio_file.setText(file)
