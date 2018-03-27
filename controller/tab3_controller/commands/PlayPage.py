@@ -1,10 +1,17 @@
 
+import _thread
+import threading
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 import controller.tab3_controller.commands as commands
 import controller.tab3_controller.commands.ResetUI as reset_ui
+import controller.tab3_controller.commands.track as track
+import controller.tab3_controller.commands.speakout as speakout
 import controller.Inspectors as inspector
 import model.container.getContainer as getContainer
+
+
 
 
 class PlayPageCommand(commands.BaseCommand):
@@ -27,6 +34,13 @@ class PlayPageCommand(commands.BaseCommand):
             self.context.current_page=_page
             assert _page is not None
 
+
+            t1 = threading.Thread(target=track.trackit,args=("Thread-1",))
+            t2 = threading.Thread(target=speakout.speakout,args=(_page.label_list,_page.page_file_path))
+            #_thread.start_new_thread(track.trackit,("Thread-1",))
+            #_thread.start_new_thread(speakout.speakout,(_page.label_list,_page.page_file_path))
+            t1.start()
+            t2.start()
 
         except Exception as e:
             print(e)

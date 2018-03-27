@@ -99,7 +99,7 @@ class AddNewLabelCommand(commands.BaseCommand):
         self.gui.tab2_label_listwidget.addItem("New_Label")
 
         new_label=model.container.Label("New Label"," ",None,None,False,False)
-        new_label.set_coordinates(_cropped_cordinates[0],_cropped_cordinates[1],_cropped_cordinates[2],_cropped_cordinates[3])
+        new_label.set_coordinates(_cropped_cordinates[0],_cropped_cordinates[2],_cropped_cordinates[1],_cropped_cordinates[3])
         new_label.set_saved(False)
         self.context.current_label=new_label
 
