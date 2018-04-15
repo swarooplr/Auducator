@@ -6,6 +6,13 @@ import shutil
 import model.container
 
 def loadBook(book_folder_path):
+    """
+
+    :param book_folder_path: folder path of the book selected
+    :type book_folder_path:  string
+    :return: corresponding book
+    :rtype: Book
+    """
     try:
         _subfolders = [(f.name,f.path) for f in os.scandir(book_folder_path+'/Config') if f.is_dir() ]
         _book=model.container.Book(book_folder_path,[])
@@ -21,6 +28,15 @@ def loadBook(book_folder_path):
 
 
 def loadChapter(chapter_name,chapter_folder_path):
+    """
+
+    :param chapter_name: name of chapter selected
+    :type chapter_name: string
+    :param chapter_folder_path: folder path of chapter inside book
+    :type chapter_folder_path: string
+    :return: corresponding chapter object
+    :rtype: Chapter object
+    """
     try:
         print(chapter_name,chapter_folder_path,)
         _chapter = model.container.Chapter(chapter_name,chapter_folder_path,[])
@@ -42,6 +58,7 @@ def loadChapter(chapter_name,chapter_folder_path):
 
 
 def loadPage(page_name,page_folder_path):
+
     try:
         print(page_name,page_folder_path)
         _page=model.container.Page(page_name,page_folder_path,[])
