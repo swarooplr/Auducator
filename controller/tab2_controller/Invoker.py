@@ -1,7 +1,10 @@
 
 
 class Invoker:
-
+    """
+    sets the commands to be called when a event occurs
+    maintains the context
+    """
     def __init__(self, gui, current_book=None, current_chapter=None, current_page=None,current_label=None):
         self.gui=gui
         self.current_book= current_book

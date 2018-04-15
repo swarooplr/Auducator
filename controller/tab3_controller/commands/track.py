@@ -12,7 +12,7 @@ cordinates=(0,0)
 # list of tracked points
 def trackit(thread):
 
-	greenLower = (29, 86, 6)
+	greenLower = (29, 86, 60)
 	greenUpper = (64, 255, 255)
 
 	pts = deque(maxlen=64)

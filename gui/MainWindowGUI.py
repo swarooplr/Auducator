@@ -18,6 +18,9 @@ from controller.tab3_controller.commands import SelectBook as SelectBook3,Select
 
 
 class Ui_MainWindow(object):
+    """
+    Main window GUI components
+    """
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1168, 850)

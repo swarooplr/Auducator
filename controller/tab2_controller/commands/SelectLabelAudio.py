@@ -1,12 +1,16 @@
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5 import  QtWidgets
+from PyQt5.QtGui import QPixmap
 from PIL import Image
 
 import controller.tab2_controller.commands as commands
 import controller.Inspectors as inspector
+
 class SelectLabelCommand(commands.BaseCommand):
 
+    """
+        Command to select audio label from filesystem
+    """
     def __init__(self, context=None, gui=None):
         self.context = context
         self.gui = gui
@@ -35,6 +39,13 @@ class SelectLabelCommand(commands.BaseCommand):
 
 
     def get_selected_label(self,_selected_label_index):
+        """
+
+        :param _selected_label_index: index of selected label from listwidget
+        :type _selected_label_index: int
+        :return: corresponding label object
+        :rtype: Label
+        """
         if len(self.context.current_page.label_list) <= int(_selected_label_index):
             return None
         else:
@@ -43,6 +54,11 @@ class SelectLabelCommand(commands.BaseCommand):
     @inspector.bookselected
     @inspector.chapterselected
     def load_label_info_to_ui(self):
+        """
+        Loads all the information related to label into the UI fields
+        :return:
+        :rtype: None
+        """
         _label=self.context.current_label
         if(_label.label_text is not None or
            not _label.label_text == ""):
@@ -75,6 +91,10 @@ class SelectLabelCommand(commands.BaseCommand):
 
 class SelectAudioFileLabelCommand(commands.BaseCommand):
 
+    """
+        Command to select audio label from filesystem
+    """
+
     def __init__(self, context=None, gui=None):
         self.context=context
         self.gui=gui
@@ -97,6 +117,11 @@ class SelectAudioFileLabelCommand(commands.BaseCommand):
     @inspector.pageselected
     @inspector.labelselected
     def get_audio_file(self):
+        """
+        Loads the file name of the selected audio file on UI text field
+        :return:
+        :rtype: None
+        """
         file = (QtWidgets.QFileDialog.getOpenFileName(self.gui, "Select Book Folder"))[0]
         print(file)
         self.gui.tab2_label_audio_file.setText(file)
@@ -127,6 +152,11 @@ class SelectAudioFileDescribeCommand(commands.BaseCommand):
     @inspector.pageselected
     @inspector.labelselected
     def get_audio_file(self):
+        """
+        Loads the file name of the selected audio file on UI text field
+        :return:
+        :rtype: None
+        """
         file = (QtWidgets.QFileDialog.getOpenFileName(self.gui, "Select Book Folder"))[0]
         print(file)
         self.gui.tab2_description_audio_file.setText(file)

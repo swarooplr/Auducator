@@ -1,13 +1,15 @@
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtWidgets
 
 import controller.tab2_controller.commands as commands
 import controller.tab2_controller.commands.ResetUI as reset_ui
-import controller.Inspectors as inspector
 import model.container.getContainer as getContainer
 
 
 class SelectBookCommand(commands.BaseCommand):
+    """
+      Command to execute after a book folder is selected,loads the corresponding chapters of the book into UI
+    """
 
     def __init__(self, context=None, gui=None):
         self.context=context

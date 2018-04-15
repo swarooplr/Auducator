@@ -1,6 +1,6 @@
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5 import  QtWidgets
+from PyQt5.QtGui import QPixmap
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
@@ -14,7 +14,11 @@ import controller.tab2_controller.commands.SelectLabelAudio as select_label
 
 class AddNewLabelCommand(commands.BaseCommand):
 
+    """
+    command opens a popup of the image associated with the page on execute
+    """
     def __init__(self, context=None, gui=None):
+
         self.context=context
         self.gui=gui
 
@@ -24,12 +28,12 @@ class AddNewLabelCommand(commands.BaseCommand):
         print(self)
         options = QtWidgets.QFileDialog.Options()
         options |= QtWidgets.QFileDialog.DontUseNativeDialog
-        #fileName, _ = QtWidgets.QFileDialog.getOpenFileName(self.gui,"Select Image", "","All Files (*);;Image Files (*.png);;Image Files (*.jpeg);;Image Files (*.jpg)")
-        fileName=self.context.current_page.page_file_path+"\\"+self.context.current_page.page_image_name
-        print(fileName)
-        if fileName:
-            print(fileName)
-            self.load_image_pop(fileName)
+        #file_name, _ = QtWidgets.QFileDialog.getOpenFileName(self.gui,"Select Image", "","All Files (*);;Image Files (*.png);;Image Files (*.jpeg);;Image Files (*.jpg)")
+        file_name=self.context.current_page.page_file_path+"\\"+self.context.current_page.page_image_name
+        print(file_name)
+        if file_name:
+            print(file_name)
+            self.load_image_pop(file_name)
 
 
     def unexcute(self):
@@ -38,8 +42,25 @@ class AddNewLabelCommand(commands.BaseCommand):
 
     def load_image_pop(self,filename):
 
+        """
+
+        :param filename: filename of image to be loaded to crop
+        :type filename: string
+        :return: None
+        :rtype:
+        """
+
 
         def onselect(eclick, erelease):
+                """
+
+                :param eclick: coordinates of
+                :type eclick:
+                :param erelease:
+                :type erelease:
+                :return:
+                :rtype:
+                """
                 if eclick.ydata>erelease.ydata:
                     eclick.ydata,erelease.ydata=erelease.ydata,eclick.ydata
                 if eclick.xdata>erelease.xdata:
@@ -82,7 +103,13 @@ class AddNewLabelCommand(commands.BaseCommand):
 
 
     def cropped_selected(self,_cropped_cordinates):
+        """
 
+        :param _cropped_cordinates: cordinates of cropped images (x1,y1,x2,y2)
+        :type _cropped_cordinates:  tuple
+        :return: None
+        :rtype:
+        """
 
         self.context.current_label=None
         self.rest_ui=reset_ui.ResetUICommand(self.context,self.gui)

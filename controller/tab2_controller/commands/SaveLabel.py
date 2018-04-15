@@ -3,7 +3,10 @@ import controller.Inspectors as inspector
 import shutil
 import os
 import json
+
+
 class SaveLabelCommand(commands.BaseCommand):
+    """Command  saves the label once modifications are done"""
 
     def __init__(self, context=None, gui=None):
         self.context=context
@@ -30,6 +33,11 @@ class SaveLabelCommand(commands.BaseCommand):
     @inspector.pageselected
     @inspector.labelselected
     def identify_label(self):
+        """
+
+        :return: returns selected label from listwidget
+        :rtype:  Label
+        """
 
         new_label_index=int(self.gui.tab2_label_listwidget.currentRow())
         new_label=self.context.current_page.label_list[new_label_index]
@@ -70,6 +78,13 @@ class SaveLabelCommand(commands.BaseCommand):
         self.write_to_file(self.context.current_page.label_list[new_label_index])
 
     def write_to_file(self,label):
+        """
+
+        :param label: label to be saved
+        :type label:  Label
+        :return: None
+        :rtype:
+        """
         _config_file=open(str(self.context.current_page.page_file_path)+"/voice_over_details.json","r")
         _config=json.load(_config_file)
         _config_file.close()

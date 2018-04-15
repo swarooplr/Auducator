@@ -2,6 +2,9 @@ import controller.tab2_controller.commands as commands
 import controller.tab2_controller.commands.ResetUI as reset_ui
 import controller.Inspectors as inspector
 class SelectChapterCommand(commands.BaseCommand):
+    """
+      Command to execute after a chapter is selected,loads the corresponding pages of the chapter into UI
+    """
 
     def __init__(self, context=None, gui=None):
         self.context=context
@@ -33,6 +36,13 @@ class SelectChapterCommand(commands.BaseCommand):
 
 
     def get_selected_chapter(self,_selected_chapter):
+        """
+
+        :param _selected_chapter: name of the chapter select from UI
+        :type _selected_chapter: string
+        :return: the corresponding Chapter object selected
+        :rtype: Chapter
+        """
 
         for c in self.context.current_book.chapter_list:
            print(c.chapter_name)
@@ -43,6 +53,11 @@ class SelectChapterCommand(commands.BaseCommand):
     @inspector.bookselected
     @inspector.chapterselected
     def load_page_list_to_ui(self):
+        """
+
+        :return: adds page names of chapter to UI's ListWidget
+        :rtype: None
+        """
         self.gui.tab2_page_listwidget.clear()
         for p in self.context.current_chapter.page_list:
             print(p)

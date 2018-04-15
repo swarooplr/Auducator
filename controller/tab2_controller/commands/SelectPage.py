@@ -3,6 +3,7 @@ import controller.tab2_controller.commands.ResetUI as reset_ui
 import controller.Inspectors as inspector
 
 class SelectPageCommand(commands.BaseCommand):
+    """Command to execute after a page is selected,loads the corresponding label list into UI"""
 
     def __init__(self, context=None, gui=None):
         self.context=context
@@ -31,6 +32,13 @@ class SelectPageCommand(commands.BaseCommand):
         print(self)
 
     def get_selected_page(self,_selected_page):
+        """
+
+        :param _selected_page: name of the page selected
+        :type _selected_page:  string
+        :return: corresponding page object
+        :rtype:  Page
+        """
         for p in self.context.current_chapter.page_list:
            print(p.page_name)
            if str(p.page_name) == str(_selected_page):
@@ -41,6 +49,11 @@ class SelectPageCommand(commands.BaseCommand):
     @inspector.chapterselected
     @inspector.pageselected
     def load_label_list_to_ui(self):
+        """
+
+        :return: loads the label list of page into UI
+        :rtype: None
+        """
         self.gui.tab2_label_listwidget.clear()
         for label in self.context.current_page.label_list:
             if(label.label_text is not None or
