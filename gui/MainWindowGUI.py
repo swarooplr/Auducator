@@ -106,6 +106,12 @@ class Ui_MainWindow(object):
 
     def set_up_invoker(self):
 
+         """
+         designates commands to execute on UI events
+         :return:
+         :rtype: None
+         """
+
          #tab2 invoker
          self.invoker_tab2.set_select_book_command(SelectBook.SelectBookCommand(self.invoker_tab2,self))
          self.invoker_tab2.set_select_chapter_command(SelectChapter.SelectChapterCommand(self.invoker_tab2,self))
