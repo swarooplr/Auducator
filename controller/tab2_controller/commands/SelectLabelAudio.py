@@ -1,10 +1,11 @@
 
-from PyQt5 import  QtWidgets
-from PyQt5.QtGui import QPixmap
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QIcon, QPixmap
 from PIL import Image
 
 import controller.tab2_controller.commands as commands
 import controller.Inspectors as inspector
+import controller.exceptions.ExceptionHandler as exceptionhandler
 
 class SelectLabelCommand(commands.BaseCommand):
 
@@ -30,7 +31,7 @@ class SelectLabelCommand(commands.BaseCommand):
             self.load_label_info_to_ui()
 
         except Exception as e:
-            print(e)
+            exceptionhandler.ExceptionHandler(e,self.gui).handle()
             pass
 
 
@@ -105,7 +106,8 @@ class SelectAudioFileLabelCommand(commands.BaseCommand):
         print(self)
         try:
             self.get_audio_file()
-        except:
+        except Exception as e:
+            exceptionhandler.ExceptionHandler(e,self.gui).handle()
             pass
 
 
@@ -140,7 +142,8 @@ class SelectAudioFileDescribeCommand(commands.BaseCommand):
         print(self)
         try:
             self.get_audio_file()
-        except:
+        except Exception as e:
+            exceptionhandler.ExceptionHandler(e,self.gui).handle()
             pass
 
 
@@ -152,11 +155,6 @@ class SelectAudioFileDescribeCommand(commands.BaseCommand):
     @inspector.pageselected
     @inspector.labelselected
     def get_audio_file(self):
-        """
-        Loads the file name of the selected audio file on UI text field
-        :return:
-        :rtype: None
-        """
         file = (QtWidgets.QFileDialog.getOpenFileName(self.gui, "Select Book Folder"))[0]
         print(file)
         self.gui.tab2_description_audio_file.setText(file)

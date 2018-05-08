@@ -1,6 +1,7 @@
 import controller.tab2_controller.commands as commands
 import controller.tab2_controller.commands.ResetUI as reset_ui
 import controller.Inspectors as inspector
+import controller.exceptions.ExceptionHandler as exceptionhandler
 
 class SelectPageCommand(commands.BaseCommand):
     """Command to execute after a page is selected,loads the corresponding label list into UI"""
@@ -24,7 +25,7 @@ class SelectPageCommand(commands.BaseCommand):
             self.load_label_list_to_ui()
 
         except Exception as e:
-            print(e)
+            exceptionhandler.ExceptionHandler(e,self.gui).handle()
             pass
 
 

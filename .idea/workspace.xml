@@ -4,42 +4,14 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1618cec1-3e51-4ba8-8acf-a1dc81f4d0be" name="Default" comment="documentation added">
-      <change beforePath="" afterPath="$PROJECT_DIR$/controller/tab1_controller/commands/ManualCrop.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/controller/tab1_controller/commands/NewElements.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/controller/tab1_controller/commands/SavePage.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/controller/tab1_controller/commands/SelectElements.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/controller/tab1_controller/commands/SelectPicture.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/controller/tab1_controller/commands/TakePicture.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/controller/tab3_controller/commands/StopPage.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/controller/tab3_controller/commands/Tracker.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/miscellaneous/Geography/Config/ch1-mountains/golaxhmi/golaxhmi.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/miscellaneous/Geography/Config/ch1-mountains/golaxhmi/voice_over_details.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/miscellaneous/Geography/Config/ch1-mountains/rockstar/rockstar.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/miscellaneous/Geography/Config/ch1-mountains/rockstar/voice_over_details.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/miscellaneous/Geography/Config/ch1-mountains/southAfrica/southAfrica.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/miscellaneous/Geography/Config/ch1-mountains/teddy/teddy.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/miscellaneous/Geography/Config/ch1-mountains/teddy/voice_over_details.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/miscellaneous/Geography/Config/ch1-mountains/willy/voice_over_details.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/miscellaneous/Geography/Config/ch1-mountains/willy/willy.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/miscellaneous/Teddy/Config/Default/intro/intro.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/miscellaneous/Teddy/Config/Default/intro/voice_over_details.json" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+    <list default="true" id="1618cec1-3e51-4ba8-8acf-a1dc81f4d0be" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/controller/tab1_controller/Invoker.py" afterPath="$PROJECT_DIR$/controller/tab1_controller/Invoker.py" />
-      <change beforePath="$PROJECT_DIR$/controller/tab1_controller/commands/__init__.py" afterPath="$PROJECT_DIR$/controller/tab1_controller/commands/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/controller/tab3_controller/Invoker.py" afterPath="$PROJECT_DIR$/controller/tab3_controller/Invoker.py" />
-      <change beforePath="$PROJECT_DIR$/controller/tab3_controller/commands/PlayPage.py" afterPath="$PROJECT_DIR$/controller/tab3_controller/commands/PlayPage.py" />
-      <change beforePath="$PROJECT_DIR$/controller/tab3_controller/commands/speakout.py" afterPath="$PROJECT_DIR$/controller/tab3_controller/commands/speakout.py" />
-      <change beforePath="$PROJECT_DIR$/controller/tab3_controller/commands/track.py" afterPath="$PROJECT_DIR$/controller/tab3_controller/commands/track.py" />
-      <change beforePath="$PROJECT_DIR$/gui/MainWindowGUI.py" afterPath="$PROJECT_DIR$/gui/MainWindowGUI.py" />
-      <change beforePath="$PROJECT_DIR$/gui/Tab1.py" afterPath="$PROJECT_DIR$/gui/Tab1.py" />
-      <change beforePath="$PROJECT_DIR$/gui/Tab3.py" afterPath="$PROJECT_DIR$/gui/Tab3.py" />
-      <change beforePath="$PROJECT_DIR$/gui/__init__.py" afterPath="$PROJECT_DIR$/gui/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/gui/cropped_image.png" afterPath="$PROJECT_DIR$/gui/cropped_image.png" />
-      <change beforePath="$PROJECT_DIR$/miscellaneous/Geography/Config/ch1-mountains/southAfrica/voice_over_details.json" afterPath="$PROJECT_DIR$/miscellaneous/Geography/Config/ch1-mountains/southAfrica/voice_over_details.json" />
-      <change beforePath="$PROJECT_DIR$/model/container/__init__.py" afterPath="$PROJECT_DIR$/model/container/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/model/container/getContainer.py" afterPath="$PROJECT_DIR$/model/container/getContainer.py" />
+      <change beforePath="$PROJECT_DIR$/controller/tab2_controller/commands/AddNewLabel.py" afterPath="$PROJECT_DIR$/controller/tab2_controller/commands/AddNewLabel.py" />
+      <change beforePath="$PROJECT_DIR$/controller/tab2_controller/commands/SaveLabel.py" afterPath="$PROJECT_DIR$/controller/tab2_controller/commands/SaveLabel.py" />
+      <change beforePath="$PROJECT_DIR$/controller/tab2_controller/commands/SelectBook.py" afterPath="$PROJECT_DIR$/controller/tab2_controller/commands/SelectBook.py" />
+      <change beforePath="$PROJECT_DIR$/controller/tab2_controller/commands/SelectChapter.py" afterPath="$PROJECT_DIR$/controller/tab2_controller/commands/SelectChapter.py" />
+      <change beforePath="$PROJECT_DIR$/controller/tab2_controller/commands/SelectLabelAudio.py" afterPath="$PROJECT_DIR$/controller/tab2_controller/commands/SelectLabelAudio.py" />
+      <change beforePath="$PROJECT_DIR$/controller/tab2_controller/commands/SelectPage.py" afterPath="$PROJECT_DIR$/controller/tab2_controller/commands/SelectPage.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -56,56 +28,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="StopPage.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/tab3_controller/commands/StopPage.py">
+      <file leaf-file-name="SelectPage.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/controller/tab2_controller/commands/SelectPage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-373">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="1134">
+              <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
               <folding>
-                <element signature="e#0#42#0" expanded="true" />
+                <element signature="e#0#54#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="speakout.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/tab3_controller/commands/speakout.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="39" column="38" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tracker.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/tab3_controller/commands/Tracker.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tab1.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/gui/Tab1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4531">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/container/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="13" column="20" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -189,7 +119,6 @@
         <option value="$PROJECT_DIR$/controller/Inspectors.py" />
         <option value="$PROJECT_DIR$/model/container/LoadContainer.py" />
         <option value="$PROJECT_DIR$/controller/tab2_controller/commands/reset_ui.py" />
-        <option value="$PROJECT_DIR$/controller/tab2_controller/commands/DeleteElements.py" />
         <option value="$PROJECT_DIR$/miscellaneous/Geography/Config/Default/intro/voice_over_details.json" />
         <option value="$PROJECT_DIR$/controller/tab2_controller/commands/ResetUI.py" />
         <option value="$PROJECT_DIR$/gui/Tab2.py" />
@@ -204,24 +133,25 @@
         <option value="$PROJECT_DIR$/controller/tab3_controller/commands/PlayPage.py" />
         <option value="$PROJECT_DIR$/controller/tab3_controller/commands/track.py" />
         <option value="$PROJECT_DIR$/miscellaneous/Geography/Config/ch1-mountains/southAfrica/voice_over_details.json" />
-        <option value="$PROJECT_DIR$/controller/tab2_controller/commands/SelectBook.py" />
-        <option value="$PROJECT_DIR$/controller/tab2_controller/commands/SelectLabelAudio.py" />
-        <option value="$PROJECT_DIR$/controller/tab2_controller/commands/SelectPage.py" />
-        <option value="$PROJECT_DIR$/controller/tab2_controller/commands/AddNewLabel.py" />
-        <option value="$PROJECT_DIR$/controller/tab2_controller/commands/SaveLabel.py" />
-        <option value="$PROJECT_DIR$/controller/tab2_controller/commands/SelectChapter.py" />
         <option value="$PROJECT_DIR$/controller/tab2_controller/Invoker.py" />
         <option value="$PROJECT_DIR$/gui/MainWindowGUI.py" />
         <option value="$PROJECT_DIR$/model/container/getContainer.py" />
         <option value="$PROJECT_DIR$/model/container/__init__.py" />
+        <option value="$PROJECT_DIR$/controller/tab2_controller/commands/DeleteElements.py" />
+        <option value="$PROJECT_DIR$/controller/exceptions/ExceptionHandler.py" />
+        <option value="$PROJECT_DIR$/controller/tab2_controller/commands/AddNewLabel.py" />
+        <option value="$PROJECT_DIR$/controller/tab2_controller/commands/SaveLabel.py" />
+        <option value="$PROJECT_DIR$/controller/tab2_controller/commands/SelectChapter.py" />
+        <option value="$PROJECT_DIR$/controller/tab2_controller/commands/SelectLabelAudio.py" />
+        <option value="$PROJECT_DIR$/controller/tab2_controller/commands/SelectPage.py" />
+        <option value="$PROJECT_DIR$/controller/tab2_controller/commands/SelectBook.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="width" value="976" />
+    <option name="height" value="523" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -257,11 +187,6 @@
               <item name="Auducator" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
               <item name="exceptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Auducator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Auducator" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Auducator" type="b2602c69:ProjectViewProjectNode" />
@@ -331,6 +256,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Auducator" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gui/MainWindowGUI.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="SaveLabel" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/controller/tab2_controller/commands" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Auducator" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/controller/tab2_controller/commands/SaveLabel.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -537,18 +480,20 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.__init__" />
       <item index="1" class="java.lang.String" itemvalue="Python.MainWindowGUI" />
       <item index="2" class="java.lang.String" itemvalue="Python.SelectBook" />
       <item index="3" class="java.lang.String" itemvalue="Python.getContainer" />
+      <item index="4" class="java.lang.String" itemvalue="Python.SaveLabel" />
     </list>
     <recent_temporary>
-      <list size="4">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.__init__" />
-        <item index="1" class="java.lang.String" itemvalue="Python.getContainer" />
-        <item index="2" class="java.lang.String" itemvalue="Python.SelectBook" />
-        <item index="3" class="java.lang.String" itemvalue="Python.MainWindowGUI" />
+        <item index="1" class="java.lang.String" itemvalue="Python.SaveLabel" />
+        <item index="2" class="java.lang.String" itemvalue="Python.getContainer" />
+        <item index="3" class="java.lang.String" itemvalue="Python.SelectBook" />
+        <item index="4" class="java.lang.String" itemvalue="Python.MainWindowGUI" />
       </list>
     </recent_temporary>
   </component>
@@ -559,9 +504,9 @@
     <configuration />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23498139" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26209462" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32738096" sideWeight="0.49814913" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297619" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -637,17 +582,11 @@
     <MESSAGE value="tab3 controller added" />
     <MESSAGE value="tracking added" />
     <MESSAGE value="documentation added" />
-    <option name="LAST_COMMIT_MESSAGE" value="documentation added" />
+    <MESSAGE value="minor debugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor debugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/controller/tab2_controller/commands/SaveLabel.py</url>
-          <line>56</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
@@ -658,7 +597,7 @@
         <state relative-caret-position="168">
           <caret line="8" column="59" lean-forward="false" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
           <folding>
-            <element signature="e#0#54#0" expanded="false" />
+            <element signature="e#1#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -703,9 +642,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="10" column="26" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="109" />
-          <folding>
-            <element signature="e#1#28#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -714,7 +651,7 @@
         <state relative-caret-position="168">
           <caret line="8" column="59" lean-forward="false" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
           <folding>
-            <element signature="e#0#54#0" expanded="false" />
+            <element signature="e#1#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -760,7 +697,7 @@
         <state relative-caret-position="84">
           <caret line="8" column="59" lean-forward="false" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
           <folding>
-            <element signature="e#0#54#0" expanded="false" />
+            <element signature="e#1#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -815,45 +752,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/tab2_controller/commands/AddNewLabel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="49" lean-forward="false" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/tab2_controller/commands/DeleteElements.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-986">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controller/tab2_controller/commands/ResetUI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/tab2_controller/commands/SelectLabelAudio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="158" column="11" lean-forward="false" selection-start-line="158" selection-start-column="11" selection-end-line="158" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/tab2_controller/commands/SelectChapter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="94" lean-forward="false" selection-start-line="5" selection-start-column="94" selection-end-line="5" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/tab2_controller/commands/SelectPage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1134">
-          <caret line="54" column="20" lean-forward="false" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -875,26 +777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/tab2_controller/commands/SelectBook.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#1#28#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/tab2_controller/commands/SaveLabel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="8" column="59" lean-forward="false" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#54#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -968,14 +850,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/container/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="20" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controller/tab3_controller/commands/StopPage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-373">
@@ -1006,9 +880,97 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gui/Tab1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4531">
+        <state relative-caret-position="-630">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/container/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="20" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/exceptions/ExceptionHandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#1#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/tab2_controller/commands/AddNewLabel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="152" column="0" lean-forward="true" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+          <folding>
+            <element signature="e#1#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/tab2_controller/commands/DeleteElements.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="41" lean-forward="false" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/tab2_controller/commands/SelectBook.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="e#1#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/tab2_controller/commands/SelectLabelAudio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="116" column="27" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
+          <folding>
+            <element signature="e#1#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/tab2_controller/commands/SelectChapter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1449">
+          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/tab2_controller/commands/SaveLabel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2520">
+          <caret line="120" column="0" lean-forward="true" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+          <folding>
+            <element signature="e#1#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/tab2_controller/commands/SelectPage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1134">
+          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

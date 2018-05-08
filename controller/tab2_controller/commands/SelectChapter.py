@@ -1,6 +1,7 @@
 import controller.tab2_controller.commands as commands
 import controller.tab2_controller.commands.ResetUI as reset_ui
 import controller.Inspectors as inspector
+import controller.exceptions.ExceptionHandler as exceptionhandler
 class SelectChapterCommand(commands.BaseCommand):
     """
       Command to execute after a chapter is selected,loads the corresponding pages of the chapter into UI
@@ -26,7 +27,7 @@ class SelectChapterCommand(commands.BaseCommand):
             self.reset_context()
 
         except Exception as e:
-            print(e)
+            exceptionhandler.ExceptionHandler(e,self.gui).handle()
             pass
 
 

@@ -1,8 +1,11 @@
-import controller.tab2_controller.commands as commands
-import controller.Inspectors as inspector
+
 import shutil
 import os
 import json
+
+import controller.tab2_controller.commands as commands
+import controller.Inspectors as inspector
+import controller.exceptions.ExceptionHandler as exceptionhandler
 
 
 class SaveLabelCommand(commands.BaseCommand):
@@ -18,7 +21,7 @@ class SaveLabelCommand(commands.BaseCommand):
         try:
             self.identify_label()
         except Exception as e:
-            print(e)
+            exceptionhandler.ExceptionHandler(e,self.gui).handle()
             pass
 
 

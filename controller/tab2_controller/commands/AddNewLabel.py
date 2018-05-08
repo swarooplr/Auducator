@@ -1,6 +1,6 @@
 
-from PyQt5 import  QtWidgets
-from PyQt5.QtGui import QPixmap
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QIcon, QPixmap
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
@@ -10,6 +10,9 @@ import controller.tab2_controller.commands as commands
 import model.container
 import controller.tab2_controller.commands.ResetUI as reset_ui
 import controller.tab2_controller.commands.SelectLabelAudio as select_label
+import controller.Inspectors as inspector
+
+import controller.exceptions.ExceptionHandler as exceptionhandler
 
 
 class AddNewLabelCommand(commands.BaseCommand):
@@ -18,7 +21,6 @@ class AddNewLabelCommand(commands.BaseCommand):
     command opens a popup of the image associated with the page on execute
     """
     def __init__(self, context=None, gui=None):
-
         self.context=context
         self.gui=gui
 
@@ -26,18 +28,29 @@ class AddNewLabelCommand(commands.BaseCommand):
 
     def execute(self):
         print(self)
-        options = QtWidgets.QFileDialog.Options()
-        options |= QtWidgets.QFileDialog.DontUseNativeDialog
-        #file_name, _ = QtWidgets.QFileDialog.getOpenFileName(self.gui,"Select Image", "","All Files (*);;Image Files (*.png);;Image Files (*.jpeg);;Image Files (*.jpg)")
-        file_name=self.context.current_page.page_file_path+"\\"+self.context.current_page.page_image_name
-        print(file_name)
-        if file_name:
-            print(file_name)
-            self.load_image_pop(file_name)
+        try:
+            self.select_image()
+        except Exception as e:
+            exceptionhandler.ExceptionHandler(e,self.gui).handle()
+            pass
 
 
     def unexcute(self):
         print(self)
+
+    @inspector.bookselected
+    @inspector.chapterselected
+    @inspector.pageselected
+    @inspector.labelselected
+    def select_image(self):
+            options = QtWidgets.QFileDialog.Options()
+            options |= QtWidgets.QFileDialog.DontUseNativeDialog
+            #fileName, _ = QtWidgets.QFileDialog.getOpenFileName(self.gui,"Select Image", "","All Files (*);;Image Files (*.png);;Image Files (*.jpeg);;Image Files (*.jpg)")
+            fileName=self.context.current_page.page_file_path+"\\"+self.context.current_page.page_image_name
+            print(fileName)
+            if fileName:
+                print(fileName)
+                self.load_image_pop(fileName)
 
 
     def load_image_pop(self,filename):
