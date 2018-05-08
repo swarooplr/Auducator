@@ -1,5 +1,4 @@
 class Label:
-
     def __init__(self, label_text, description_text, label_audio, description_audio, play_audio_label,
                  play_audio_description, x1=0, x2=0, y1=0, y2=0):
         self.label_text = label_text

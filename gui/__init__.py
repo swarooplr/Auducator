@@ -1,4 +1,4 @@
-import  sys
+import sys
 from PyQt5.QtWidgets import QApplication,QMainWindow
 import gui.MainWindowGUI
 import gui.Tab1 as tab1

@@ -1,6 +1,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import controller.tab1_controller.Invoker as invoker
 
 class Tab1Create:
 
@@ -199,7 +200,7 @@ class Tab1Create:
         Ui_MainWindow.verticalLayout_2.addLayout(Ui_MainWindow.horizontalLayout_2)
         Ui_MainWindow.horizontalLayout.addLayout(Ui_MainWindow.verticalLayout_2)
         Tab1Create.__retranslate_ui(Ui_MainWindow)
-
+        Tab1Create.__set_up_click_events(Ui_MainWindow)
 
         
         
@@ -234,8 +235,27 @@ class Tab1Create:
 
         pass
 
+    def __set_up_click_events(Ui_MainWindow):
+        Ui_MainWindow.invoker_tab1 = invoker.Invoker(Ui_MainWindow)
 
+        Ui_MainWindow.tab1_select_book_button.clicked.connect(Ui_MainWindow.invoker_tab1.select_book)
+        Ui_MainWindow.tab1_new_book_button.clicked.connect(Ui_MainWindow.invoker_tab1.new_book)
+        Ui_MainWindow.tab1_page_listwidget.itemClicked.connect(Ui_MainWindow.invoker_tab1.select_page)
 
+        # Ui_MainWindow.tab1_delete_book_button.clicked.connect(Ui_MainWindow.invoker_tab1.delete_book)
+
+        Ui_MainWindow.tab1_new_chapter_button.clicked.connect(Ui_MainWindow.invoker_tab1.new_chapter)
+        # Ui_MainWindow.tab1_delete_chapter_button.clicked.connect(Ui_MainWindow.invoker_tab1.delete_chapter)
+        Ui_MainWindow.tab1_select_chapter_combobox.activated.connect(Ui_MainWindow.invoker_tab1.select_chapter)
+        # Ui_MainWindow.tab1_select_chapter_combobox.addItem("help")
+        # Ui_MainWindow.tab1_page_rotate.clicked.connect(Ui_MainWindow.invoker_tab1.rotate_image)
+
+        # Ui_MainWindow.tab1_delete_page_button.clicked.connect(Ui_MainWindow.invoker_tab1.delete_page)
+
+        Ui_MainWindow.tab1_take_picture_button.clicked.connect(Ui_MainWindow.invoker_tab1.take_picture)
+        Ui_MainWindow.tab1_select_picture_button.clicked.connect(Ui_MainWindow.invoker_tab1.select_picture)
+        Ui_MainWindow.tab1_manualcrop_picture_button.clicked.connect(Ui_MainWindow.invoker_tab1.manual_crop)
+        Ui_MainWindow.tab1_save_page_button.clicked.connect(Ui_MainWindow.invoker_tab1.save_page)
 
 
 

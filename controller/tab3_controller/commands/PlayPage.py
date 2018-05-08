@@ -10,6 +10,7 @@ import controller.tab3_controller.commands.track as track
 import controller.tab3_controller.commands.speakout as speakout
 import controller.Inspectors as inspector
 import model.container.getContainer as getContainer
+import controller.tab3_controller.commands.Tracker as tracker
 
 
 
@@ -34,13 +35,15 @@ class PlayPageCommand(commands.BaseCommand):
             self.context.current_page=_page
             assert _page is not None
 
+            tracker.cordinates = (0, 0)
+            self.tracking_thread = threading.Thread(target=tracker.track,args=(180,))
 
-            t1 = threading.Thread(target=track.trackit,args=("Thread-1",))
-            t2 = threading.Thread(target=speakout.speakout,args=(_page.label_list,_page.page_file_path))
+            self.speakout_thread = threading.Thread(target=speakout.speakout,args=(_page.label_list,_page.page_file_path))
+
             #_thread.start_new_thread(track.trackit,("Thread-1",))
             #_thread.start_new_thread(speakout.speakout,(_page.label_list,_page.page_file_path))
-            t1.start()
-            t2.start()
+            self.tracking_thread.start()
+            self.speakout_thread.start()
 
         except Exception as e:
             print(e)

@@ -32,6 +32,9 @@ class Invoker:
     def set_play_page_command(self,select_play_page_command):
         self.play_page_command=select_play_page_command
 
+    def set_stop_page_command(self,select_stop_page_command):
+        self.stop_page_command=select_stop_page_command
+
     def select_book(self):
         print("connected")
         self.select_book_command.execute()
@@ -50,6 +53,10 @@ class Invoker:
 
     def set_ui_(self,gui):
         self.gui=gui
+
+    def stop_page(self):
+        print("connected")
+        self.stop_page_command.execute()
 
 
 

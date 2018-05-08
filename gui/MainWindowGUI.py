@@ -14,13 +14,10 @@ import gui.Tab3 as tab3
 
 from controller.tab2_controller.commands import SelectBook,SelectLabelAudio,SelectPage,SelectChapter,DeleteElements,SaveLabel,AddNewLabel
 from controller.tab3_controller.commands import SelectBook as SelectBook3,SelectChapter as SelectChapter3,PlayPage as PlayPage3
-
+from controller.tab1_controller.commands import NewElements,SelectElements,SelectPicture,ManualCrop,TakePicture,SavePage
 
 
 class Ui_MainWindow(object):
-    """
-    Main window GUI components
-    """
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1168, 850)
@@ -105,12 +102,21 @@ class Ui_MainWindow(object):
 
 
     def set_up_invoker(self):
+         # tab1 invoker
+         self.invoker_tab1.set_select_book_command(SelectElements.SelectBookCommand(self.invoker_tab1, self))
+         self.invoker_tab1.set_select_chapter_command(SelectElements.SelectChapterCommand(self.invoker_tab1, self))
+         self.invoker_tab1.set_select_page_command(SelectElements.SelectPageCommand(self.invoker_tab1, self))
+         self.invoker_tab1.create_new_book_command(NewElements.NewBookCommand(self.invoker_tab1, self))
+         self.invoker_tab1.create_new_chapter_command(NewElements.NewChapterCommand(self.invoker_tab1, self))
+         # self.invoker_tab1.delete_book_command(DeleteElementsTab1.DeleteBookCommand(None, self))
+         # self.invoker_tab1.delete_chapter_command(DeleteElementsTab1.DeletChapterCommand(None, self))
+         # self.invoker_tab1.delete_page_command(DeleteElementsTab1.DeletPageCommand(None, self))
+         self.invoker_tab1.manual_crop_command(ManualCrop.ManualCropCommand(self.invoker_tab1, self))
+         self.invoker_tab1.save_page_command(SavePage.SavePageCommand(self.invoker_tab1, self))
+         self.invoker_tab1.select_picture_command(SelectPicture.SelectPictureCommand(self.invoker_tab1, self))
+         self.invoker_tab1.take_picture_command(TakePicture.TakePictureCommand(self.invoker_tab1, self))
+         # self.invoker_tab1.rotate_image_command(RotatePage.RotatePa
 
-         """
-         designates commands to execute on UI events
-         :return:
-         :rtype: None
-         """
 
          #tab2 invoker
          self.invoker_tab2.set_select_book_command(SelectBook.SelectBookCommand(self.invoker_tab2,self))

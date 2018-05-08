@@ -299,6 +299,8 @@ class Tab3Create:
 
         Ui_MainWindow.tab3_play_page_button.clicked.connect(Ui_MainWindow.invoker_tab3.play_page)
 
+        Ui_MainWindow.tab3_play_stop_button.clicked.connect(Ui_MainWindow.invoker_tab3.stop_page)
+
 
 
 
