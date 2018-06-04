@@ -27,6 +27,7 @@ class SelectBookCommand(commands.BaseCommand):
                 self.gui.tab1_select_chapter_combobox.addItem(i.chapter_name)
                 print(i.chapter_name)
             self.context.set_current_book(_book)
+            self.gui.tab1_page_view.setPixmap(QPixmap("./res/loadimage.png"))
             print(self.context.current_book.book_folder_path)
             #self.reset_context()
 
@@ -98,9 +99,7 @@ class SelectPageCommand(commands.BaseCommand):
     def execute(self):
         print(self)
         try:
-            print(self)
             _selected_page=str(self.gui.tab1_page_listwidget.currentItem().text())
-            print(_selected_page)
             _page = self.get_selected_page(_selected_page)
             print("page is",_page.page_name)
             self.context.current_page=_page
@@ -124,8 +123,8 @@ class SelectPageCommand(commands.BaseCommand):
 
     def load_image_preview(self):
         _image_folder_path=self.context.current_page.page_file_path
-        print(_image_folder_path)
-        print(self.context.current_page.page_image_name)
+        print("image path : ",_image_folder_path)
+        print("image name:",self.context.current_page.page_image_name)
         pixmap = QPixmap(_image_folder_path+"/"+self.context.current_page.page_image_name)
         self.gui.tab1_page_view.setPixmap(pixmap)
 

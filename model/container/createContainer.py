@@ -38,4 +38,4 @@ def createPage(chapter_path,page_name):
     with open(page_path+"/voice_over_details.json", "w") as f:
         f.write(data)
 
-    return page_name,page_path
+    return page_path

@@ -1,6 +1,7 @@
 import controller.tab1_controller.commands as commands
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QDialog, QInputDialog
+from PyQt5.QtGui import QIcon, QPixmap
 
 import model.container.createContainer as createConatiner
 import model as model
@@ -38,6 +39,7 @@ class NewBookCommand(commands.BaseCommand):
                     self.gui.tab1_select_chapter_combobox.addItem(i.chapter_name)
                     print(i.chapter_name)
                 self.context.set_current_book(_book)
+                self.gui.tab1_page_view.setPixmap(QPixmap("./res/loadimage.png"))
                 print(self.context.current_book.book_folder_path)
 
             except:
