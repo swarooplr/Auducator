@@ -10,6 +10,7 @@ def createBook(book_folder_path):
     metaData_path = book_folder_path + '/' "MetaData"
     os.makedirs(config_path)
     os.makedirs(metaData_path)
+    os.makedirs(config_path+'/Default')
     _book = model.container.Book(book_folder_path, [])
     return _book
 
@@ -29,9 +30,9 @@ def createPage(chapter_path,page_name):
 
     voice_over_details["label_list"] = list()
 
-    voice_over_details["imageheight"] = 640
+    voice_over_details["imageheight"] = 800
 
-    voice_over_details["imagewidth"] = 480
+    voice_over_details["imagewidth"] = 600
 
     data = json.dumps(voice_over_details)
     with open(page_path+"/voice_over_details.json", "w") as f:

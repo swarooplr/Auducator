@@ -30,9 +30,14 @@ class TakePictureCommand(commands.BaseCommand):
     def pageSelector(self):
         pageDetected = False
         marker = 0
-        cap = cv2.VideoCapture(2)
-        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
-        cap.set(cv2.CAP_PROP_FRAME_WIDTH, 800)
+        camera_id = Sp.get_working_camera()
+        if not camera_id == None:
+            cap = cv2.VideoCapture(camera_id)
+            cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
+            cap.set(cv2.CAP_PROP_FRAME_WIDTH, 800)
+
+        else:
+            pass  # through error here
         while True:
 
             ret, image = cap.read()

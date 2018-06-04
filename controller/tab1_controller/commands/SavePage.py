@@ -21,6 +21,7 @@ class SavePageCommand(commands.BaseCommand):
         page =  model.container.Page(page_name,page_file_path,[])
         self.context.current_chapter.add_page(page)
         self.gui.tab1_page_listwidget.addItem(page.page_name)
+        self
 
 
     def unexcute(self):

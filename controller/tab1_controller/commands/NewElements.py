@@ -31,6 +31,7 @@ class NewBookCommand(commands.BaseCommand):
 
                 _book = getContainer.loadBook(book_path)
                 self.gui.tab1_book_name.setText(_book.book_folder_path.split('/')[-1])
+                self.gui.tab1_chapter_name.setText("Default")
                 self.gui.tab1_select_chapter_combobox.clear()
 
                 for i in _book.chapter_list:

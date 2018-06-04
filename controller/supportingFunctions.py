@@ -167,3 +167,15 @@ def imageResize(img):
     else:
         page = cv2.resize(img, (800, 600), interpolation=cv2.INTER_AREA)
         return page, (600, 800)
+
+def get_working_camera():
+
+    for i in range(0,4):
+        cap = cv2.VideoCapture(i)
+        img = cap.read()
+        if img == None:
+            continue
+        else:
+            return 2
+
+    return None
