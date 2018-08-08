@@ -18,15 +18,17 @@ class SelectBookCommand(commands.BaseCommand):
         print(self)
         try:
             file = str(QtWidgets.QFileDialog.getExistingDirectory(self.gui, "Select Book Folder"))
-            print(file)
+            #print(file)
             _book = getContainer.loadBook(file)
+            self.context.set_current_book(_book)
+
             self.gui.tab1_book_name.setText(_book.book_folder_path.split('/')[-1])
             self.gui.tab1_select_chapter_combobox.clear()
 
             for i in _book.chapter_list:
                 self.gui.tab1_select_chapter_combobox.addItem(i.chapter_name)
                 print(i.chapter_name)
-            self.context.set_current_book(_book)
+
             self.gui.tab1_page_view.setPixmap(QPixmap("./res/loadimage.png"))
             print(self.context.current_book.book_folder_path)
             #self.reset_context()

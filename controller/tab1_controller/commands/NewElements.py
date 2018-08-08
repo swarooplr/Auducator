@@ -18,19 +18,19 @@ class NewBookCommand(commands.BaseCommand):
     def execute(self):
         print(self)
         file = str(QtWidgets.QFileDialog.getExistingDirectory(self.gui, "Select Folder to create Book"))
-        text, ok = QInputDialog.getText(self.gui, 'New Project',
-                                        'Enter project name:')
+        text, ok = QInputDialog.getText(self.gui, 'New Project','Enter project name:')
 
         if ok:
             print(text)
-            book_path = file + '/' + text
+            book_path = os.path.join(file, text)
             try:
                 _book = createConatiner.createBook(book_path)
-                print(self.context)
+                print("book created at :" ,book_path, "   id:",_book)
                 #self.context.set_current_book(_book)
-                print('book path : ',book_path)
+                #print('book path : ',book_path)
 
                 _book = getContainer.loadBook(book_path)
+                self.context.set_current_book(_book)
                 self.gui.tab1_book_name.setText(_book.book_folder_path.split('/')[-1])
                 self.gui.tab1_chapter_name.setText("Default")
                 self.gui.tab1_select_chapter_combobox.clear()
@@ -38,14 +38,14 @@ class NewBookCommand(commands.BaseCommand):
                 for i in _book.chapter_list:
                     self.gui.tab1_select_chapter_combobox.addItem(i.chapter_name)
                     print(i.chapter_name)
-                self.context.set_current_book(_book)
+
                 self.gui.tab1_page_view.setPixmap(QPixmap("./res/loadimage.png"))
-                print(self.context.current_book.book_folder_path)
+                #print(self.context.current_book.book_folder_path)
 
             except:
-                print('unable to create project at destination')
+                print('Unable to create project at destination')
 
-        print(file)
+        print('Location not accessible')
 
     def unexcute(self):
         print(self)
