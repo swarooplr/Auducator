@@ -4,15 +4,7 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1618cec1-3e51-4ba8-8acf-a1dc81f4d0be" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/controller/tab1_controller/commands/DeleteElements.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/miscellaneous/UI files/tab1dialogUI.ui" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/controller/tab1_controller/commands/NewElements.py" afterPath="$PROJECT_DIR$/controller/tab1_controller/commands/NewElements.py" />
-      <change beforePath="$PROJECT_DIR$/controller/tab1_controller/commands/SelectElements.py" afterPath="$PROJECT_DIR$/controller/tab1_controller/commands/SelectElements.py" />
-      <change beforePath="$PROJECT_DIR$/gui/selectedImage.png" afterPath="$PROJECT_DIR$/gui/selectedImage.png" />
-      <change beforePath="$PROJECT_DIR$/model/container/createContainer.py" afterPath="$PROJECT_DIR$/model/container/createContainer.py" />
-    </list>
+    <list default="true" id="1618cec1-3e51-4ba8-8acf-a1dc81f4d0be" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
