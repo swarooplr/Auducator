@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1082</width>
-    <height>817</height>
+    <width>1107</width>
+    <height>854</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -880,36 +880,96 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1082</width>
+     <width>1107</width>
      <height>26</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>File</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menuSettings">
     <property name="title">
      <string>Settings</string>
     </property>
+    <addaction name="actionChange_Color"/>
+    <addaction name="actionChange_picture_Size"/>
+    <addaction name="actionSet_Default_Path"/>
+    <addaction name="actionSet_Custom_Colour"/>
+    <addaction name="actionSet_Tracking_Rate"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="actionSearch"/>
+    <addaction name="actionHow_to_use"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
      <string>About</string>
     </property>
+    <addaction name="actionInfo"/>
+    <addaction name="actionFeedback"/>
+    <addaction name="actionCredits"/>
+    <addaction name="actionContact"/>
    </widget>
-   <addaction name="menuFile"/>
    <addaction name="menuSettings"/>
    <addaction name="menuHelp"/>
    <addaction name="menuAbout"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionChange_Color">
+   <property name="text">
+    <string>Change Colour</string>
+   </property>
+  </action>
+  <action name="actionChange_picture_Size">
+   <property name="text">
+    <string>Change picture Size</string>
+   </property>
+  </action>
+  <action name="actionSet_Default_Path">
+   <property name="text">
+    <string>Set Default Path</string>
+   </property>
+  </action>
+  <action name="actionSet_Custom_Colour">
+   <property name="text">
+    <string>Set Custom Colour</string>
+   </property>
+  </action>
+  <action name="actionSet_Tracking_Rate">
+   <property name="text">
+    <string>Set Tracking Rate</string>
+   </property>
+  </action>
+  <action name="actionSearch">
+   <property name="text">
+    <string>Search</string>
+   </property>
+  </action>
+  <action name="actionHow_to_use">
+   <property name="text">
+    <string>How to use</string>
+   </property>
+  </action>
+  <action name="actionInfo">
+   <property name="text">
+    <string>Info</string>
+   </property>
+  </action>
+  <action name="actionFeedback">
+   <property name="text">
+    <string>Feedback</string>
+   </property>
+  </action>
+  <action name="actionCredits">
+   <property name="text">
+    <string>Credits</string>
+   </property>
+  </action>
+  <action name="actionContact">
+   <property name="text">
+    <string>Contact</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
