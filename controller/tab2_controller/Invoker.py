@@ -101,6 +101,37 @@ class Invoker:
         self.gui=gui
 
 
+    ## From tab one 5 actions
+    def create_new_book_command(self, new_book_command):
+        self.new_book_command = new_book_command
+
+    def create_new_chapter_command(self, new_chapter_command):
+        self.new_chapter_command = new_chapter_command
+
+    def delete_book_command(self, delete_book_command):
+        self.delete_book_command = delete_book_command
+
+    def delete_chapter_command(self, delete_chapter_command):
+        self.delete_chapter_command = delete_chapter_command
+
+    def new_page_command(self, new_page_command):
+        self.new_page_command = new_page_command
+
+
+    def new_book(self):
+        self.new_book_command.execute()
+
+    def new_chapter(self):
+        self.new_chapter_command.execute()
+
+    def delete_book(self):
+        self.delete_book_command.execute()
+
+    def delete_chapter(self):
+        self.delete_chapter_command.execute()
+
+    def new_page(self):
+        self.new_page_command.execute()
 
 
 

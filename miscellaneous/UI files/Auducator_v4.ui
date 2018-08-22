@@ -47,7 +47,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -96,14 +96,14 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_4">
+              <widget class="QPushButton" name="tab2_new_book">
                <property name="text">
                 <string>New</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_5">
+              <widget class="QPushButton" name="tab_2_delete_book">
                <property name="text">
                 <string>Delete</string>
                </property>
@@ -152,14 +152,14 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_6">
+              <widget class="QPushButton" name="tab2_new_chapter">
                <property name="text">
                 <string>New</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_7">
+              <widget class="QPushButton" name="tab2_delete_chapter">
                <property name="text">
                 <string>Delete</string>
                </property>
@@ -207,7 +207,7 @@
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="pushButton_8">
+                    <widget class="QPushButton" name="tab2_new_page">
                      <property name="text">
                       <string>New Page</string>
                      </property>

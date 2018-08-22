@@ -7,16 +7,19 @@ import model.container
 
 def loadBook(book_folder_path):
     try:
-        _subfolders = [(f.name,f.path) for f in os.scandir(book_folder_path+'/Config') if f.is_dir() ]
+        _subfolders = [(f.name,f.path) for f in os.scandir(os.path.join(book_folder_path,'Config')) if f.is_dir() ]
         _book=model.container.Book(book_folder_path,[])
+        print(_subfolders)
         for f in _subfolders:
             try:
                 _book.add_chapter(loadChapter(f[0],f[1]))
+
             except:
                 pass
+        print(len(_book.chapter_list))
         return _book
-    except:
-        pass
+    except Exception as e:
+        print("Error in getContainer.loadBook "+type(e).__name__)
     pass
 
 
@@ -30,14 +33,15 @@ def loadChapter(chapter_name,chapter_folder_path):
             try:
                 print(f[0],f[1])
                 _chapter.add_page(loadPage(f[0],f[1]))
+
             except:
                 pass
         l=[]
         l=_chapter.page_list
-        print(len(l))
+        print("No of pages : " +str(len(l)))
         return _chapter
-    except:
-        pass
+    except Exception as e:
+        print("Error in getContainer.loadChapter " + type(e).__name__)
     pass
 
 

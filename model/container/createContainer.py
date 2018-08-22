@@ -7,11 +7,13 @@ import model.container
 def createBook(book_folder_path):
     os.makedirs(book_folder_path)
     config_path = os.path.join(book_folder_path,'Config')
-    metaData_path = os.path.join(book_folder_path,"MetaData")
+    #metaData_path = os.path.join(book_folder_path,"MetaData")
     os.makedirs(config_path)
-    os.makedirs(metaData_path)
-    os.makedirs(os.path.join(config_path,'/Default'))
+    #os.makedirs(metaData_path)
+    os.makedirs(os.path.join(config_path,'Default'))
+
     _book = model.container.Book(book_folder_path, [])
+
     return _book
 
 

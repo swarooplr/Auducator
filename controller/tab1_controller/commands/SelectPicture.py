@@ -22,6 +22,7 @@ class SelectPictureCommand(commands.BaseCommand):
 
     def execute(self):
         print(self)
+        print("book : ",self.context.current_book.book_folder_path)
         try:
             fileName, _ = QtWidgets.QFileDialog.getOpenFileName(self.gui, "Select Image", "",";Image Files (*.png);;Image Files (*.jpeg);;Image Files (*.jpg)")
             print(fileName)
@@ -29,8 +30,8 @@ class SelectPictureCommand(commands.BaseCommand):
             print('image saved')
             self.gui.tab1_page_view.setPixmap(QPixmap("selectedImage.png"))
 
-        except:
-            print("something sux")
+        except Exception as e:
+            print("something sux  ", type(e).__name__)
 
     def unexcute(self):
         print(self)
