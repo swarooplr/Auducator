@@ -1,0 +1,18 @@
+{
+    "colours":{
+        "green":{
+            "high":[255,255,255],
+            "low":[0,0,0]
+        },
+        "red":{
+            "high":[255,255,255],
+            "low":[0,0,0]
+        }
+    },
+    "resolutions":{
+        "0":[800,600],
+        "1":[400,300]
+    },
+    "tracking_rate":"1",
+    "orientation":["potrait","landscape"]
+}
