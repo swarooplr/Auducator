@@ -98,8 +98,8 @@ class NewPageCommand(commands.BaseCommand):
 
     def execute(self):
         print(self)
-        self.w=self.AppWindow()
-        self.w.startDialog(self)
+        self.w=self.AppWindow(self)
+        #self.w.startDialog(self)
         self.w.setModal(True)
         self.w.show()
 
@@ -109,10 +109,9 @@ class NewPageCommand(commands.BaseCommand):
         pass
 
     class AppWindow(QDialog):
-        def __init__(self):
+        def __init__(self,MainUIRef):
             super().__init__()
-
-        def startDialog(self,MainUIRef):
             self.ui = tab1Dialog.Ui_Dialog()
-            self.ui.setupUi(self,MainUIRef)
+            self.ui.setupUi(self, MainUIRef)
             self.show()
+

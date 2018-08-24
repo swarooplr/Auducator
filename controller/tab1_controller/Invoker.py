@@ -1,10 +1,11 @@
+
 class Invoker:
 
-    def __init__(self, gui, current_book=None, current_chapter=None):
+    def __init__(self, gui, current_book=None, current_chapter=None, supporting_functions = None):
         self.gui=gui
         self.current_book= current_book
         self.current_chapter= current_chapter
-
+        self.SF = supporting_functions.supportingFunctions(self)
 
     def set_current_page(self, current_page):
        self.current_page = current_page

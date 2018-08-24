@@ -7,13 +7,14 @@ import model.container.getContainer as getContainer
 
 class SavePageCommand(commands.BaseCommand):
 
-    def __init__(self,context=None, gui=None):
+    def __init__(self,context=None, gui=None, dialog = None):
         self.context = context
         self.gui = gui
+        self.dialog = dialog
 
     def execute(self):
         print(self)
-        page_name = self.gui.tab1_page_name_input.text()
+        page_name = self.dialog.page_name_input.text()
         print('page is :',page_name)
 
         page_file_path = createContainer.createPage(self.context.current_chapter.chapter_path,page_name)
@@ -21,13 +22,12 @@ class SavePageCommand(commands.BaseCommand):
         print("folder created :",page_name,page_file_path)
 
         page = getContainer.loadPage(page_name,page_file_path)
-        #page =  model.container.Page(page_name,page_file_path,[])
-        self.context.current_chapter.add_page(page)
-        self.gui.tab1_page_listwidget.addItem(page.page_name)
-        self.gui.tab1_page_name_input.setText("")
-        self.gui.tab1_page_view.setPixmap(QPixmap("./res/loadimage.png"))
 
-        #commands.SelectElements.SelectChapterCommand.execute()
+        self.context.current_chapter.add_page(page)
+
+        self.gui.tab2_page_listwidget.addItem(page.page_name)
+
+        self.dialog.Dialog.close()
 
 
 

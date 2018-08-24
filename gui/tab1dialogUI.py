@@ -9,10 +9,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import controller.tab1_controller.Invoker as invoker
 from controller.tab1_controller.commands import SelectPicture,ManualCrop,TakePicture,SavePage,RotatePage
+import controller.supportingFunctions as sp
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog, MainUIRef):
 
+        self.Dialog = Dialog
         Dialog.setObjectName("Dialog")
         Dialog.setWindowModality(QtCore.Qt.ApplicationModal)
         Dialog.resize(878, 781)
@@ -134,18 +136,21 @@ class Ui_Dialog(object):
 
     def set_up_invoker(self,UI):
 
-        self.invoker_tab1.manual_crop_command(ManualCrop.ManualCropCommand(self.invoker_tab1, UI.gui))
-        self.invoker_tab1.save_page_command(SavePage.SavePageCommand(self.invoker_tab1, UI.gui))
-        self.invoker_tab1.select_picture_command(SelectPicture.SelectPictureCommand(self.invoker_tab1, UI.gui))
-        self.invoker_tab1.take_picture_command(TakePicture.TakePictureCommand(self.invoker_tab1, UI.gui))
-        self.invoker_tab1.rotate_image_command(RotatePage.RotatePageCommand(self.invoker_tab1, UI.gui))
+        self.invoker_tab1.manual_crop_command(ManualCrop.ManualCropCommand(self.invoker_tab1, UI.gui,self))
+        self.invoker_tab1.save_page_command(SavePage.SavePageCommand(self.invoker_tab1, UI.gui,self))
+        self.invoker_tab1.select_picture_command(SelectPicture.SelectPictureCommand(self.invoker_tab1, UI.gui,self))
+        self.invoker_tab1.take_picture_command(TakePicture.TakePictureCommand(self.invoker_tab1, UI.gui,self))
+        self.invoker_tab1.rotate_image_command(RotatePage.RotatePageCommand(self.invoker_tab1, UI.gui,self))
 
+        print("invoker setup")
 
     def __set_up_click_events(Ui_MainWindow,UI):
-        Ui_MainWindow.invoker_tab1 = invoker.Invoker(Ui_MainWindow, UI.context.current_book, UI.context.current_chapter)
+        Ui_MainWindow.invoker_tab1 = invoker.Invoker(Ui_MainWindow, UI.context.current_book, UI.context.current_chapter, sp)
 
         Ui_MainWindow.take_picture.clicked.connect(Ui_MainWindow.invoker_tab1.take_picture)
         Ui_MainWindow.select_picture_2.clicked.connect(Ui_MainWindow.invoker_tab1.select_picture)
         Ui_MainWindow.manual_crop_picture.clicked.connect(Ui_MainWindow.invoker_tab1.manual_crop)
+        Ui_MainWindow.page_rotate.clicked.connect(Ui_MainWindow.invoker_tab1.rotate_image)
         Ui_MainWindow.save_page.clicked.connect(Ui_MainWindow.invoker_tab1.save_page)
 
+        print("click events setup")

@@ -217,20 +217,25 @@ class supportingFunctions():
         return frame
     
     def imageResize(self,img):
-        h,w,_ = img.shape
-        if(h>w):
-            page = cv2.resize(img, (self.PAGE_WIDTH, self.PAGE_HEIGHT), interpolation=cv2.INTER_AREA)
-            return page,(self.PAGE_HEIGHT,self.PAGE_WIDTH)
-        else:
-            page = cv2.resize(img, (self.PAGE_HEIGHT, self.PAGE_WIDTH), interpolation=cv2.INTER_AREA)
-            return page, (self.PAGE_WIDTH, self.PAGE_HEIGHT)
+        try:
+            h,w,_ = img.shape
+            print("details = ",h,"  ",w)
+            if(h>w):
+                page = cv2.resize(img, (self.PAGE_WIDTH, self.PAGE_HEIGHT), interpolation=cv2.INTER_AREA)
+                return page,(self.PAGE_HEIGHT,self.PAGE_WIDTH)
+            else:
+                page = cv2.resize(img, (self.PAGE_HEIGHT, self.PAGE_WIDTH), interpolation=cv2.INTER_AREA)
+                return page, (self.PAGE_WIDTH, self.PAGE_HEIGHT)
+
+        except Exception as e:
+            print("Error in image Resize ",type(e).__name__)
     
     def get_working_camera(self):
 
         #cap = cv2.VideoCapture(self.CAMERA)
         #img = cap.read()
-        #if not img == None:
-         #   return self.CAMERA
+        if self.CAMERA > 0:
+            return self.CAMERA
 
         for i in range(0,4):
             cap = cv2.VideoCapture(i)

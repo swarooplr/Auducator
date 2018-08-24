@@ -133,6 +133,8 @@ class Tab2Create:
         Ui_MainWindow.tab2_page_preview.setSizePolicy(sizePolicy)
         Ui_MainWindow.tab2_page_preview.setAlignment(QtCore.Qt.AlignCenter)
         Ui_MainWindow.tab2_page_preview.setObjectName("tab2_page_preview")
+
+
         Ui_MainWindow.horizontalLayout_7.addWidget(Ui_MainWindow.tab2_page_preview)
         Ui_MainWindow.verticalLayout_7.addWidget(Ui_MainWindow.tab2_groupBox_12)
         Ui_MainWindow.tab2_groupBox_13 = QtWidgets.QGroupBox(Ui_MainWindow.tab2)

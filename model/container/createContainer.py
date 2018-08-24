@@ -2,6 +2,7 @@ import os
 import cv2
 import json
 
+
 import model.container
 
 def createBook(book_folder_path):
@@ -19,7 +20,7 @@ def createBook(book_folder_path):
 
 def createPage(chapter_path,page_name):
 
-    voice_over_details = dict()
+
 
     page_path = chapter_path + '/' + page_name
     os.makedirs(page_path)
@@ -27,16 +28,19 @@ def createPage(chapter_path,page_name):
     img = cv2.imread('selectedImage.png')
     cv2.imwrite(page_path+'/'+page_name + '.png', img)
 
+    voice_over_details = dict()
 
     voice_over_details["imagename"] = page_name+'.png'
 
     voice_over_details["label_list"] = list()
 
-    voice_over_details["imageheight"] = 800
+    h,w,_= img.shape
+    voice_over_details["imageheight"] = h
 
-    voice_over_details["imagewidth"] = 600
+    voice_over_details["imagewidth"] = w
 
     data = json.dumps(voice_over_details)
+    print(data)
     with open(page_path+"/voice_over_details.json", "w") as f:
         f.write(data)
 

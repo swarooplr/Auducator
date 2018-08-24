@@ -1,15 +1,15 @@
 import controller.tab1_controller.commands as commands
 import cv2
-import controller.supportingFunctions as Sp
 import numpy as np
 import cv2
 from PyQt5.QtGui import QIcon, QPixmap
 
 class ManualCropCommand(commands.BaseCommand):
 
-    def __init__(self,context=None, gui=None):
+    def __init__(self,context=None, gui=None,dialog = None):
         self.context = context
         self.gui = gui
+        self.dialog = dialog
 
     def execute(self):
         print(self)
@@ -17,7 +17,7 @@ class ManualCropCommand(commands.BaseCommand):
             img = self.MC("selectedImage.png")
             cv2.imwrite("selectedImage.png", img)
             print('image saved')
-            self.gui.tab1_page_view.setPixmap(QPixmap("selectedImage.png"))
+            self.dialog.Page_view.setPixmap(QPixmap("selectedImage.png"))
         except:
             print("crop failed")
 
@@ -73,9 +73,9 @@ class ManualCropCommand(commands.BaseCommand):
 
             # print(refPt)
             arr = np.array(refPt, dtype="float32")
-            points = Sp.order_points(arr)
+            points = self.context.SF.order_points(arr)
 
-            pageCrop = Sp.four_point_transform(clone, points)
+            pageCrop = self.context.SF.four_point_transform(clone, points)
 
             return pageCrop
 

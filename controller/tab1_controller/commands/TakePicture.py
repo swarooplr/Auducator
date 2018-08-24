@@ -2,25 +2,25 @@ import controller.tab1_controller.commands as commands
 import cv2
 import numpy as np
 import imutils
-import controller.supportingFunctions as Sp
 from PyQt5.QtGui import QIcon, QPixmap
 import cv2
 
 class TakePictureCommand(commands.BaseCommand):
 
-    def __init__(self,context=None, gui=None):
+    def __init__(self,context=None, gui=None, dialog = None):
         self.context = context
         self.gui = gui
+        self.dialog = dialog
 
     def execute(self):
         print(self)
         try:
             #print(self.context.current_book.book_folder_path)
-            self.SF = Sp.supportingFunctions(self.context)
             img = self.pageSelector()
+            img, dimen = self.context.SF.imageResize(img)
             cv2.imwrite("selectedImage.png", img)
             print('image saved')
-            self.gui.tab1_page_view.setPixmap(QPixmap("selectedImage.png"))
+            self.dialog.Page_view.setPixmap(QPixmap("selectedImage.png"))
         except Exception as e:
             print("couldnt get page ",type(e).__name__)
 
@@ -33,7 +33,7 @@ class TakePictureCommand(commands.BaseCommand):
         pageDetected = False
         marker = 0
 
-        camera_id = self.SF.get_working_camera()
+        camera_id = self.context.SF.get_working_camera()
         print("working camera = " , camera_id)
         if not camera_id == None:
             cap = cv2.VideoCapture(camera_id)
@@ -50,10 +50,11 @@ class TakePictureCommand(commands.BaseCommand):
 
             ret, image = cap.read()
             orig = image.copy()
+            orig = self.context.SF.orient_image(orig)
 
             key = cv2.waitKey(1) & 0xFF
 
-            condition, pageCorners, pageBordered = self.SF.findPage(image)
+            condition, pageCorners, pageBordered = self.context.SF.findPage(image)
 
             if (not condition):
 
@@ -69,12 +70,12 @@ class TakePictureCommand(commands.BaseCommand):
                 cv2.imshow("camera", pageBordered)
 
                 if (pageDetected):
-                    points = self.SF.order_points(pageCorners)
+                    points = self.context.SF.order_points(pageCorners)
 
-                    pageCrop = self.SF.four_point_transform(image, points)
+                    pageCrop = self.context.SF.four_point_transform(image, points)
                     pageCropOrig = pageCrop.copy()
-                    pageCrop, _ = self.SF.imageResize(pageCrop)
-                    marker = self.SF.trackColor2(pageCrop)
+                    pageCrop, _ = self.context.SF.imageResize(pageCrop)
+                    marker = self.context.SF.trackColor2(pageCrop)
 
                     if marker == 0:
 
@@ -84,7 +85,7 @@ class TakePictureCommand(commands.BaseCommand):
                         cv2.imshow("Page", pageCrop)  ###remove this shit
                         cv2.imwrite("page101.jpg", pageCrop)  ###remove this shit
                     else:
-                        pageCrop = self.SF.getRotatedImage(pageCrop, marker)
+                        pageCrop = self.context.SF.getRotatedImage(pageCrop, marker)
 
                         cv2.putText(pageCrop, "Press O if orientations is correct - press E to complete", (15, 15),
                                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)

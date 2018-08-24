@@ -2,6 +2,9 @@ import controller.tab2_controller.commands as commands
 import controller.tab2_controller.commands.ResetUI as reset_ui
 import controller.Inspectors as inspector
 import controller.exceptions.ExceptionHandler as exceptionhandler
+from PyQt5.QtGui import QIcon, QPixmap
+import cv2
+import imutils
 
 class SelectPageCommand(commands.BaseCommand):
     """Command to execute after a page is selected,loads the corresponding label list into UI"""
@@ -56,6 +59,13 @@ class SelectPageCommand(commands.BaseCommand):
         :rtype: None
         """
         self.gui.tab2_label_listwidget.clear()
+        img = cv2.imread(self.context.current_page.page_file_path+'/'+self.context.current_page.page_image_name)
+        h = self.gui.tab2_page_preview.frameGeometry().height()
+        w = self.gui.tab2_page_preview.frameGeometry().width()
+        image = imutils.resize(img, height=h, width=w)
+        cv2.imwrite("display.png",image)
+        self.gui.tab2_page_preview.setPixmap(QPixmap("display.png"))
+
         for label in self.context.current_page.label_list:
             if(label.label_text is not None or
                not label.label_text == " "):
