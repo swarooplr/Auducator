@@ -7,9 +7,14 @@ import controller.supportingFunctions as Sp
 cordinates=(0,0)
 def track(orientationCorrection): #true to correct false to avoid orientaion correction
 
-    cap = cv2.VideoCapture(2)
-    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
-    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 800)
+    camera_id = Sp.get_working_camera()
+    if not camera_id == None:
+        cap = cv2.VideoCapture(camera_id)
+        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
+        cap.set(cv2.CAP_PROP_FRAME_WIDTH, 800)
+
+    else:
+        pass  # through error here
 
     pageFound = False
     points = 0

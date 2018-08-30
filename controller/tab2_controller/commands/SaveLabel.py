@@ -1,6 +1,5 @@
 
 import shutil
-import os
 import json
 
 import controller.tab2_controller.commands as commands

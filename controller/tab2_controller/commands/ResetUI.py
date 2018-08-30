@@ -7,7 +7,7 @@ class ResetUICommand(commands.BaseCommand):
     def execute(self):
         print(self)
         try:
-            print("hello")
+
             if(self.context.current_book is None):
                 self.gui.tab2_book_name_2.setText("Book Not Selected")
                 self.gui.tab2_chapter_select_combobox.clear()

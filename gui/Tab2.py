@@ -31,10 +31,24 @@ class Tab2Create:
         Ui_MainWindow.tab2_book_name_2 = QtWidgets.QLabel(Ui_MainWindow.tab2_groupBox_9)
         Ui_MainWindow.tab2_book_name_2.setObjectName("tab2_book_name_2")
         Ui_MainWindow.horizontalLayout_11.addWidget(Ui_MainWindow.tab2_book_name_2)
+
+        ##Select book group box
         Ui_MainWindow.tab2_select_book_button = QtWidgets.QPushButton(Ui_MainWindow.tab2_groupBox_9)
+
         Ui_MainWindow.tab2_select_book_button.setObjectName("tab2_select_book_button")
         Ui_MainWindow.horizontalLayout_11.addWidget(Ui_MainWindow.tab2_select_book_button)
         Ui_MainWindow.horizontalLayout_9.addWidget(Ui_MainWindow.tab2_groupBox_9)
+
+        Ui_MainWindow.tab2_new_book = QtWidgets.QPushButton(Ui_MainWindow.tab2_groupBox_9)
+        Ui_MainWindow.tab2_new_book.setObjectName("tab2_new_book")
+        Ui_MainWindow.horizontalLayout_11.addWidget(Ui_MainWindow.tab2_new_book)
+
+        Ui_MainWindow.tab2_delete_book = QtWidgets.QPushButton(Ui_MainWindow.tab2_groupBox_9)
+        Ui_MainWindow.tab2_delete_book.setObjectName("tab2_delete_book")
+        Ui_MainWindow.horizontalLayout_11.addWidget(Ui_MainWindow.tab2_delete_book)
+        ##
+
+
         Ui_MainWindow.tab2_groupBox_10 = QtWidgets.QGroupBox(Ui_MainWindow.tab2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
@@ -47,21 +61,36 @@ class Tab2Create:
         font.setBold(True)
         font.setWeight(75)
         Ui_MainWindow.tab2_groupBox_10.setFont(font)
+
+        ##Select chapter group Box
         Ui_MainWindow.tab2_groupBox_10.setObjectName("tab2_groupBox_10")
         Ui_MainWindow.horizontalLayout_12 = QtWidgets.QHBoxLayout(Ui_MainWindow.tab2_groupBox_10)
         Ui_MainWindow.horizontalLayout_12.setObjectName("horizontalLayout_12")
         Ui_MainWindow.tab2_chapter_name = QtWidgets.QLabel(Ui_MainWindow.tab2_groupBox_10)
         Ui_MainWindow.tab2_chapter_name.setObjectName("tab2_chapter_name")
         Ui_MainWindow.horizontalLayout_12.addWidget(Ui_MainWindow.tab2_chapter_name)
+
         Ui_MainWindow.tab2_chapter_select_combobox = QtWidgets.QComboBox(Ui_MainWindow.tab2_groupBox_10)
         Ui_MainWindow.tab2_chapter_select_combobox.setObjectName("tab2_chapter_select_combobox")
         Ui_MainWindow.horizontalLayout_12.addWidget(Ui_MainWindow.tab2_chapter_select_combobox)
+
+        Ui_MainWindow.tab2_new_chapter = QtWidgets.QPushButton(Ui_MainWindow.tab2_groupBox_10)
+        Ui_MainWindow.tab2_new_chapter.setObjectName("tab2_new_chapter")
+        Ui_MainWindow.horizontalLayout_12.addWidget(Ui_MainWindow.tab2_new_chapter)
+
+        Ui_MainWindow.tab2_delete_chapter = QtWidgets.QPushButton(Ui_MainWindow.tab2_groupBox_10)
+        Ui_MainWindow.tab2_delete_chapter.setObjectName("tab2_delete_chapter")
+        Ui_MainWindow.horizontalLayout_12.addWidget(Ui_MainWindow.tab2_delete_chapter)
+        ##
+
         Ui_MainWindow.horizontalLayout_9.addWidget(Ui_MainWindow.tab2_groupBox_10)
         Ui_MainWindow.verticalLayout_6.addLayout(Ui_MainWindow.horizontalLayout_9)
         Ui_MainWindow.horizontalLayout_10 = QtWidgets.QHBoxLayout()
         Ui_MainWindow.horizontalLayout_10.setObjectName("horizontalLayout_10")
         Ui_MainWindow.verticalLayout_7 = QtWidgets.QVBoxLayout()
         Ui_MainWindow.verticalLayout_7.setObjectName("verticalLayout_7")
+
+        ##Group Box Page
         Ui_MainWindow.tab2_groupBox_12 = QtWidgets.QGroupBox(Ui_MainWindow.tab2)
         font = QtGui.QFont()
         font.setPointSize(9)
@@ -79,9 +108,22 @@ class Tab2Create:
         Ui_MainWindow.tab2_page_listwidget.setSizePolicy(sizePolicy)
         Ui_MainWindow.tab2_page_listwidget.setObjectName("tab2_page_listwidget")
         Ui_MainWindow.verticalLayout_8.addWidget(Ui_MainWindow.tab2_page_listwidget)
-        Ui_MainWindow.tab2_delete_page_button = QtWidgets.QPushButton(Ui_MainWindow.tab2_groupBox_12)
-        Ui_MainWindow.tab2_delete_page_button.setObjectName("tab2_delete_page_button")
-        Ui_MainWindow.verticalLayout_8.addWidget(Ui_MainWindow.tab2_delete_page_button)
+
+        Ui_MainWindow.horizontalLayout_30 = QtWidgets.QHBoxLayout()
+        Ui_MainWindow.horizontalLayout_30.setObjectName("horizontalLayout_30")
+
+
+        Ui_MainWindow.tab2_new_page = QtWidgets.QPushButton(Ui_MainWindow.tab2_groupBox_12)
+        Ui_MainWindow.tab2_new_page.setObjectName("tab2_new_page")
+        Ui_MainWindow.horizontalLayout_30.addWidget(Ui_MainWindow.tab2_new_page)
+
+        Ui_MainWindow.tab2_delete_page = QtWidgets.QPushButton(Ui_MainWindow.tab2_groupBox_12)
+        Ui_MainWindow.tab2_delete_page.setObjectName("tab2_delete_page")
+        Ui_MainWindow.horizontalLayout_30.addWidget(Ui_MainWindow.tab2_delete_page)
+
+        Ui_MainWindow.verticalLayout_8.addLayout(Ui_MainWindow.horizontalLayout_30)
+
+
         Ui_MainWindow.horizontalLayout_7.addLayout(Ui_MainWindow.verticalLayout_8)
         Ui_MainWindow.tab2_page_preview = QtWidgets.QLabel(Ui_MainWindow.tab2_groupBox_12)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -91,6 +133,8 @@ class Tab2Create:
         Ui_MainWindow.tab2_page_preview.setSizePolicy(sizePolicy)
         Ui_MainWindow.tab2_page_preview.setAlignment(QtCore.Qt.AlignCenter)
         Ui_MainWindow.tab2_page_preview.setObjectName("tab2_page_preview")
+
+
         Ui_MainWindow.horizontalLayout_7.addWidget(Ui_MainWindow.tab2_page_preview)
         Ui_MainWindow.verticalLayout_7.addWidget(Ui_MainWindow.tab2_groupBox_12)
         Ui_MainWindow.tab2_groupBox_13 = QtWidgets.QGroupBox(Ui_MainWindow.tab2)
@@ -233,17 +277,27 @@ class Tab2Create:
 
     def __retranslate_ui(Ui_MainWindow):
         _translate = QtCore.QCoreApplication.translate
+
         Ui_MainWindow.tab2_groupBox_9.setTitle(_translate("MainWindow", "Book"))
         Ui_MainWindow.tab2_book_name_2.setText(_translate("MainWindow", "Book1"))
         Ui_MainWindow.tab2_select_book_button.setText(_translate("MainWindow", "Select"))
+        Ui_MainWindow.tab2_new_book.setText(_translate("MainWindow","New"))
+        Ui_MainWindow.tab2_delete_book.setText(_translate("MainWindow", "Delete"))
+
         Ui_MainWindow.tab2_groupBox_10.setTitle(_translate("MainWindow", "Chapter"))
         Ui_MainWindow.tab2_chapter_name.setText(_translate("MainWindow", "Select Chapter"))
+        Ui_MainWindow.tab2_new_chapter.setText(_translate("MainWindow", "New"))
+        Ui_MainWindow.tab2_delete_chapter.setText(_translate("MainWindow", "Delete"))
+
         Ui_MainWindow.tab2_groupBox_12.setTitle(_translate("MainWindow", "Pages"))
-        Ui_MainWindow.tab2_delete_page_button.setText(_translate("MainWindow", "Delete Page"))
+        Ui_MainWindow.tab2_delete_page.setText(_translate("MainWindow", "Delete Page"))
+        Ui_MainWindow.tab2_new_page.setText(_translate("MainWindow","Add Page"))
         Ui_MainWindow.tab2_page_preview.setText(_translate("MainWindow", "Page Preview"))
+
         Ui_MainWindow.tab2_groupBox_13.setTitle(_translate("MainWindow", "Labels"))
         Ui_MainWindow.tab2_delete_label_button.setText(_translate("MainWindow", "Delete Label"))
         Ui_MainWindow.tab2_label_preview.setText(_translate("MainWindow", "Label Preview"))
+
         Ui_MainWindow.tab2_groupBox_11.setTitle(_translate("MainWindow", "Label Creation"))
         Ui_MainWindow.tab2_add_label_button.setText(_translate("MainWindow", "Add New Label"))
         Ui_MainWindow.tab2_label_display.setText(_translate("MainWindow", "Label : "))
@@ -265,12 +319,19 @@ class Tab2Create:
     def __set_up_click_events(Ui_MainWindow):
         Ui_MainWindow.invoker_tab2=invoker.Invoker(Ui_MainWindow)
 
+        ##tab1 imports
+        Ui_MainWindow.tab2_new_book.clicked.connect(Ui_MainWindow.invoker_tab2.new_book)
+        Ui_MainWindow.tab2_delete_book.clicked.connect(Ui_MainWindow.invoker_tab2.delete_book)
+        Ui_MainWindow.tab2_new_chapter.clicked.connect(Ui_MainWindow.invoker_tab2.new_chapter)
+        Ui_MainWindow.tab2_delete_chapter.clicked.connect(Ui_MainWindow.invoker_tab2.delete_chapter)
+        Ui_MainWindow.tab2_new_page.clicked.connect(Ui_MainWindow.invoker_tab2.new_page)
+
         Ui_MainWindow.tab2_select_book_button.clicked.connect(Ui_MainWindow.invoker_tab2.select_book)
         Ui_MainWindow.tab2_save_label_button.clicked.connect(Ui_MainWindow.invoker_tab2.save_label)
         Ui_MainWindow.tab2_label_select_audio_button.clicked.connect(Ui_MainWindow.invoker_tab2.select_audio_label)
         Ui_MainWindow.tab2_description_select_audio_button.clicked.connect(Ui_MainWindow.invoker_tab2.select_audio_description)
         Ui_MainWindow.tab2_delete_label_button.clicked.connect(Ui_MainWindow.invoker_tab2.delete_label)
-        Ui_MainWindow.tab2_delete_page_button.clicked.connect(Ui_MainWindow.invoker_tab2.delete_page)
+        Ui_MainWindow.tab2_delete_page.clicked.connect(Ui_MainWindow.invoker_tab2.delete_page)
         Ui_MainWindow.tab2_add_label_button.clicked.connect(Ui_MainWindow.invoker_tab2.add_new_label)
 
         Ui_MainWindow.tab2_label_listwidget.itemClicked.connect(Ui_MainWindow.invoker_tab2.select_label)

@@ -11,6 +11,7 @@ import controller.tab3_controller.commands.speakout as speakout
 import controller.Inspectors as inspector
 import model.container.getContainer as getContainer
 import controller.tab3_controller.commands.Tracker as tracker
+import controller.exceptions.ExceptionHandler as exceptionhandler
 
 
 
@@ -26,6 +27,18 @@ class PlayPageCommand(commands.BaseCommand):
     def execute(self):
         try:
             print(self)
+            self.start_play()
+
+        except Exception as e:
+            exceptionhandler.ExceptionHandler(e,self.gui).handle()
+            pass
+
+    def unexcute(self):
+        print(self)
+
+    @inspector.bookselected
+    @inspector.chapterselected
+    def start_play(self):
             _selected_page=str(self.gui.tab3_page_listwidget.currentItem().text())
             print(_selected_page)
             _page = self.get_selected_page(_selected_page)
@@ -45,12 +58,6 @@ class PlayPageCommand(commands.BaseCommand):
             self.tracking_thread.start()
             self.speakout_thread.start()
 
-        except Exception as e:
-            print(e)
-            pass
-
-    def unexcute(self):
-        print(self)
 
     def get_selected_page(self,_selected_page):
         for p in self.context.current_chapter.page_list:

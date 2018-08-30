@@ -2,7 +2,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon, QPixmap
 from PIL import Image
-
+import imutils
+import cv2
 import controller.tab2_controller.commands as commands
 import controller.Inspectors as inspector
 import controller.exceptions.ExceptionHandler as exceptionhandler
@@ -78,15 +79,21 @@ class SelectLabelCommand(commands.BaseCommand):
                 self.gui.tab2_description_audio_file.setText(_label.description_audio.split('/')[-1])
 
         """ load image here"""
-        im = Image.open(self.context.current_page.page_file_path+"\\"+self.context.current_page.page_image_name)
-        print(im.size)
+        print("starting image read")
+        img = cv2.imread(self.context.current_page.page_file_path+"\\"+self.context.current_page.page_image_name)
+        cv2.imshow("lol1", img)
+        crop_img = img[int(_label.y1):int(_label.y2),int(_label.x1):int(_label.x2)]
+        print("image cropped")
+        cv2.imshow("lol",crop_img)
 
-        crop_rectangle = (_label.x1,_label.x2,_label.y1,_label.y2)
-        cropped_im = im.crop(crop_rectangle)
+        h = self.gui.tab2_label_preview.frameGeometry().height()
+        w = self.gui.tab2_label_preview.frameGeometry().width()
+        image = imutils.resize(crop_img, height=h, width=w)
+        print("sizes = ",h,w)
 
-        cropped_im.save("cropped_image.png")
-        pixmap = QPixmap('cropped_image.png')
-        self.gui.tab2_label_preview.setPixmap(pixmap)
+        cv2.imwrite("cropped_image.png", image)
+
+        self.gui.tab2_label_preview.setPixmap(QPixmap("cropped_image.png"))
 
 
 
