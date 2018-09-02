@@ -261,6 +261,25 @@ class Tab2Create:
         Ui_MainWindow.horizontalLayout_10.addWidget(Ui_MainWindow.tab2_groupBox_11)
         Ui_MainWindow.verticalLayout_6.addLayout(Ui_MainWindow.horizontalLayout_10)
 
+        # Changing requirements damn
+        Ui_MainWindow.tab2_start_recording_button = QtWidgets.QPushButton(Ui_MainWindow.tab2_groupBox_11)
+        Ui_MainWindow.tab2_start_recording_button.setObjectName("tab2_start_recording_button")
+        Ui_MainWindow.horizontalLayout_15.addWidget(Ui_MainWindow.tab2_start_recording_button)
+
+        Ui_MainWindow.tab2_stop_recording_button = QtWidgets.QPushButton(Ui_MainWindow.tab2_groupBox_11)
+        Ui_MainWindow.tab2_stop_recording_button.setObjectName("tab2_stop_recording_button")
+        Ui_MainWindow.horizontalLayout_15.addWidget(Ui_MainWindow.tab2_stop_recording_button)
+
+        Ui_MainWindow.tab2_play_recording_button = QtWidgets.QPushButton(Ui_MainWindow.tab2_groupBox_11)
+        Ui_MainWindow.tab2_play_recording_button.setObjectName("tab2_play_recording_button")
+        Ui_MainWindow.horizontalLayout_15.addWidget(Ui_MainWindow.tab2_play_recording_button)
+
+
+        Ui_MainWindow.tab2_description_display.setVisible(False)
+        Ui_MainWindow.tab2_description_input.setVisible(False)
+        Ui_MainWindow.tab2_label_select_audio_button.setVisible(False)
+        Ui_MainWindow.tab2_description_audio_file.setVisible(False)
+
         Tab2Create.__retranslate_ui(Ui_MainWindow)
         Tab2Create.__set_up_click_events(Ui_MainWindow)
 
@@ -308,7 +327,9 @@ class Tab2Create:
         Ui_MainWindow.tab2_description_audio_file.setText(_translate("MainWindow", "No File Selected"))
         Ui_MainWindow.tab2_save_label_button.setText(_translate("MainWindow", "Save Label"))
 
-
+        Ui_MainWindow.tab2_start_recording_button.setText(_translate("MainWindow", "Start Recording"))
+        Ui_MainWindow.tab2_stop_recording_button.setText(_translate("MainWindow", "Stop Recording"))
+        Ui_MainWindow.tab2_play_recording_button.setText(_translate("MainWindow", "Play Recorded"))
 
 
 
@@ -340,6 +361,9 @@ class Tab2Create:
 
         Ui_MainWindow.tab2_chapter_select_combobox.activated.connect(Ui_MainWindow.invoker_tab2.select_chapter)
 
+        Ui_MainWindow.tab2_start_recording_button.clicked.connect(Ui_MainWindow.invoker_tab2.start_recording)
+        Ui_MainWindow.tab2_stop_recording_button.clicked.connect(Ui_MainWindow.invoker_tab2.stop_recording)
+        Ui_MainWindow.tab2_play_recording_button.clicked.connect(Ui_MainWindow.invoker_tab2.play_recording)
 
 
 
