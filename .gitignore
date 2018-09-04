@@ -1,5 +1,5 @@
 *.pyc
-*.png
 *.xml
-*.jpg
 .idea/
+gui/*.png
+gui/*.jpg
