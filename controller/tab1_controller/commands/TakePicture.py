@@ -50,7 +50,7 @@ class TakePictureCommand(commands.BaseCommand):
 
             ret, image = cap.read()
             orig = image.copy()
-            orig = self.context.SF.orient_image(orig)
+            image = self.context.SF.orient_image(orig)
 
             key = cv2.waitKey(1) & 0xFF
 
@@ -81,9 +81,9 @@ class TakePictureCommand(commands.BaseCommand):
 
                         cv2.putText(pageCrop, "Orientation correction failed, press E to complete", (15, 15),
                                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
-                        pageCrop = imutils.rotate_bound(pageCrop, 180)  ###remove this shit
-                        cv2.imshow("Page", pageCrop)  ###remove this shit
-                        cv2.imwrite("page101.jpg", pageCrop)  ###remove this shit
+                        #pageCrop = imutils.rotate_bound(pageCrop, 180)  ###remove this shit
+                        #cv2.imshow("Page", pageCrop)  ###remove this shit
+                        #cv2.imwrite("page101.jpg", pageCrop)  ###remove this shit
                     else:
                         pageCrop = self.context.SF.getRotatedImage(pageCrop, marker)
 
@@ -97,14 +97,17 @@ class TakePictureCommand(commands.BaseCommand):
 
             if key == ord("o"):
                 cv2.destroyAllWindows()
-                return pageCropOrig
+                img,_ = self.context.SF.imageResize(pageCropOrig)
+                return img
 
             if key == ord("e"):
                 cv2.destroyAllWindows()
                 if pageDetected:
-                    return pageCropOrig
+                    img, _ = self.context.SF.imageResize(pageCropOrig)
+                    return img
                 else:
-                    return orig
+                    img, _ = self.context.SF.imageResize(orig)
+                    return img
                     
 
 

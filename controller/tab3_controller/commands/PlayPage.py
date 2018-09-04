@@ -49,7 +49,7 @@ class PlayPageCommand(commands.BaseCommand):
             assert _page is not None
 
             tracker.cordinates = (0, 0)
-            self.tracking_thread = threading.Thread(target=tracker.track,args=(180,))
+            self.tracking_thread = threading.Thread(target=tracker.track,args=(180,self.context))
 
             self.speakout_thread = threading.Thread(target=speakout.speakout,args=(_page.label_list,_page.page_file_path))
 

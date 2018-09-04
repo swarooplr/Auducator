@@ -1,13 +1,18 @@
 import  cv2
 import numpy as np
 import imutils
-import controller.supportingFunctions as Sp
+import controller.supportingFunctions as supporting_functions
 
 
 cordinates=(0,0)
-def track(orientationCorrection): #true to correct false to avoid orientaion correction
 
-    camera_id = Sp.get_working_camera()
+global SF
+
+
+def track(orientationCorrection,context): #true to correct false to avoid orientaion correction
+
+    SF = supporting_functions.supportingFunctions(context)
+    camera_id = SF.get_working_camera()
     if not camera_id == None:
         cap = cv2.VideoCapture(camera_id)
         cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
@@ -18,11 +23,13 @@ def track(orientationCorrection): #true to correct false to avoid orientaion cor
 
     pageFound = False
     points = 0
+
     while True:
 
         ret, image = cap.read()
+        image = SF.orient_image(image)
         key = cv2.waitKey(1) & 0xFF
-        condition, pageCorners, pageBordered = Sp.findPage(image)
+        condition, pageCorners, pageBordered = SF.findPage(image)
         if( not pageFound):
             if (not condition):
                 cv2.putText(pageBordered, "Unable to find page: press e to exit", (15, 15), cv2.FONT_HERSHEY_SIMPLEX,
@@ -30,18 +37,18 @@ def track(orientationCorrection): #true to correct false to avoid orientaion cor
                 cv2.imshow("camera", pageBordered)
 
             else:
-                points = Sp.order_points(pageCorners)
+                points = SF.order_points(pageCorners)
                 pageFound = True
 
         else:
 
-            pageCrop = Sp.four_point_transform(image, points)
-            pageCrop,_ = Sp.imageResize(pageCrop)
-            if(not orientationCorrection == 0):
-                pageCrop = imutils.rotate_bound(pageCrop, orientationCorrection)
+            pageCrop = SF.four_point_transform(image, points)
+            pageCrop,_ = SF.imageResize(pageCrop)
+            #if(not orientationCorrection == 0):
+            #    pageCrop = imutils.rotate_bound(pageCrop, orientationCorrection)
             pageCropDisplay = pageCrop.copy()
 
-            marker = Sp.trackColor1(pageCrop)
+            marker = SF.trackColor1(pageCrop)
             if marker == 0:
                 cv2.putText(pageCropDisplay, "Unable to find marker: E to exit", (15, 15), cv2.FONT_HERSHEY_SIMPLEX,
                             0.5, (255, 255, 255), 1)
