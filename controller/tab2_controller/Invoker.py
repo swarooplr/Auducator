@@ -133,5 +133,27 @@ class Invoker:
     def new_page(self):
         self.new_page_command.execute()
 
+    #recording features
+
+    def set_start_recording_command(self,start_recording_command):
+        self.start_recording_command = start_recording_command
+
+    def start_recording(self):
+        print("connected")
+        self.start_recording_command.execute()
+
+    def set_stop_recording_command(self,stop_recording_command):
+        self.stop_recording_command = stop_recording_command
+
+    def stop_recording(self):
+        print("connected")
+        self.stop_recording_command.execute()
+
+    def set_play_recording_command(self,play_recording_command):
+        self.play_recording_command = play_recording_command
+
+    def play_recording(self):
+        print("connected")
+        self.play_recording_command.execute()
 
 

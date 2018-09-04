@@ -249,6 +249,10 @@ class Tab3Create:
         Ui_MainWindow.horizontalLayout_20.addLayout(Ui_MainWindow.verticalLayout_11)
         Ui_MainWindow.verticalLayout_16.addLayout(Ui_MainWindow.horizontalLayout_20)
 
+        # comment below if you want those tabs.
+        Ui_MainWindow.tab3_groupBox_15.setVisible(False)
+        Ui_MainWindow.tab3_groupBox_14.setVisible(False)
+
         Tab3Create.__retranslate_ui(Ui_MainWindow)
         Tab3Create.__set_tool_tips(Ui_MainWindow)
         Tab3Create.__set_up_click_events(Ui_MainWindow)
@@ -275,6 +279,7 @@ class Tab3Create:
         Ui_MainWindow.tab3_game_mode_checkbox.setText(_translate("MainWindow", "GAME MODE"))
         Ui_MainWindow.tab3_male_voice_checkbox.setText(_translate("MainWindow", "MALE Voice"))
         Ui_MainWindow.tab3_female_voice_checkbox.setText(_translate("MainWindow", "FEMALE Voice"))
+
         Ui_MainWindow.tab3_groupBox_15.setTitle(_translate("MainWindow", "Now Playing"))
         Ui_MainWindow.tab3_page_display.setText(_translate("MainWindow", "PAGE : "))
         Ui_MainWindow.tab3_page_label.setText(_translate("MainWindow", "Yolo"))
