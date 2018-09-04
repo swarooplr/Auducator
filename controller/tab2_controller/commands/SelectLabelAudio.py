@@ -81,10 +81,10 @@ class SelectLabelCommand(commands.BaseCommand):
         """ load image here"""
         print("starting image read")
         img = cv2.imread(self.context.current_page.page_file_path+"\\"+self.context.current_page.page_image_name)
-        cv2.imshow("lol1", img)
+        #cv2.imshow("lol1", img)
         crop_img = img[int(_label.y1):int(_label.y2),int(_label.x1):int(_label.x2)]
         print("image cropped")
-        cv2.imshow("lol",crop_img)
+        #cv2.imshow("lol",crop_img)
 
         h = self.gui.tab2_label_preview.frameGeometry().height()
         w = self.gui.tab2_label_preview.frameGeometry().width()

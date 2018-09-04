@@ -107,10 +107,13 @@ class supportingFunctions():
     
     def findPage(self,image): #takes image, returns 0 if: page not found , returns page corners if page found
         orig = image.copy()
-        image = self.orient_image(image)
+        #cv2.waitKey(self.TRACKING_RATE)
+        #image = self.orient_image(image)
 
-        ratio = image.shape[0] / 500.0
-        image = imutils.resize(image, height=500)
+        h = 500.0
+
+        ratio = image.shape[0] / h
+        image = imutils.resize(image, height=int(h))
     
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         gray = cv2.GaussianBlur(gray, (5, 5), 0)

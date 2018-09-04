@@ -20,7 +20,8 @@ class ExceptionHandler:
         elif(type(self.exception) is exceptions.LabelNotSelected):
             QMessageBox.about(self.gui, "Error", "Label Not selected")
         else:
-             QMessageBox.about(self.gui, "Error", "Error occurred")
+             #QMessageBox.about(self.gui, "Error", "Error occurred")
+            pass
 
 
 

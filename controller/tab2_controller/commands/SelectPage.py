@@ -59,6 +59,7 @@ class SelectPageCommand(commands.BaseCommand):
         :rtype: None
         """
         self.gui.tab2_label_listwidget.clear()
+
         img = cv2.imread(self.context.current_page.page_file_path+'/'+self.context.current_page.page_image_name)
         h = self.gui.tab2_page_preview.frameGeometry().height()
         w = self.gui.tab2_page_preview.frameGeometry().width()
