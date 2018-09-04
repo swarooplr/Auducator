@@ -41,10 +41,7 @@ class AddNewLabelCommand(commands.BaseCommand):
     @inspector.bookselected
     @inspector.chapterselected
     @inspector.pageselected
-<<<<<<< HEAD
-    #@inspector.labelselected
-=======
->>>>>>> 412b754793d8f1878cea1ed79f7e47792e0abbf2
+
     def select_image(self):
             options = QtWidgets.QFileDialog.Options()
             options |= QtWidgets.QFileDialog.DontUseNativeDialog
