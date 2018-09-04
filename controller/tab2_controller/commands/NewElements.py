@@ -10,12 +10,15 @@ import model.container.getContainer as getContainer
 import gui.tab1dialogUI as tab1Dialog
 import os
 import controller.tab2_controller.commands.ResetUI as reset_ui
+import controller.Inspectors as inspector
+import controller.exceptions.ExceptionHandler as exceptionhandler
 
 class NewBookCommand(commands.BaseCommand):
 
     def __init__(self,context=None, gui=None):
         self.context = context
         self.gui = gui
+
 
     def execute(self):
         #print(self)
@@ -69,24 +72,30 @@ class NewChapterCommand(commands.BaseCommand):
         self.context = context
         self.gui = gui
 
+
     def execute(self):
         print(self)
-        text, ok = QInputDialog.getText(self.gui, 'New Chapter','Enter Chapter name:')
-        if ok:
-            try:
-                chapter_path = os.path.join(self.context.current_book.book_folder_path,'Config',text)
-                print("at : ", chapter_path)
-                os.makedirs( chapter_path)
-                self.context.current_book.add_chapter(model.container.Chapter(text,chapter_path,[]))
-                #self.context.current_chapter = model.container.Chapter(text,chapter_path,[])
-                self.gui.tab2_chapter_select_combobox.addItem(text)
 
-            except:
-                print("Couldnt create chapter")
+        try:
+            self.new_chapter()
+        except Exception as e:
+            exceptionhandler.ExceptionHandler(e, self.gui).handle()
+            print("Couldnt create chapter")
 
     def unexcute(self):
         print(self)
 
+    @inspector.bookselected
+    def new_chapter(self):
+        text, ok = QInputDialog.getText(self.gui, 'New Chapter', 'Enter Chapter name:')
+        if ok:
+
+            chapter_path = os.path.join(self.context.current_book.book_folder_path, 'Config', text)
+            print("at : ", chapter_path)
+            os.makedirs(chapter_path)
+            self.context.current_book.add_chapter(model.container.Chapter(text, chapter_path, []))
+            # self.context.current_chapter = model.container.Chapter(text,chapter_path,[])
+            self.gui.tab2_chapter_select_combobox.addItem(text)
 
 class NewPageCommand(commands.BaseCommand):
 
@@ -96,17 +105,26 @@ class NewPageCommand(commands.BaseCommand):
         self.context = context
         self.gui = gui
 
-    def execute(self):
-        print(self)
-        self.w=self.AppWindow(self)
-        #self.w.startDialog(self)
-        self.w.setModal(True)
-        self.w.show()
 
-        pass
+    def execute(self):
+        try:
+            self.new_page()
+        except Exception as e:
+            exceptionhandler.ExceptionHandler(e, self.gui).handle()
+            pass
+
 
     def unexcute(self):
         pass
+
+    @inspector.bookselected
+    @inspector.chapterselected
+    def new_page(self):
+        print(self)
+        self.w = self.AppWindow(self)
+        # self.w.startDialog(self)
+        self.w.setModal(True)
+        self.w.show()
 
     class AppWindow(QDialog):
         def __init__(self,MainUIRef):

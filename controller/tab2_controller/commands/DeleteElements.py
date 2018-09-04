@@ -1,7 +1,6 @@
 import json
 import shutil
-
-
+import os
 import controller.tab2_controller.commands as commands
 import controller.Inspectors as inspector
 import controller.tab2_controller.commands.ResetUI as reset_ui
@@ -152,9 +151,6 @@ class DeleteLabelCommand(commands.BaseCommand):
         self.rest_ui.execute()
 
 
-
-
-
 class DeleteBookCommand(commands.BaseCommand):
 
     def __init__(self,context=None, gui=None):
@@ -164,8 +160,30 @@ class DeleteBookCommand(commands.BaseCommand):
     def execute(self):
         print(self)
 
+        try:
+            self.delete_book()
+        except Exception as e :
+            exceptionhandler.ExceptionHandler(e, self.gui).handle()
+            pass
+
+
     def unexcute(self):
         print(self)
+
+    @inspector.bookselected
+    def delete_book(self):
+        print(self.context.current_book.book_folder_path)
+        shutil.rmtree(self.context.current_book.book_folder_path)
+        self.reset_context()
+
+
+    def reset_context(self):
+        self.context.set_current_book(None)
+        self.context.set_current_chapter(None)
+        self.context.set_current_page(None)
+        self.context.set_current_label(None)
+        self.rest_ui = reset_ui.ResetUICommand(self.context, self.gui)
+        self.rest_ui.execute()
 
 class DeleteChapterCommand(commands.BaseCommand):
 

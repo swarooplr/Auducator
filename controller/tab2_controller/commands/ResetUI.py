@@ -17,6 +17,7 @@ class ResetUICommand(commands.BaseCommand):
 
             if(self.context.current_page is None):
                 self.gui.tab2_label_listwidget.clear()
+                self.gui.tab2_page_preview.setText("Page Preview")
 
                 #remove page preview
 
@@ -25,6 +26,7 @@ class ResetUICommand(commands.BaseCommand):
                 self.gui.tab2_description_input.setText(" ")
                 self.gui.tab2_label_audio_file.setText(" ")
                 self.gui.tab2_description_audio_file.setText(" ")
+                self.gui.tab2_label_preview.setText("Label Preview")
                 #remove label preview
         except:
             pass
