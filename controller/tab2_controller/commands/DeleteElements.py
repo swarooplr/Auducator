@@ -17,7 +17,7 @@ class DeletePageCommand(commands.BaseCommand):
         print(self)
         try:
             self.delete_page()
-        except:
+        except Exception as e:
             exceptionhandler.ExceptionHandler(e,self.gui).handle()
             pass
 

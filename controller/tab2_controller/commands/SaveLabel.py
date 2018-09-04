@@ -1,6 +1,8 @@
 
 import shutil
 import json
+import random
+import os
 
 import controller.tab2_controller.commands as commands
 import controller.Inspectors as inspector
@@ -60,10 +62,20 @@ class SaveLabelCommand(commands.BaseCommand):
             self.context.current_page.label_list[new_label_index].set_play_audio_label(False)
             pass
         else:
-            shutil.copy(_label_file,project_directory)
-            self.context.current_page.label_list[new_label_index].set_label_audio(_label_file.split('/')[-1])
-            self.context.current_page.label_list[new_label_index].set_play_audio_label(True)
-            pass
+            try:
+
+                # if _label_file == "recording done .wav":
+                #     new_random_file_name = "recording " + str(random.getrandbits(10)) +".wav"
+                #     shutil.copy(_label_file,project_directory)
+                #     os.rename(project_directory+"/"+_label_file,project_directory+"/"+new_random_file_name)
+                #     _label_file = new_random_file_name
+                # else :
+                shutil.copy(_label_file,project_directory)
+                self.context.current_page.label_list[new_label_index].set_label_audio(_label_file.split('/')[-1])
+                self.context.current_page.label_list[new_label_index].set_play_audio_label(True)
+                pass
+            except FileNotFoundError as e:
+                print(e)
 
         if(_description_file=="No File Selected" or _description_file):
             self.context.current_page.label_list[new_label_index].set_description_audio(_description_file)

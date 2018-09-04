@@ -12,7 +12,7 @@ import gui.Tab1 as tab1
 import gui.Tab2 as tab2
 import gui.Tab3 as tab3
 
-from controller.tab2_controller.commands import SelectBook,SelectLabelAudio,SelectPage,SelectChapter,DeleteElements,SaveLabel,AddNewLabel,NewElements
+from controller.tab2_controller.commands import SelectBook,SelectLabelAudio,SelectPage,SelectChapter,DeleteElements,SaveLabel,AddNewLabel,NewElements,RecordingAudio
 from controller.tab3_controller.commands import SelectBook as SelectBook3,SelectChapter as SelectChapter3,PlayPage as PlayPage3
 #from controller.tab1_controller.commands import NewElements,SelectElements,SelectPicture,ManualCrop,TakePicture,SavePage
 
@@ -191,6 +191,9 @@ class Ui_MainWindow(object):
          self.invoker_tab2.set_save_label_command(SaveLabel.SaveLabelCommand(self.invoker_tab2,self))
          self.invoker_tab2.set_add_new_label_command(AddNewLabel.AddNewLabelCommand(self.invoker_tab2,self))
 
+         self.invoker_tab2.set_start_recording_command(RecordingAudio.StartRecordingCommand(self.invoker_tab2,self))
+         self.invoker_tab2.set_stop_recording_command(RecordingAudio.StopRecordingCommand(self.invoker_tab2,self))
+         self.invoker_tab2.set_play_recording_command(RecordingAudio.PlayRecordingCommand(self.invoker_tab2,self))
 
          #tab3 invoker
          self.invoker_tab3.set_select_book_command(SelectBook3.SelectBookCommand(self.invoker_tab3,self))
