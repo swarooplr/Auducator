@@ -25,11 +25,14 @@ class supportingFunctions():
 
         self.CAMERA = 0
 
-        print("lol")
-        print(self.context.current_book.book_folder_path)
 
-        self.values = json.load(open(self.context.current_book.book_folder_path+"/values.json", "r"))
-        self.preferences = json.load(open(self.context.current_book.book_folder_path+"/preferences.json", "r"))
+        #print(self.context.current_book.book_folder_path)
+
+        #self.values = json.load(open(self.context.current_book.book_folder_path+"/values.json", "r"))
+        #self.preferences = json.load(open(self.context.current_book.book_folder_path+"/preferences.json", "r"))
+
+        self.preferences = json.load(open("../model/preferences.json", "r"))
+        self.values = json.load(open("../model/values.json", "r"))
 
         print(self.values,"\n",self.preferences)
         low = self.values["colours"][self.preferences["colour1"]]["low"]
@@ -44,6 +47,7 @@ class supportingFunctions():
         high = self.values["colours"][self.preferences["colour2"]]["high"]
         self.COLOUR2H = (high[0], high[1], high[2])
 
+        print("lol")
         self.PAGE_HEIGHT = int(self.preferences["page_height"])
         self.PAGE_WIDTH = int(self.preferences["page_width"])
 
@@ -52,6 +56,7 @@ class supportingFunctions():
         self.INVERT = int(self.preferences["invert"])
 
         self.CAMERA = int(self.preferences["camera"])
+        print("lol")
 
         print(self.TRACKING_RATE,self.COLOUR1H)
 
@@ -107,7 +112,7 @@ class supportingFunctions():
     
     def findPage(self,image): #takes image, returns 0 if: page not found , returns page corners if page found
         orig = image.copy()
-        #cv2.waitKey(self.TRACKING_RATE)
+        cv2.waitKey(self.TRACKING_RATE)
         #image = self.orient_image(image)
 
         h = 500.0
@@ -222,7 +227,7 @@ class supportingFunctions():
     def imageResize(self,img):
         try:
             h,w,_ = img.shape
-            print("details = ",h,"  ",w)
+            print("size before resize = ",h,"  ",w)
             if(h>w):
                 page = cv2.resize(img, (self.PAGE_WIDTH, self.PAGE_HEIGHT), interpolation=cv2.INTER_AREA)
                 return page,(self.PAGE_HEIGHT,self.PAGE_WIDTH)

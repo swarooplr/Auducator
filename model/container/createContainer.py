@@ -13,10 +13,10 @@ def createBook(book_folder_path):
     #os.makedirs(metaData_path)
     os.makedirs(os.path.join(config_path,'Default'))
 
-    print('start')
-    shutil.copy("../model/preferences.json",os.path.join(book_folder_path,"preferences.json"))
-    shutil.copy("../model/values.json", os.path.join(book_folder_path, "values.json"))
-    print('copied')
+    #print('start')
+    #shutil.copy("../model/preferences.json",os.path.join(book_folder_path,"preferences.json"))
+    #shutil.copy("../model/values.json", os.path.join(book_folder_path, "values.json"))
+    #print('copied')
 
     _book = model.container.Book(book_folder_path, [])
 

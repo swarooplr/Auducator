@@ -1,4 +1,4 @@
-class BaseCommand:
+class BaseSetting:
     def execute(self):
         pass
 

@@ -1,4 +1,5 @@
 import controller.tab1_controller.commands as commands
+import controller.tab1_controller.commands as commands
 import cv2
 import numpy as np
 import imutils

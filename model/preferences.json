@@ -1,10 +1,10 @@
 {
-    "colour1":"green",
-    "colour2":"red",
+    "colour1":"c1",
+    "colour2":"c2",
     "page_height":"800",
     "page_width":"600",
     "book_path":"",
     "invert":"180",
-    "tracking_rate":"1",
+    "tracking_rate":"10",
     "camera":"2"
 }

@@ -4,7 +4,7 @@ import gui.choose_colour as choose_color
 import json
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class PictureSizeSetting(settings.BaseSetting):
+class ChooseColourSetting(settings.BaseSetting):
 
     def __init__(self,context = None, gui = None):
         self.context = context
@@ -12,13 +12,13 @@ class PictureSizeSetting(settings.BaseSetting):
 
     def execute(self):
         print(self)
-        self.open_window()
+        self.new_page()
 
 
     def unexcute(self):
         print(self)
 
-    def open_window(self):
+    def new_page(self):
 
 
         self.preferences = json.load(open("../model/preferences.json", "r"))

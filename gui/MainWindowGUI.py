@@ -14,6 +14,8 @@ import gui.Tab3 as tab3
 
 from controller.tab2_controller.commands import SelectBook,SelectLabelAudio,SelectPage,SelectChapter,DeleteElements,SaveLabel,AddNewLabel,NewElements,RecordingAudio
 from controller.tab3_controller.commands import SelectBook as SelectBook3,SelectChapter as SelectChapter3,PlayPage as PlayPage3
+from controller.menu_bar.settings import ChooseColour,CustomColour,DefaultPath,PictureSize,TrackingRate
+from controller.menu_bar import Invoker as invoker
 #from controller.tab1_controller.commands import NewElements,SelectElements,SelectPicture,ManualCrop,TakePicture,SavePage
 
 
@@ -125,6 +127,8 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
+
+        self.set_up_settings_click()
         self.set_up_invoker()
         #self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -156,21 +160,18 @@ class Ui_MainWindow(object):
         self.actionCredits.setText(_translate("MainWindow", "Credits"))
         self.actionContact.setText(_translate("MainWindow", "Contact"))
 
+
+    def set_up_settings_click(self):
+        self.invoker_settings = invoker.Invoker(self)
+
+        self.actionChange_Color.triggered.connect(self.invoker_settings.choose_color)
+        self.actionChange_picture_Size.triggered.connect(self.invoker_settings.picture_size)
+        self.actionSet_Custom_Colour.triggered.connect(self.invoker_settings.custom_colour)
+        self.actionSet_Default_Path.triggered.connect(self.invoker_settings.default_path)
+        self.actionSet_Tracking_Rate.triggered.connect(self.invoker_settings.tracking_rate)
+
     def set_up_invoker(self):
-         # tab1 invoker
-         #self.invoker_tab1.set_select_book_command(SelectElements.SelectBookCommand(self.invoker_tab1, self))
-         #self.invoker_tab1.set_select_chapter_command(SelectElements.SelectChapterCommand(self.invoker_tab1, self))
-         #self.invoker_tab1.set_select_page_command(SelectElements.SelectPageCommand(self.invoker_tab1, self))
-         #self.invoker_tab1.create_new_book_command(NewElements.NewBookCommand(self.invoker_tab1, self))
-         #self.invoker_tab1.create_new_chapter_command(NewElements.NewChapterCommand(self.invoker_tab1, self))
-         ## self.invoker_tab1.delete_book_command(DeleteElementsTab1.DeleteBookCommand(None, self))
-         ## self.invoker_tab1.delete_chapter_command(DeleteElementsTab1.DeletChapterCommand(None, self))
-         ## self.invoker_tab1.delete_page_command(DeleteElementsTab1.DeletPageCommand(None, self))
-         #self.invoker_tab1.manual_crop_command(ManualCrop.ManualCropCommand(self.invoker_tab1, self))
-         #self.invoker_tab1.save_page_command(SavePage.SavePageCommand(self.invoker_tab1, self))
-         #self.invoker_tab1.select_picture_command(SelectPicture.SelectPictureCommand(self.invoker_tab1, self))
-         #self.invoker_tab1.take_picture_command(TakePicture.TakePictureCommand(self.invoker_tab1, self))
-         # self.invoker_tab1.rotate_image_command(RotatePage.RotatePa
+
 
 
          #tab2 invoker
@@ -201,7 +202,12 @@ class Ui_MainWindow(object):
          #self.invoker_tab3.set_select_page_command(SelectPage.SelectPageCommand(self.invoker_tab3,self))
          self.invoker_tab3.set_play_page_command(PlayPage3.PlayPageCommand(self.invoker_tab3,self))
 
-
+         #settings invoker
+         self.invoker_settings.set_choose_colour_setting(ChooseColour.ChooseColourSetting(self.invoker_settings,self))
+         self.invoker_settings.set_picture_size_setting(PictureSize.PictureSizeSetting(self.invoker_settings, self))
+         self.invoker_settings.set_default_path_setting(DefaultPath.DefaultPathSetting(self.invoker_settings, self))
+         self.invoker_settings.set_tracking_rate_setting(TrackingRate.TrackingRateSetting(self.invoker_settings, self))
+         self.invoker_settings.set_custom_colour_setting(CustomColour.CustomColourSetting(self.invoker_settings, self))
 
 
 
