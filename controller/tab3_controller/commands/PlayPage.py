@@ -49,14 +49,14 @@ class PlayPageCommand(commands.BaseCommand):
             assert _page is not None
 
             tracker.cordinates = (0, 0)
-            self.tracking_thread = threading.Thread(target=tracker.track,args=(180,))
+            self.context.tracking_thread = threading.Thread(target=tracker.track,args=(180,))
 
-            self.speakout_thread = threading.Thread(target=speakout.speakout,args=(_page.label_list,_page.page_file_path))
+            self.context.speakout_thread = threading.Thread(target=speakout.speakout,args=(_page.label_list,_page.page_file_path))
 
             #_thread.start_new_thread(track.trackit,("Thread-1",))
             #_thread.start_new_thread(speakout.speakout,(_page.label_list,_page.page_file_path))
-            self.tracking_thread.start()
-            self.speakout_thread.start()
+            self.context.tracking_thread.start()
+            self.context.speakout_thread.start()
 
 
     def get_selected_page(self,_selected_page):
