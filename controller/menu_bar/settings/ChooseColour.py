@@ -1,6 +1,6 @@
 import controller.menu_bar.settings as settings
 from PyQt5.QtWidgets import QDialog, QInputDialog
-import gui.chooseColour as choose_color
+import gui.menu_bar.chooseColour as choose_color
 import json
 from PyQt5 import QtCore, QtGui, QtWidgets
 from functools import partial
@@ -13,8 +13,11 @@ class ChooseColourSetting(settings.BaseSetting):
 
     def execute(self):
         print(self)
-        self.new_page()
 
+        try:
+            self.new_page()
+        except:
+            pass
 
     def unexcute(self):
         print(self)
@@ -28,9 +31,6 @@ class ChooseColourSetting(settings.BaseSetting):
         self.w.setModal(True)
 
         self.w.show()
-
-    def save_preference(self,colors):
-        pass
 
     class AppWindow(QDialog):
         def __init__(self,pref):

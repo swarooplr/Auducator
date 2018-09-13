@@ -39,3 +39,11 @@ class Invoker:
 
     def tracking_rate(self):
         self.tracking_rate_setting.execute()
+
+
+    ##help
+    def set_help(self,hh):
+        self.help = hh
+
+    def help(self,type):
+        self.help.execute(type)

@@ -12,7 +12,10 @@ class DefaultPathSetting(settings.BaseSetting):
 
     def execute(self):
         print(self)
-        self.open_window()
+        try:
+            self.open_window()
+        except Exception as e:
+            print(type(e).__doc__)
 
 
     def unexcute(self):

@@ -1,6 +1,6 @@
 import controller.menu_bar.settings as settings
 from PyQt5.QtWidgets import QDialog, QInputDialog
-import gui.customColour as custom_colour
+import gui.menu_bar.customColour as custom_colour
 import json
 from functools import partial
 from PyQt5 import QtCore, QtGui, QtWidgets

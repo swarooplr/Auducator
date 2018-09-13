@@ -1,6 +1,6 @@
 import controller.menu_bar.settings as settings
 from PyQt5.QtWidgets import QDialog, QInputDialog
-import gui.chooseResolution as choose_resolution
+import gui.menu_bar.chooseResolution as choose_resolution
 import json
 from functools import  partial
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -13,7 +13,10 @@ class PictureSizeSetting(settings.BaseSetting):
 
     def execute(self):
         print(self)
-        self.open_window()
+        try:
+            self.open_window()
+        except Exception as e:
+            print(type(e).__doc__)
 
 
     def unexcute(self):

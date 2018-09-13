@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QDialog, QInputDialog
 
 import gui.Tab1 as tab1
 import gui.Tab2 as tab2
@@ -16,6 +17,8 @@ from controller.tab2_controller.commands import SelectBook,SelectLabelAudio,Sele
 from controller.tab3_controller.commands import SelectBook as SelectBook3,SelectChapter as SelectChapter3,PlayPage as PlayPage3
 from controller.menu_bar.settings import ChooseColour,CustomColour,DefaultPath,PictureSize,TrackingRate
 from controller.menu_bar import Invoker as invoker
+from functools import partial
+from gui.menu_bar import help
 #from controller.tab1_controller.commands import NewElements,SelectElements,SelectPicture,ManualCrop,TakePicture,SavePage
 
 
@@ -129,6 +132,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.set_up_settings_click()
+        self.set_up_help()
         self.set_up_invoker()
         #self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -170,9 +174,10 @@ class Ui_MainWindow(object):
         self.actionSet_Default_Path.triggered.connect(self.invoker_settings.default_path)
         self.actionSet_Tracking_Rate.triggered.connect(self.invoker_settings.tracking_rate)
 
+    def set_up_help(self):
+        self.actionCredits.triggered.connect(partial(self.show_help,"credits.txt"))
+
     def set_up_invoker(self):
-
-
 
          #tab2 invoker
          self.invoker_tab2.create_new_book_command(NewElements.NewBookCommand(self.invoker_tab2, self))
@@ -202,12 +207,33 @@ class Ui_MainWindow(object):
          #self.invoker_tab3.set_select_page_command(SelectPage.SelectPageCommand(self.invoker_tab3,self))
          self.invoker_tab3.set_play_page_command(PlayPage3.PlayPageCommand(self.invoker_tab3,self))
 
-         #settings invoker
+         #menu_bar invoker
          self.invoker_settings.set_choose_colour_setting(ChooseColour.ChooseColourSetting(self.invoker_settings,self))
          self.invoker_settings.set_picture_size_setting(PictureSize.PictureSizeSetting(self.invoker_settings, self))
          self.invoker_settings.set_default_path_setting(DefaultPath.DefaultPathSetting(self.invoker_settings, self))
          self.invoker_settings.set_tracking_rate_setting(TrackingRate.TrackingRateSetting(self.invoker_settings, self))
          self.invoker_settings.set_custom_colour_setting(CustomColour.CustomColourSetting(self.invoker_settings, self))
+
+    def show_help(self,type):
+
+        class AppWindow(QDialog):
+            def __init__(self, content,title):
+                print(content)
+                super().__init__()
+                self.ui = help.Ui_Help()
+                self.ui.setupUi(self)
+                self.ui.plainTextEdit.setPlainText(content)
+                self.setWindowTitle(title)
+
+        print("lol : ",type)
+        content = open(type, "r").read()
+
+        self.w = AppWindow(content,type.split(".")[0])
+        self.w.setModal(True)
+
+        self.w.show()
+
+
 
 
 
