@@ -1,6 +1,6 @@
 import controller.menu_bar.settings as settings
 from PyQt5.QtWidgets import QDialog, QInputDialog
-import gui.choose_colour as choose_color
+
 import json
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -21,22 +21,16 @@ class TrackingRateSetting(settings.BaseSetting):
     def open_window(self):
 
 
-        self.preferences = json.load(open("../model/preferences.json", "r"))
-        self.values = json.load(open("../model/values.json", "r"))
+        self.preferences = json.load(open("preferences.json", "r"))
+        self.values = json.load(open("values.json", "r"))
 
-        self.w = self.AppWindow(self)
-        self.w.setModal(True)
+        text, ok = QInputDialog.getText(self.gui, 'Tracking Rate', '\nEnter a value between 0 (highest) and 1000 (lowest) :\n')
 
-        self.w.show()
+        if ok:
+            self.preferences['tracking_rate'] = text
 
-    def save_preference(self,colors):
-        pass
-
-    class AppWindow(QDialog):
-        def __init__(self, MainUIRef):
-
-            super().__init__()
-            self.ui = choose_color.Ui_choose_colour()
-            self.ui.setupUi(self,MainUIRef)
-
+            data = json.dumps(self.preferences)
+            print(data)
+            with open("preferences.json", "w") as f:
+                f.write(data)
 

@@ -31,8 +31,8 @@ class supportingFunctions():
         #self.values = json.load(open(self.context.current_book.book_folder_path+"/values.json", "r"))
         #self.preferences = json.load(open(self.context.current_book.book_folder_path+"/preferences.json", "r"))
 
-        self.preferences = json.load(open("../model/preferences.json", "r"))
-        self.values = json.load(open("../model/values.json", "r"))
+        self.preferences = json.load(open("preferences.json", "r"))
+        self.values = json.load(open("values.json", "r"))
 
         print(self.values,"\n",self.preferences)
         low = self.values["colours"][self.preferences["colour1"]]["low"]
@@ -80,10 +80,7 @@ class supportingFunctions():
         rect[3] = pts[np.argmax(diff)]
     
         return rect
-    
-    
-    
-    
+
     def four_point_transform(self,image, rect_pts):   # send image, and corners of rectange in order tl tr br bl   # returns image of rectangle
         rect = rect_pts
         (tl, tr, br, bl) = rect
@@ -108,13 +105,11 @@ class supportingFunctions():
         warped = cv2.warpPerspective(image, M, (maxWidth, maxHeight))
     
         return warped
-    
-    
+
     def findPage(self,image): #takes image, returns 0 if: page not found , returns page corners if page found
         orig = image.copy()
         cv2.waitKey(self.TRACKING_RATE)
         #image = self.orient_image(image)
-
         h = 500.0
 
         ratio = image.shape[0] / h
@@ -137,10 +132,7 @@ class supportingFunctions():
                 if len(approx) == 4:
                     screenCnt = approx
                     cv2.drawContours(image, [screenCnt], -1, (0, 255, 0), 2)
-                    #warped = four_point_transform(orig,order_points(screenCnt.reshape(4, 2) * ratio))
-                    #cv2.imshow("Image - page", orig)
-                    #cv2.imshow("page - warped", warped)
-                    #return (False, 0, 0)
+
                     return (True,screenCnt.reshape(4, 2) * ratio,image)
                 else:
                     return (False,0,image)
@@ -148,9 +140,7 @@ class supportingFunctions():
                 return (False,0,image)
         else:
             return (False,0,image)
-    
-    
-    
+
     def trackColor2(self,frame):
         hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
         mask = cv2.inRange(hsv, self.COLOUR2L, self.COLOUR2H)
@@ -173,8 +163,7 @@ class supportingFunctions():
                 return 0
         else:
             return 0
-    
-    
+
     def trackColor1(self,frame):
     
         hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
@@ -182,15 +171,13 @@ class supportingFunctions():
         mask = cv2.erode(mask, None, iterations=2)
         mask = cv2.dilate(mask, None, iterations=2)
     
-        cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
-                                cv2.CHAIN_APPROX_SIMPLE)[-2]
+        cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)[-2]
     
         if len(cnts) > 0:
             c = max(cnts, key=cv2.contourArea)
             ((x, y), radius) = cv2.minEnclosingCircle(c)
             M = cv2.moments(c)
             center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
-    
             if radius > 5:
     
                 return center
@@ -240,8 +227,6 @@ class supportingFunctions():
     
     def get_working_camera(self):
 
-        #cap = cv2.VideoCapture(self.CAMERA)
-        #img = cap.read()
         if self.CAMERA > 0:
             return self.CAMERA
 
@@ -258,3 +243,6 @@ class supportingFunctions():
     def orient_image(self,frame):
         frame = imutils.rotate_bound(frame, self.INVERT)
         return frame
+
+    def get_frame_size(self):
+        return self.PAGE_HEIGHT,self.PAGE_WIDTH

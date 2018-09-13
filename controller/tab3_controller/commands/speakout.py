@@ -15,6 +15,8 @@ def speakout(voiceoverdetails,folderpath):
             return
         x=tracker.cordinates[0]
         y=tracker.cordinates[1]
+        if(x==-2000):
+            continue
         print(str(x)+","+str(y))
         for ele in voiceoverdetails:
 
