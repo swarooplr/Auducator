@@ -83,7 +83,11 @@ class SelectLabelCommand(commands.BaseCommand):
         img = cv2.imread(self.context.current_page.page_file_path+"\\"+self.context.current_page.page_image_name)
         #cv2.imshow("lol1", img)
         crop_img = img[int(_label.y1):int(_label.y2),int(_label.x1):int(_label.x2)]
+<<<<<<< HEAD
+        print("image cropped")
+=======
         #print("image cropped")
+>>>>>>> 412b754793d8f1878cea1ed79f7e47792e0abbf2
         #cv2.imshow("lol",crop_img)
 
         h = self.gui.tab2_label_preview.frameGeometry().height()

@@ -9,6 +9,7 @@ from struct import pack
 import pyaudio
 import wave
 
+
 class StartRecordingCommand(commands.BaseCommand):
 
     def __init__(self, context=None, gui=None):
@@ -41,7 +42,11 @@ class StartRecordingCommand(commands.BaseCommand):
 
         def is_silent(snd_data):
             "Returns 'True' if below the 'silent' threshold"
-            return max(snd_data) < THRESHOLD
+            #return max(snd_data) < THRESHOLD
+
+            # The function doesnt do what it is named after this is
+            # what happens when you rip off from the internet and change stuff
+            return not self.context.recording
 
         def normalize(snd_data):
             "Average the volume out"
@@ -157,12 +162,21 @@ class StartRecordingCommand(commands.BaseCommand):
         except Exception as e:
             print(e)
 
-        import random
-        file_name = "recording" + str(random.getrandbits(5))+".wav"
-        print("started recording...")
-        record_to_file(file_name)
-        print("ended recording...")
-        self.gui.tab2_label_audio_file.setText(file_name)
+        def initiate_recording():
+            import random
+            file_name = "recording" + str(random.getrandbits(5))+".wav"
+            print("started recording...")
+            self.context.recording = True
+
+            record_to_file(file_name)
+            print("ended recording...")
+            self.gui.tab2_label_audio_file.setText(file_name)
+
+        import threading
+        try:
+             threading.Thread(target=initiate_recording).start()
+        except Exception as e:
+                print(e)
 
 
 
@@ -181,7 +195,7 @@ class StopRecordingCommand(commands.BaseCommand):
 
     def execute(self):
         try:
-            self.start_record()
+            self.stop_record()
             pass
         except Exception as e:
             exceptionhandler.ExceptionHandler(e,self.gui).handle()
@@ -192,9 +206,9 @@ class StopRecordingCommand(commands.BaseCommand):
     @inspector.chapterselected
     @inspector.pageselected
     @inspector.labelselected
-    def start_record(self):
+    def stop_record(self):
         print("stoped")
-
+        self.context.recording = False
 
     def unexecute(self):
         print(self)

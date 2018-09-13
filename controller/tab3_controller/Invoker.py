@@ -7,6 +7,8 @@ class Invoker:
         self.current_book= current_book
         self.current_chapter= current_chapter
         self.current_page= current_page
+        self.tracking_thread = None
+        self.speakout_thread = None
 
 
     def set_current_book(self,current_book):
