@@ -12,6 +12,9 @@ class Invoker:
         self.current_page= current_page
         self.current_label=current_label
 
+        #for recording controls
+        self.recording = None
+
     def set_current_book(self,current_book):
         self.current_book=current_book
 

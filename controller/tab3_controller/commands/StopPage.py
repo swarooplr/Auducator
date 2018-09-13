@@ -1,6 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 import controller.tab3_controller.commands as commands
+import controller.tab3_controller.commands.Tracker as tracker
+
 import controller.tab3_controller.commands.ResetUI as reset_ui
 import controller.tab3_controller.commands.track as track
 import controller.tab3_controller.commands.speakout as speakout
@@ -22,11 +24,15 @@ class StopPageCommand(commands.BaseCommand):
 
     def execute(self):
         try:
-            play_page.speakout_thread.stop()
-            play_page.tracking_thread.stop()
+            print("stopping")
+            tracker.cordinates = (-1000,-1000)
+            # play_page.speakout_thread.stop()
+            # play_page.tracking_thread.stop()
+            print(self.context.speakout_thread.isAlive())
+            print(self.context.tracking_thread.isAlive())
 
         except Exception as e:
-            print(e)
+            print("error",e)
             pass
 
     def unexcute(self):

@@ -252,6 +252,7 @@ class Tab3Create:
         # comment below if you want those tabs.
         Ui_MainWindow.tab3_groupBox_15.setVisible(False)
         Ui_MainWindow.tab3_groupBox_14.setVisible(False)
+        Ui_MainWindow.tab3_auto_play_button.setVisible(False)
 
         Tab3Create.__retranslate_ui(Ui_MainWindow)
         Tab3Create.__set_tool_tips(Ui_MainWindow)
