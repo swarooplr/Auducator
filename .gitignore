@@ -1,7 +1,2 @@
 *.pyc
-<<<<<<< HEAD
-*.iml
-=======
-*.png
->>>>>>> AuducatorV2
-*.xml
+.idea/
