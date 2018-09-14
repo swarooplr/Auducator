@@ -1,4 +1,6 @@
 *.pyc
+*.xml
 .idea/
-*.png
-miscellaneous/
+gui/*.png
+gui/*.jpg
+*.wav
