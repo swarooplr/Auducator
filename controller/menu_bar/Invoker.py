@@ -22,7 +22,14 @@ class Invoker:
     def set_tracking_rate_setting(self,trs):
         self.tracking_rate_setting = trs
 
+    def set_choose_camera_setting(self,sccs):
+        self.choose_camera_setting = sccs
 
+    def set_test_page_detection_setting(self,tpds):
+        self.test_page_detection_setting = tpds
+
+    def set_test_tracking_setting(self,tts):
+        self.test_tracking_setting = tts
 
     ##call commands
     def choose_color(self):
@@ -40,10 +47,20 @@ class Invoker:
     def tracking_rate(self):
         self.tracking_rate_setting.execute()
 
+    def choose_camera(self):
+        self.choose_camera_setting.execute()
 
+    def test_page_detection(self):
+        self.test_page_detection_setting.execute()
+
+    def test_tracking(self):
+        self.test_tracking_setting.execute()
+
+    """
     ##help
     def set_help(self,hh):
         self.help = hh
 
     def help(self,type):
         self.help.execute(type)
+    """

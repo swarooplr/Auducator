@@ -1,3 +1,5 @@
+from PyQt5.QtCore import QDir
+
 import controller.menu_bar.settings as settings
 from PyQt5.QtWidgets import QDialog, QInputDialog
 
@@ -27,10 +29,13 @@ class DefaultPathSetting(settings.BaseSetting):
         self.preferences = json.load(open("preferences.json", "r"))
         self.values = json.load(open("values.json", "r"))
 
-        text, ok = QInputDialog.getText(self.gui, 'Default Path', '\nEnter the default path for books:                 .\n')
+        file = str(QtWidgets.QFileDialog.getExistingDirectory(self.gui, "Select Folder as default path"))
+        #text, ok = QInputDialog.getText(self.gui, 'Default Path', '\nEnter the default path for books:                 .\n')
 
-        if ok:
-            self.preferences['book_path'] = text
+        print(file)
+        if file != "":
+            #fname = QDir.toNativeSeparators(file + "/")
+            self.preferences['book_path'] = file
 
             data = json.dumps(self.preferences)
             print(data)

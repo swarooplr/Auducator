@@ -1,3 +1,5 @@
+from PyQt5.QtCore import QDir
+
 import controller.tab1_controller.commands as commands
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QDialog, QInputDialog
@@ -9,6 +11,7 @@ import model as model
 import model.container.getContainer as getContainer
 import gui.tab1dialogUI as tab1Dialog
 import os
+import json
 import controller.tab2_controller.commands.ResetUI as reset_ui
 import controller.Inspectors as inspector
 import controller.exceptions.ExceptionHandler as exceptionhandler
@@ -22,37 +25,46 @@ class NewBookCommand(commands.BaseCommand):
 
     def execute(self):
         #print(self)
-        file = str(QtWidgets.QFileDialog.getExistingDirectory(self.gui, "Select Folder to create Book"))
-        text, ok = QInputDialog.getText(self.gui, 'New Project','Enter project name:')
 
-        if ok:
-            print(text)
-            book_path = os.path.join(file, text)
-            try:
-                _book = createConatiner.createBook(book_path)
+        self.preferences = json.load(open("preferences.json", "r"))
 
-                #print("book created at :" ,book_path, "   id:",_book)
+        if self.preferences['book_path'] == "":
+            file = str(QtWidgets.QFileDialog.getExistingDirectory(self.gui, "Select Folder to create Book"))
+        else:
+            file = self.preferences["book_path"]
 
-                print('book path : ',book_path)
+        print(file)
+        if not file == "":
+            text, ok = QInputDialog.getText(self.gui, 'New Project','Enter project name:')
 
-                _book = getContainer.loadBook(book_path)
-                self.gui.tab2_book_name_2.setText(_book.book_folder_path.split('/')[-1])
-                self.gui.tab2_chapter_select_combobox.clear()
+            if ok:
+                print(text)
+                book_path = os.path.join(file, text)
+                try:
+                    _book = createConatiner.createBook(book_path)
 
-                print("book loaded . loading chapters "+ str(_book.chapter_list))
+                    #print("book created at :" ,book_path, "   id:",_book)
 
-                for i in _book.chapter_list:
-                    self.gui.tab1_select_chapter_combobox.addItem(i.chapter_name)
-                    print(i.chapter_name,"  ")
+                    print('book path : ',book_path)
 
-                self.context.set_current_book(_book)
-                print(self.context.current_book.book_folder_path)
-                self.reset_context()
+                    _book = getContainer.loadBook(book_path)
+                    self.gui.tab2_book_name_2.setText(_book.book_folder_path.split('/')[-1])
+                    self.gui.tab2_chapter_select_combobox.clear()
+
+                    print("book loaded . loading chapters "+ str(_book.chapter_list))
+
+                    for i in _book.chapter_list:
+                        self.gui.tab1_select_chapter_combobox.addItem(i.chapter_name)
+                        print(i.chapter_name,"  ")
+
+                    self.context.set_current_book(_book)
+                    print(self.context.current_book.book_folder_path)
+                    self.reset_context()
 
 
 
-            except Exception as e:
-                print('Unable to create project at destination ' + type(e).__name__+ e.__doc__)
+                except Exception as e:
+                    print('Unable to create project at destination ' + type(e).__name__+ e.__doc__)
 
         print('Location not accessible')
 

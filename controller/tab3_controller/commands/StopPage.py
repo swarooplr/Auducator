@@ -4,11 +4,11 @@ import controller.tab3_controller.commands as commands
 import controller.tab3_controller.commands.Tracker as tracker
 
 import controller.tab3_controller.commands.ResetUI as reset_ui
-import controller.tab3_controller.commands.track as track
+
 import controller.tab3_controller.commands.speakout as speakout
 import controller.Inspectors as inspector
 import model.container.getContainer as getContainer
-import controller.tab3_controller.commands.Tracker as tracker
+
 import controller.tab3_controller.commands.PlayPage as play_page
 
 

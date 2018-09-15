@@ -15,7 +15,7 @@ import gui.Tab3 as tab3
 
 from controller.tab2_controller.commands import SelectBook,SelectLabelAudio,SelectPage,SelectChapter,DeleteElements,SaveLabel,AddNewLabel,NewElements,RecordingAudio
 from controller.tab3_controller.commands import SelectBook as SelectBook3,SelectChapter as SelectChapter3,PlayPage as PlayPage3
-from controller.menu_bar.settings import ChooseColour,CustomColour,DefaultPath,PictureSize,TrackingRate
+from controller.menu_bar.settings import ChooseColour,CustomColour,DefaultPath,PictureSize,TrackingRate,TestTracking,ChooseCamera,TestPageDetection
 from controller.menu_bar import Invoker as invoker
 from functools import partial
 from gui.menu_bar import help
@@ -96,6 +96,16 @@ class Ui_MainWindow(object):
         self.actionChange_Color.setObjectName("actionChange_Color")
         self.actionChange_picture_Size = QtWidgets.QAction(MainWindow)
         self.actionChange_picture_Size.setObjectName("actionChange_picture_Size")
+
+        self.actionChange_Camera = QtWidgets.QAction(MainWindow)
+        self.actionChange_Camera.setObjectName("actionChange_camera")
+
+        self.actionTestPageDetection = QtWidgets.QAction(MainWindow)
+        self.actionTestPageDetection.setObjectName("actionPageDetection")
+
+        self.actionTestTracking = QtWidgets.QAction(MainWindow)
+        self.actionTestTracking.setObjectName("actionTestTracking")
+
         self.actionSet_Default_Path = QtWidgets.QAction(MainWindow)
         self.actionSet_Default_Path.setObjectName("actionSet_Default_Path")
         self.actionSet_Custom_Colour = QtWidgets.QAction(MainWindow)
@@ -119,10 +129,13 @@ class Ui_MainWindow(object):
         self.menuSettings.addAction(self.actionSet_Default_Path)
         self.menuSettings.addAction(self.actionSet_Custom_Colour)
         self.menuSettings.addAction(self.actionSet_Tracking_Rate)
-        self.menuHelp.addAction(self.actionSearch)
+        self.menuSettings.addAction(self.actionChange_Camera)
+        self.menuSettings.addAction(self.actionTestPageDetection)
+        self.menuSettings.addAction(self.actionTestTracking)
+        #self.menuHelp.addAction(self.actionSearch)
         self.menuHelp.addAction(self.actionHow_to_use)
         self.menuAbout.addAction(self.actionInfo)
-        self.menuAbout.addAction(self.actionFeedback)
+        #self.menuAbout.addAction(self.actionFeedback)
         self.menuAbout.addAction(self.actionCredits)
         self.menuAbout.addAction(self.actionContact)
         self.menubar.addAction(self.menuSettings.menuAction())
@@ -153,6 +166,11 @@ class Ui_MainWindow(object):
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.menuAbout.setTitle(_translate("MainWindow", "About"))
         self.actionChange_Color.setText(_translate("MainWindow", "Change Colour"))
+
+        self.actionChange_Camera.setText(_translate("MainWindow","Choose Camera"))
+        self.actionTestPageDetection.setText(_translate("MainWindow","Test Page Detection"))
+        self.actionTestTracking.setText(_translate("MainWindow","Test Tracking"))
+
         self.actionChange_picture_Size.setText(_translate("MainWindow", "Change picture Size"))
         self.actionSet_Default_Path.setText(_translate("MainWindow", "Set Default Path"))
         self.actionSet_Custom_Colour.setText(_translate("MainWindow", "Set Custom Colour"))
@@ -173,9 +191,15 @@ class Ui_MainWindow(object):
         self.actionSet_Custom_Colour.triggered.connect(self.invoker_settings.custom_colour)
         self.actionSet_Default_Path.triggered.connect(self.invoker_settings.default_path)
         self.actionSet_Tracking_Rate.triggered.connect(self.invoker_settings.tracking_rate)
+        self.actionChange_Camera.triggered.connect(self.invoker_settings.choose_camera)
+        self.actionTestPageDetection.triggered.connect(self.invoker_settings.test_page_detection)
+        self.actionTestTracking.triggered.connect(self.invoker_settings.test_tracking)
 
     def set_up_help(self):
         self.actionCredits.triggered.connect(partial(self.show_help,"credits.txt"))
+        self.actionHow_to_use.triggered.connect(partial(self.show_help, "how_to_use.txt"))
+        self.actionContact.triggered.connect(partial(self.show_help, "contact.txt"))
+        self.actionInfo.triggered.connect(partial(self.show_help, "info.txt"))
 
     def set_up_invoker(self):
 
@@ -213,6 +237,9 @@ class Ui_MainWindow(object):
          self.invoker_settings.set_default_path_setting(DefaultPath.DefaultPathSetting(self.invoker_settings, self))
          self.invoker_settings.set_tracking_rate_setting(TrackingRate.TrackingRateSetting(self.invoker_settings, self))
          self.invoker_settings.set_custom_colour_setting(CustomColour.CustomColourSetting(self.invoker_settings, self))
+         self.invoker_settings.set_choose_camera_setting(ChooseCamera.ChooseCameraSetting(self.invoker_settings,self))
+         self.invoker_settings.set_test_page_detection_setting(TestPageDetection.TestPageDetectionSetting(self.invoker_settings,self))
+         self.invoker_settings.set_test_tracking_setting(TestTracking.TestTrackingSetting(self.invoker_settings,self))
 
     def show_help(self,type):
 
@@ -224,13 +251,9 @@ class Ui_MainWindow(object):
                 self.ui.setupUi(self)
                 self.ui.plainTextEdit.setPlainText(content)
                 self.setWindowTitle(title)
-
-        print("lol : ",type)
         content = open(type, "r").read()
-
         self.w = AppWindow(content,type.split(".")[0])
         self.w.setModal(True)
-
         self.w.show()
 
 
