@@ -24,7 +24,7 @@ class ChooseCameraSetting(settings.BaseSetting):
     def open_window(self):
         self.preferences = json.load(open("preferences.json", "r"))
 
-        text, ok = QInputDialog.getText(self.gui, 'Camera number', '\nEnter a value between 1 to 4 \nCamera ID as in openCV :\n')
+        text, ok = QInputDialog.getText(self.gui, 'Camera number (port number)', '\nEnter a value between 0 to 4 \nCamera ID as in openCV :\n')
 
         if ok:
             self.preferences['camera'] = text

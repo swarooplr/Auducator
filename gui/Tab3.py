@@ -262,7 +262,7 @@ class Tab3Create:
     def __retranslate_ui(Ui_MainWindow):
         _translate = QtCore.QCoreApplication.translate
         Ui_MainWindow.tab3_groupBox_6.setTitle(_translate("MainWindow", "Book"))
-        Ui_MainWindow.tab3_book_display.setText(_translate("MainWindow", "Book1"))
+        Ui_MainWindow.tab3_book_display.setText(_translate("MainWindow", "Book Not Selected"))
         Ui_MainWindow.tab3_select_book.setText(_translate("MainWindow", "Select"))
         Ui_MainWindow.tab3_groupBox_7.setTitle(_translate("MainWindow", "Chapter"))
         Ui_MainWindow.tab3_chapter_label.setText(_translate("MainWindow", "Select Chapter"))
@@ -299,7 +299,7 @@ class Tab3Create:
 
         Ui_MainWindow.tab3_select_book.clicked.connect(Ui_MainWindow.invoker_tab3.select_book)
 
-        #Ui_MainWindow.tab3_page_listwidget.itemClicked.connect(Ui_MainWindow.invoker_tab3.select_page)
+        Ui_MainWindow.tab3_page_listwidget.itemClicked.connect(Ui_MainWindow.invoker_tab3.select_page)
 
         Ui_MainWindow.tab3_select_chapter_combobox.activated.connect(Ui_MainWindow.invoker_tab3.select_chapter)
 

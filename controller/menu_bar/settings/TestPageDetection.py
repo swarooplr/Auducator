@@ -35,7 +35,7 @@ class TestPageDetectionSetting(settings.BaseSetting):
             cv2.imshow("test : ",img)
         except:
             if img == None:
-                QMessageBox.about(self.gui, "Error", "No camera detected")
+                QMessageBox.about(self.gui, "Error", "No camera detected, \nPlease try changing the camera port in settings ")
                 print("camera error")
             print("error")
 

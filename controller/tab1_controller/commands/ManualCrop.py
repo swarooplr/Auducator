@@ -54,10 +54,10 @@ class ManualCropCommand(commands.BaseCommand):
                 cv2.imshow("image", image)
                 key = cv2.waitKey(1) & 0xFF
 
-                if key == ord("r"):
+                if key == ord(" "):
                     refPt.clear()
                     image = clone.copy()
-                    cv2.putText(image, "Click on the four Corners of the page, R to reset ", (15, 15),
+                    cv2.putText(image, "Click on the four Corners of the page, Click on SPACE BAR to reset ", (15, 15),
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
 
                 if key == ord("c"):

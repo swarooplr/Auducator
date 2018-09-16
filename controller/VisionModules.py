@@ -40,13 +40,13 @@ class VisionModules():
 
             if (not condition):
 
-                cv2.putText(pageBordered, "Page not detected -  press E to complete", (15, 15),
+                cv2.putText(pageBordered, "Page not detected -  press SPACE BAR to complete", (15, 15),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
                 final = pageBordered
 
             else:
 
-                cv2.putText(pageBordered, "Press Q if page is selected properly - press E to complete", (15, 15),
+                cv2.putText(pageBordered, "Press Q if page is selected properly - press SPACE BAR to complete", (15, 15),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
                 final = pageBordered
 
@@ -74,7 +74,7 @@ class VisionModules():
             if key == ord("q"):
                 pageDetected = True
 
-            if key == ord("e"):
+            if key == ord(" "):
                 cv2.destroyAllWindows()
                 if pageDetected:
                     img, _ = self.SF.imageResize(pageCrop)
@@ -115,17 +115,17 @@ class VisionModules():
 
             marker = self.SF.trackColor1(image)
             if marker == 0:
-                cv2.putText(image, "Unable to find marker: E to exit", (15, 15), cv2.FONT_HERSHEY_SIMPLEX,
+                cv2.putText(image, "Unable to find marker: SPACE to exit", (15, 15), cv2.FONT_HERSHEY_SIMPLEX,
                                 0.5, (255, 255, 255), 1)
 
             else:
-                cv2.putText(image, "Tracking: E to exit : R to reset page", (15, 15),
+                cv2.putText(image, "Tracking: SPACE to exit : R to reset page", (15, 15),
                                 cv2.FONT_HERSHEY_SIMPLEX,
                                 0.5, (255, 255, 255), 1)
                 cv2.circle(image, marker, 5, (0, 0, 255), -1)
             cv2.imshow("Tracking", image)
 
-            if key == ord("e"):
+            if key == ord(" "):
                 cv2.destroyAllWindows()
                 return image
 

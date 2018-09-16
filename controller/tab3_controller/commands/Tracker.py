@@ -21,13 +21,18 @@ def track(context,gui):
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, w)
 
     else:
-        QMessageBox.about(gui, "Error", "No camera detected")
+        QMessageBox.about(gui, "Error", "No camera detected, \nPlease try changing the camera port in settings ")
         print("camera error")
 
     pageFound = False
     points = 0
 
     while True:
+
+        #this is condition is checked ,so that even on click of stop button the cv2 window is destroyed.
+        if cordinates == (-1000,-1000):
+            cv2.destroyAllWindows()
+            return
 
         ret, image = cap.read()
         image = SF.orient_image(image)
@@ -36,7 +41,7 @@ def track(context,gui):
         condition, pageCorners, pageBordered = SF.findPage(image)
         if(not pageFound):
             if (not condition):
-                cv2.putText(pageBordered, "Unable to find page: press e to exit", (15, 15), cv2.FONT_HERSHEY_SIMPLEX,
+                cv2.putText(pageBordered, "Unable to find page: press SPACE BAR to exit", (15, 15), cv2.FONT_HERSHEY_SIMPLEX,
                             0.5, (255, 255, 255), 1)
                 final =  pageBordered
 
@@ -53,11 +58,11 @@ def track(context,gui):
 
             marker = SF.trackColor1(pageCrop)
             if marker == 0:
-                cv2.putText(pageCropDisplay, "Unable to find marker: E to exit", (15, 15), cv2.FONT_HERSHEY_SIMPLEX,
+                cv2.putText(pageCropDisplay, "Unable to find marker: SPACE BAR to exit", (15, 15), cv2.FONT_HERSHEY_SIMPLEX,
                             0.5, (255, 255, 255), 1)
 
             else:
-                cv2.putText(pageCropDisplay, "Tracking: E to exit : R to reset page", (15, 15), cv2.FONT_HERSHEY_SIMPLEX,
+                cv2.putText(pageCropDisplay, "Tracking: SPACE BAR to exit : R to reset page", (15, 15), cv2.FONT_HERSHEY_SIMPLEX,
                             0.5, (255, 255, 255), 1)
                 cv2.circle(pageCropDisplay, marker, 5, (0, 0, 255), -1)
 
@@ -70,7 +75,7 @@ def track(context,gui):
 
         cv2.imshow("Tracking", final)
 
-        if key == ord("e"):
+        if key == ord(" "):
             cv2.destroyAllWindows()
             cordinates = (-1000,-1000)
             return
@@ -78,6 +83,8 @@ def track(context,gui):
 
         if key == ord("r"):
             pageFound = False
+
+
 
 
 

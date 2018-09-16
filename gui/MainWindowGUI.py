@@ -14,7 +14,7 @@ import gui.Tab2 as tab2
 import gui.Tab3 as tab3
 
 from controller.tab2_controller.commands import SelectBook,SelectLabelAudio,SelectPage,SelectChapter,DeleteElements,SaveLabel,AddNewLabel,NewElements,RecordingAudio
-from controller.tab3_controller.commands import SelectBook as SelectBook3,SelectChapter as SelectChapter3,PlayPage as PlayPage3
+from controller.tab3_controller.commands import SelectBook as SelectBook3,SelectChapter as SelectChapter3,PlayPage as PlayPage3, StopPage as StopPage3, SelectPage as SelectPage3
 from controller.menu_bar.settings import ChooseColour,CustomColour,DefaultPath,PictureSize,TrackingRate,TestTracking,ChooseCamera,TestPageDetection
 from controller.menu_bar import Invoker as invoker
 from functools import partial
@@ -217,7 +217,7 @@ class Ui_MainWindow(object):
          self.invoker_tab2.set_delete_page_command(DeleteElements.DeletePageCommand(self.invoker_tab2,self))
          self.invoker_tab2.set_delete_label_command(DeleteElements.DeleteLabelCommand(self.invoker_tab2,self))
          self.invoker_tab2.set_select_audio_label_command(SelectLabelAudio.SelectAudioFileLabelCommand(self.invoker_tab2,self))
-         self.invoker_tab2.set_select_audio_description_command(SelectLabelAudio.SelectAudioFileDescribeCommand(self.invoker_tab2,self))
+         self.invoker_tab2.set_select_audio_description_command(SelectLabelAudio.SelectAudioFileLabelCommand(self.invoker_tab2,self))
          self.invoker_tab2.set_save_label_command(SaveLabel.SaveLabelCommand(self.invoker_tab2,self))
          self.invoker_tab2.set_add_new_label_command(AddNewLabel.AddNewLabelCommand(self.invoker_tab2,self))
 
@@ -228,8 +228,10 @@ class Ui_MainWindow(object):
          #tab3 invoker
          self.invoker_tab3.set_select_book_command(SelectBook3.SelectBookCommand(self.invoker_tab3,self))
          self.invoker_tab3.set_select_chapter_command(SelectChapter3.SelectChapterCommand(self.invoker_tab3,self))
-         #self.invoker_tab3.set_select_page_command(SelectPage.SelectPageCommand(self.invoker_tab3,self))
+         self.invoker_tab3.set_stop_page_command(StopPage3.StopPageCommand(self.invoker_tab3,self))
          self.invoker_tab3.set_play_page_command(PlayPage3.PlayPageCommand(self.invoker_tab3,self))
+         self.invoker_tab3.set_select_page_command(SelectPage3.SelectPageCommand(self.invoker_tab3,self))
+
 
          #menu_bar invoker
          self.invoker_settings.set_choose_colour_setting(ChooseColour.ChooseColourSetting(self.invoker_settings,self))
