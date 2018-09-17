@@ -57,10 +57,10 @@ class ManualCropCommand(commands.BaseCommand):
                 if key == ord("r"):
                     refPt.clear()
                     image = clone.copy()
-                    cv2.putText(image, "Click on the four Corners of the page, R to reset ", (15, 15),
+                    cv2.putText(image, "Click on the four Corners of the page, R to reset , E to Exit", (15, 15),
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
 
-                if key == ord("c"):
+                if key == ord("e"):
                     cv2.destroyWindow("image")
                     break
 
@@ -79,5 +79,7 @@ class ManualCropCommand(commands.BaseCommand):
 
             return pageCrop
 
+
         img = ManualCropper(path)
+        img,_ = self.context.SF.imageResize(img)
         return img

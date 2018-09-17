@@ -35,7 +35,7 @@ class NewBookCommand(commands.BaseCommand):
 
         print(file)
         if not file == "":
-            text, ok = QInputDialog.getText(self.gui, 'New Project','Enter project name:')
+            text, ok = QInputDialog.getText(self.gui, 'New Book','Enter name of Book :                                                .')
 
             if ok:
                 print(text)
