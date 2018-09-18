@@ -1,6 +1,9 @@
 import json
 import shutil
 import os
+
+from PyQt5.QtWidgets import QMessageBox
+
 import controller.tab2_controller.commands as commands
 import controller.Inspectors as inspector
 import controller.tab2_controller.commands.ResetUI as reset_ui
@@ -161,7 +164,13 @@ class DeleteBookCommand(commands.BaseCommand):
         print(self)
 
         try:
-            self.delete_book()
+            buttonReply = QMessageBox.question(self.gui, 'Confirm Action', "Delete " + str(self.gui.tab2_book_name_2.text()) + " ?          ",
+                                               QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            if buttonReply == QMessageBox.Yes:
+                self.delete_book()
+            else:
+                pass
+
         except Exception as e :
             exceptionhandler.ExceptionHandler(e, self.gui).handle()
             pass
@@ -192,7 +201,43 @@ class DeleteChapterCommand(commands.BaseCommand):
         self.gui = gui
 
     def execute(self):
-        print(self)
+
+        try:
+            buttonReply = QMessageBox.question(self.gui, 'Confirm Action', "Delete "+str(self.context.current_chapter.chapter_name)+" ?       ",
+                                               QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            if buttonReply == QMessageBox.Yes:
+                self.delete_chapter()
+            else:
+                pass
+
+        except Exception as e :
+            exceptionhandler.ExceptionHandler(e, self.gui).handle()
+            pass
+
 
     def unexcute(self):
         print(self)
+
+    @inspector.bookselected
+    @inspector.chapterselected
+    def delete_chapter(self):
+        if not self.context.current_chapter.chapter_name == "Default":
+            print(self.context.current_chapter.chapter_path)
+            shutil.rmtree(self.context.current_chapter.chapter_path)
+            self.context.current_book.remove_chapter(self.context.current_chapter)
+            self.gui.tab2_chapter_select_combobox.clear()
+
+            for chapter in self.context.current_book.chapter_list:
+                print(chapter.chapter_name)
+                self.gui.tab2_chapter_select_combobox.addItem(chapter.chapter_name)
+
+            self.reset_context()
+        else:
+            QMessageBox.about(self.gui, "Error", "Cannot delete Default Chapter          ")
+
+    def reset_context(self):
+        self.context.set_current_chapter(None)
+        self.context.set_current_page(None)
+        self.context.set_current_label(None)
+        self.rest_ui = reset_ui.ResetUICommand(self.context, self.gui)
+        self.rest_ui.execute()

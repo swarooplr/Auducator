@@ -35,28 +35,20 @@ class NewBookCommand(commands.BaseCommand):
 
         print(file)
         if not file == "":
-            text, ok = QInputDialog.getText(self.gui, 'New Project','Enter project name:')
+            text, ok = QInputDialog.getText(self.gui, 'New Book','Enter name of Book :                                                .')
 
             if ok:
                 print(text)
                 book_path = os.path.join(file, text)
                 try:
+                    print(book_path)
                     _book = createConatiner.createBook(book_path)
-
-                    #print("book created at :" ,book_path, "   id:",_book)
-
-                    print('book path : ',book_path)
-
                     _book = getContainer.loadBook(book_path)
                     self.gui.tab2_book_name_2.setText(_book.book_folder_path.split('/')[-1])
                     self.gui.tab2_chapter_select_combobox.clear()
-
-                    print("book loaded . loading chapters "+ str(_book.chapter_list))
-
                     for i in _book.chapter_list:
-                        self.gui.tab1_select_chapter_combobox.addItem(i.chapter_name)
-                        print(i.chapter_name,"  ")
-
+                        self.gui.tab2_chapter_select_combobox.addItem(i.chapter_name)
+                        print(i.chapter_name)
                     self.context.set_current_book(_book)
                     print(self.context.current_book.book_folder_path)
                     self.reset_context()
@@ -65,8 +57,14 @@ class NewBookCommand(commands.BaseCommand):
 
                 except Exception as e:
                     print('Unable to create project at destination ' + type(e).__name__+ e.__doc__)
+                    self.reset_context()
 
         print('Location not accessible')
+
+
+
+
+        self.reset_context()
 
     def unexcute(self):
         print(self)
@@ -77,6 +75,7 @@ class NewBookCommand(commands.BaseCommand):
         self.context.set_current_label(None)
         self.rest_ui = reset_ui.ResetUICommand(self.context, self.gui)
         self.rest_ui.execute()
+
 
 class NewChapterCommand(commands.BaseCommand):
 
@@ -144,4 +143,3 @@ class NewPageCommand(commands.BaseCommand):
             self.ui = tab1Dialog.Ui_Dialog()
             self.ui.setupUi(self, MainUIRef)
             self.show()
-

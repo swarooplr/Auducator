@@ -48,6 +48,10 @@ class PlayPageCommand(commands.BaseCommand):
             self.context.current_page=_page
             assert _page is not None
 
+
+            if (not (self.context.speakout_thread is  None) and self.context.speakout_thread.isAlive())  or (not (self.context.tracking_thread is None) and self.context.tracking_thread.isAlive()):
+                return
+
             tracker.cordinates = (0, 0)
             self.context.tracking_thread = threading.Thread(target=tracker.track,args=(self.context, self.gui))
 

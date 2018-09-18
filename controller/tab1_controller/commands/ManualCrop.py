@@ -45,7 +45,7 @@ class ManualCropCommand(commands.BaseCommand):
             global image
             image = cv2.imread(path)
             clone = image.copy()
-            cv2.putText(image, "Click on the four Corners of the page, R to reset ", (15, 15), cv2.FONT_HERSHEY_SIMPLEX,
+            cv2.putText(image, "Click on the four Corners of the page, R to reset,SPACE to exit ", (15, 15), cv2.FONT_HERSHEY_SIMPLEX,
                         0.5, (0, 255, 0), 1)
             cv2.namedWindow("image")
             cv2.setMouseCallback("image", click_saver)
@@ -54,13 +54,13 @@ class ManualCropCommand(commands.BaseCommand):
                 cv2.imshow("image", image)
                 key = cv2.waitKey(1) & 0xFF
 
-                if key == ord(" "):
+                if key == ord("r"):
                     refPt.clear()
                     image = clone.copy()
-                    cv2.putText(image, "Click on the four Corners of the page, Click on SPACE BAR to reset ", (15, 15),
+                    cv2.putText(image, "Click on the four Corners of the page, R to reset , SPACE to Exit", (15, 15),
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
 
-                if key == ord("c"):
+                if key == ord(" "):
                     cv2.destroyWindow("image")
                     break
 
@@ -79,5 +79,7 @@ class ManualCropCommand(commands.BaseCommand):
 
             return pageCrop
 
+
         img = ManualCropper(path)
+        img,_ = self.context.SF.imageResize(img)
         return img

@@ -22,7 +22,7 @@ class TakePictureCommand(commands.BaseCommand):
             #print(self.context.current_book.book_folder_path)
             self.VM = VM.VisionModules(self.context.SF)
             img = self.VM.pageSelector()
-            cv2.imshow("img", img)
+            #cv2.imshow("img", img)
 
             cv2.imwrite("selectedImage.png", img)
             print('image saved')

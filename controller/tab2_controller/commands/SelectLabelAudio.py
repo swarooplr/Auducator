@@ -72,11 +72,17 @@ class SelectLabelCommand(commands.BaseCommand):
 
         if(_label.label_audio is not None or
            not _label.label_audio == ""):
-                self.gui.tab2_label_audio_file.setText(_label.label_audio.split('/')[-1])
+                try:
+                    self.gui.tab2_label_audio_file.setText(_label.label_audio.split('/')[-1])
+                except:
+                    pass
 
         if(_label.description_audio is not None or
            not _label.description_audio == ""):
-                self.gui.tab2_description_audio_file.setText(_label.description_audio.split('/')[-1])
+                try:
+                    self.gui.tab2_description_audio_file.setText(_label.description_audio.split('/')[-1])
+                except:
+                    pass
 
         """ load image here"""
         #print("starting image read")
