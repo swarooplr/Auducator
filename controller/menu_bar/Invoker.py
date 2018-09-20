@@ -31,6 +31,9 @@ class Invoker:
     def set_test_tracking_setting(self,tts):
         self.test_tracking_setting = tts
 
+    def set_invert_camera_setting(self, ics):
+        self.invert_camera_setting = ics
+
     ##call commands
     def choose_color(self):
         self.choose_colour_setting.execute()
@@ -55,6 +58,9 @@ class Invoker:
 
     def test_tracking(self):
         self.test_tracking_setting.execute()
+
+    def invert_camera(self):
+        self.invert_camera_setting.execute()
 
     """
     ##help
