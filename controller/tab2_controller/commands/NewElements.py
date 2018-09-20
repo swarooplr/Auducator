@@ -2,7 +2,7 @@ from PyQt5.QtCore import QDir
 
 import controller.tab1_controller.commands as commands
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QDialog, QInputDialog
+from PyQt5.QtWidgets import QDialog, QInputDialog,QMessageBox
 from PyQt5.QtGui import QIcon, QPixmap
 
 import time
@@ -29,13 +29,20 @@ class NewBookCommand(commands.BaseCommand):
         self.preferences = json.load(open("preferences.json", "r"))
 
         if self.preferences['book_path'] == "":
-            file = str(QtWidgets.QFileDialog.getExistingDirectory(self.gui, "Select Folder to create Book"))
+            file = str(QtWidgets.QFileDialog.getExistingDirectory(self.gui, "Select Folder to create Book")).strip()
         else:
             file = self.preferences["book_path"]
 
         print(file)
         if not file == "":
             text, ok = QInputDialog.getText(self.gui, 'New Book','Enter name of Book :                                                .')
+
+            _subfolders = [f.name for f in os.scandir(file) if f.is_dir()]
+            print(_subfolders)
+
+            if(text in  _subfolders):
+                QMessageBox.about(self.gui, "Error", "Book name already in use\nSelect a different directory or change book name          .")
+                return
 
             if ok:
                 print(text)
@@ -57,13 +64,11 @@ class NewBookCommand(commands.BaseCommand):
 
                 except Exception as e:
                     print('Unable to create project at destination ' + type(e).__name__+ e.__doc__)
+                    QMessageBox.about(self.gui, "Error","Book could not be created      .")
                     self.reset_context()
 
         print('Location not accessible')
-
-
-
-
+        QMessageBox.about(self.gui, "Error", "Book could not be created      .")
         self.reset_context()
 
     def unexcute(self):
@@ -99,14 +104,26 @@ class NewChapterCommand(commands.BaseCommand):
     @inspector.bookselected
     def new_chapter(self):
         text, ok = QInputDialog.getText(self.gui, 'New Chapter', 'Enter Chapter name:')
-        if ok:
 
-            chapter_path = os.path.join(self.context.current_book.book_folder_path, 'Config', text)
-            print("at : ", chapter_path)
-            os.makedirs(chapter_path)
-            self.context.current_book.add_chapter(model.container.Chapter(text, chapter_path, []))
-            # self.context.current_chapter = model.container.Chapter(text,chapter_path,[])
-            self.gui.tab2_chapter_select_combobox.addItem(text)
+        _subfolders = [f.name for f in os.scandir(self.context.current_book.book_folder_path) if f.is_dir()]
+        print(_subfolders)
+
+        if (text in _subfolders):
+            QMessageBox.about(self.gui, "Error",
+                              "Chapter name already in use              .")
+            return
+
+        if ok:
+            try:
+                chapter_path = os.path.join(self.context.current_book.book_folder_path, 'Config', text)
+                print("at : ", chapter_path)
+                os.makedirs(chapter_path)
+                self.context.current_book.add_chapter(model.container.Chapter(text, chapter_path, []))
+                # self.context.current_chapter = model.container.Chapter(text,chapter_path,[])
+                self.gui.tab2_chapter_select_combobox.addItem(text)
+            except:
+                QMessageBox.about(self.gui, "Error",
+                                  "Could not create chapter             .")
 
 class NewPageCommand(commands.BaseCommand):
 
@@ -143,3 +160,4 @@ class NewPageCommand(commands.BaseCommand):
             self.ui = tab1Dialog.Ui_Dialog()
             self.ui.setupUi(self, MainUIRef)
             self.show()
+

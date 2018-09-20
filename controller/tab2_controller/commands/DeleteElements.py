@@ -1,13 +1,12 @@
 import json
 import shutil
-import os
-
 from PyQt5.QtWidgets import QMessageBox
-
 import controller.tab2_controller.commands as commands
 import controller.Inspectors as inspector
 import controller.tab2_controller.commands.ResetUI as reset_ui
 import controller.exceptions.ExceptionHandler as exceptionhandler
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox
+
 
 class DeletePageCommand(commands.BaseCommand):
 
