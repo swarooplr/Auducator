@@ -41,18 +41,19 @@ def track(context,gui):
                 final =  pageBordered
 
             else:
+                points = SF.order_points(pageCorners)
                 pageFound = True
                 continue
 
         else:
-            points = SF.order_points(pageCorners)
+            #points = SF.order_points(pageCorners)
             pageCrop = SF.four_point_transform(image, points)
             pageCrop,_ = SF.imageResize(pageCrop)
 
             pageCropDisplay = pageCrop.copy()
 
             marker = SF.trackColor1(pageCrop)
-            if marker == 0:
+            if marker == (-1,-1):
                 cv2.putText(pageCropDisplay, "Unable to find marker: E to exit", (15, 15), cv2.FONT_HERSHEY_SIMPLEX,
                             0.5, (255, 255, 255), 1)
 

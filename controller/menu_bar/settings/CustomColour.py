@@ -50,7 +50,7 @@ class CustomColourSetting(settings.BaseSetting):
                 print(C)
                 h = [int(self.ui.pu1.text().strip()),int(self.ui.pu2.text().strip()),int(self.ui.pu3.text().strip())]
 
-                l = [int(self.ui.pl3.text().strip()), int(self.ui.pl3.text().strip()),int(self.ui.pl3.text().strip())]
+                l = [int(self.ui.pl1.text().strip()), int(self.ui.pl2.text().strip()),int(self.ui.pl3.text().strip())]
 
                 colour = dict()
                 colour["high"] = h

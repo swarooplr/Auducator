@@ -1,1 +1,1 @@
-{"colours": {"c1": {"high": [100, 11, 10], "low": [0, 0, 0]}, "c2": {"high": [179, 255, 255], "low": [0, 100, 100]}}, "resolutions": {"0": [800, 600], "1": [400, 300],"2":[1600,1200]}, "tracking_rate": "1", "orientation": ["potrait", "landscape"]}
+{"colours": {"c1": {"high": [64, 255, 255], "low": [29, 86, 60]}, "c2": {"high": [179, 255, 255], "low": [0, 100, 100]}}, "resolutions": {"0": [800, 600], "1": [400, 300], "2": [1600, 1200]}, "tracking_rate": "1", "orientation": ["potrait", "landscape"]}
