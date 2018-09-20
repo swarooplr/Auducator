@@ -19,7 +19,17 @@ class SavePageCommand(commands.BaseCommand):
         page_name = self.dialog.page_name_input.text()
         print('page is :',page_name)
 
-        if(len(page_name.strip())>2):
+        page_name = page_name.strip()
+        if(len(page_name)>2):
+
+            _subfolders = [f.name for f in os.scandir(self.context.current_chapter.chapter_path) if f.is_dir()]
+            print(_subfolders)
+
+            if (page_name in _subfolders):
+                QMessageBox.about(self.gui, "Error",
+                                  "Page name already in use              .")
+                return
+
             page_file_path = createContainer.createPage(self.context.current_chapter.chapter_path,page_name)
 
             print("folder created :",page_name,page_file_path)
