@@ -119,7 +119,7 @@ class supportingFunctions():
         gray = cv2.GaussianBlur(gray, (5, 5), 0)
         #cv2.imshow('input', gray)
         edged = cv2.Canny(gray, 50, 200)
-        #cv2.imshow('canny', edged)
+        cv2.imshow('canny', edged)
     
         (_, cnts, _) = cv2.findContours(edged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
         cnts = sorted(cnts, key=cv2.contourArea, reverse=True)[:1]
