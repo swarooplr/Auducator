@@ -182,9 +182,9 @@ class supportingFunctions():
     
                 return center
             else:
-                return 0
+                return (-1,-1)
         else:
-            return 0
+            return (-1,-1)
     
     def getRotatedImage(self,frame, pt):#takes frame and position of red , returns rotated image
         x = pt[1]
@@ -214,7 +214,7 @@ class supportingFunctions():
     def imageResize(self,img):
         try:
             h,w,_ = img.shape
-            print("size before resize = ",h,"  ",w)
+            #print("size before resize = ",h,"  ",w)
             if(h>w):
                 page = cv2.resize(img, (self.PAGE_WIDTH, self.PAGE_HEIGHT), interpolation=cv2.INTER_AREA)
                 return page,(self.PAGE_HEIGHT,self.PAGE_WIDTH)
