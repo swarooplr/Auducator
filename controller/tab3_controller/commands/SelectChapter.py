@@ -50,6 +50,5 @@ class SelectChapterCommand(commands.BaseCommand):
 
     def reset_context(self):
         self.context.set_current_page(None)
-        self.context.set_current_label(None)
         self.rest_ui=reset_ui.ResetUICommand(self.context,self.gui)
         self.rest_ui.execute()

@@ -1,1 +1,3 @@
-how_to_use.txt
+Help
+
+Set the default path first.

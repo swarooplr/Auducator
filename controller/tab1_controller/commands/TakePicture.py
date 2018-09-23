@@ -29,7 +29,7 @@ class TakePictureCommand(commands.BaseCommand):
             self.dialog.Page_view.setPixmap(QPixmap("selectedImage.png"))
         except Exception as e:
             if img == None:
-                QMessageBox.about(self.gui, "Error", "No camera detected")
+                QMessageBox.about(self.gui, "Error", "No camera detected, \nPlease try changing the camera port in settings ")
                 print("camera error")
             print("couldnt get page ",type(e).__doc__)
 

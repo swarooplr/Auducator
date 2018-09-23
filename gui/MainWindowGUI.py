@@ -14,8 +14,8 @@ import gui.Tab2 as tab2
 import gui.Tab3 as tab3
 
 from controller.tab2_controller.commands import SelectBook,SelectLabelAudio,SelectPage,SelectChapter,DeleteElements,SaveLabel,AddNewLabel,NewElements,RecordingAudio
-from controller.tab3_controller.commands import SelectBook as SelectBook3,SelectChapter as SelectChapter3,PlayPage as PlayPage3
-from controller.menu_bar.settings import ChooseColour,CustomColour,DefaultPath,PictureSize,TrackingRate,TestTracking,ChooseCamera,TestPageDetection
+from controller.tab3_controller.commands import SelectBook as SelectBook3,SelectChapter as SelectChapter3,PlayPage as PlayPage3, StopPage as StopPage3, SelectPage as SelectPage3
+from controller.menu_bar.settings import ChooseColour,InvertCamera,CustomColour,DefaultPath,PictureSize,TrackingRate,TestTracking,ChooseCamera,TestPageDetection
 from controller.menu_bar import Invoker as invoker
 from functools import partial
 from gui.menu_bar import help
@@ -106,6 +106,9 @@ class Ui_MainWindow(object):
         self.actionTestTracking = QtWidgets.QAction(MainWindow)
         self.actionTestTracking.setObjectName("actionTestTracking")
 
+        self.actionInvertCamera = QtWidgets.QAction(MainWindow)
+        self.actionInvertCamera.setObjectName("InvertCamera")
+
         self.actionSet_Default_Path = QtWidgets.QAction(MainWindow)
         self.actionSet_Default_Path.setObjectName("actionSet_Default_Path")
         self.actionSet_Custom_Colour = QtWidgets.QAction(MainWindow)
@@ -132,6 +135,7 @@ class Ui_MainWindow(object):
         self.menuSettings.addAction(self.actionChange_Camera)
         self.menuSettings.addAction(self.actionTestPageDetection)
         self.menuSettings.addAction(self.actionTestTracking)
+        self.menuSettings.addAction(self.actionInvertCamera)
         #self.menuHelp.addAction(self.actionSearch)
         self.menuHelp.addAction(self.actionHow_to_use)
         self.menuAbout.addAction(self.actionInfo)
@@ -153,7 +157,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Auducator"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "TALK"))
 
         #self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab1), _translate("MainWindow", "Select Pages"))
 
@@ -175,6 +179,7 @@ class Ui_MainWindow(object):
         self.actionSet_Default_Path.setText(_translate("MainWindow", "Set Default Path"))
         self.actionSet_Custom_Colour.setText(_translate("MainWindow", "Set Custom Colour"))
         self.actionSet_Tracking_Rate.setText(_translate("MainWindow", "Set Tracking Rate"))
+        self.actionInvertCamera.setText(_translate("MainWindow","Invert Camera"))
         self.actionSearch.setText(_translate("MainWindow", "Search"))
         self.actionHow_to_use.setText(_translate("MainWindow", "How to use"))
         self.actionInfo.setText(_translate("MainWindow", "Info"))
@@ -194,6 +199,7 @@ class Ui_MainWindow(object):
         self.actionChange_Camera.triggered.connect(self.invoker_settings.choose_camera)
         self.actionTestPageDetection.triggered.connect(self.invoker_settings.test_page_detection)
         self.actionTestTracking.triggered.connect(self.invoker_settings.test_tracking)
+        self.actionInvertCamera.triggered.connect(self.invoker_settings.invert_camera)
 
     def set_up_help(self):
         self.actionCredits.triggered.connect(partial(self.show_help,"credits.txt"))
@@ -217,7 +223,7 @@ class Ui_MainWindow(object):
          self.invoker_tab2.set_delete_page_command(DeleteElements.DeletePageCommand(self.invoker_tab2,self))
          self.invoker_tab2.set_delete_label_command(DeleteElements.DeleteLabelCommand(self.invoker_tab2,self))
          self.invoker_tab2.set_select_audio_label_command(SelectLabelAudio.SelectAudioFileLabelCommand(self.invoker_tab2,self))
-         self.invoker_tab2.set_select_audio_description_command(SelectLabelAudio.SelectAudioFileDescribeCommand(self.invoker_tab2,self))
+         self.invoker_tab2.set_select_audio_description_command(SelectLabelAudio.SelectAudioFileLabelCommand(self.invoker_tab2,self))
          self.invoker_tab2.set_save_label_command(SaveLabel.SaveLabelCommand(self.invoker_tab2,self))
          self.invoker_tab2.set_add_new_label_command(AddNewLabel.AddNewLabelCommand(self.invoker_tab2,self))
 
@@ -228,8 +234,10 @@ class Ui_MainWindow(object):
          #tab3 invoker
          self.invoker_tab3.set_select_book_command(SelectBook3.SelectBookCommand(self.invoker_tab3,self))
          self.invoker_tab3.set_select_chapter_command(SelectChapter3.SelectChapterCommand(self.invoker_tab3,self))
-         #self.invoker_tab3.set_select_page_command(SelectPage.SelectPageCommand(self.invoker_tab3,self))
+         self.invoker_tab3.set_stop_page_command(StopPage3.StopPageCommand(self.invoker_tab3,self))
          self.invoker_tab3.set_play_page_command(PlayPage3.PlayPageCommand(self.invoker_tab3,self))
+         self.invoker_tab3.set_select_page_command(SelectPage3.SelectPageCommand(self.invoker_tab3,self))
+
 
          #menu_bar invoker
          self.invoker_settings.set_choose_colour_setting(ChooseColour.ChooseColourSetting(self.invoker_settings,self))
@@ -240,6 +248,7 @@ class Ui_MainWindow(object):
          self.invoker_settings.set_choose_camera_setting(ChooseCamera.ChooseCameraSetting(self.invoker_settings,self))
          self.invoker_settings.set_test_page_detection_setting(TestPageDetection.TestPageDetectionSetting(self.invoker_settings,self))
          self.invoker_settings.set_test_tracking_setting(TestTracking.TestTrackingSetting(self.invoker_settings,self))
+         self.invoker_settings.set_invert_camera_setting(InvertCamera.InvertCameraSetting(self.invoker_settings,self))
 
     def show_help(self,type):
 

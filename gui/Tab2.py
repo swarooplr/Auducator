@@ -298,7 +298,7 @@ class Tab2Create:
         _translate = QtCore.QCoreApplication.translate
 
         Ui_MainWindow.tab2_groupBox_9.setTitle(_translate("MainWindow", "Book"))
-        Ui_MainWindow.tab2_book_name_2.setText(_translate("MainWindow", "Book1"))
+        Ui_MainWindow.tab2_book_name_2.setText(_translate("MainWindow", "Book Not selected"))
         Ui_MainWindow.tab2_select_book_button.setText(_translate("MainWindow", "Select"))
         Ui_MainWindow.tab2_new_book.setText(_translate("MainWindow","New"))
         Ui_MainWindow.tab2_delete_book.setText(_translate("MainWindow", "Delete"))

@@ -48,15 +48,19 @@ class PlayPageCommand(commands.BaseCommand):
             self.context.current_page=_page
             assert _page is not None
 
-            tracker.cordinates = (0, 0)
-            self.tracking_thread = threading.Thread(target=tracker.track,args=(self.context, self.gui))
 
-            self.speakout_thread = threading.Thread(target=speakout.speakout,args=(_page.label_list,_page.page_file_path))
+            if (not (self.context.speakout_thread is  None) and self.context.speakout_thread.isAlive())  or (not (self.context.tracking_thread is None) and self.context.tracking_thread.isAlive()):
+                return
+
+            tracker.cordinates = (0, 0)
+            self.context.tracking_thread = threading.Thread(target=tracker.track,args=(self.context, self.gui))
+
+            self.context.speakout_thread = threading.Thread(target=speakout.speakout,args=(_page.label_list,_page.page_file_path))
 
             #_thread.start_new_thread(track.trackit,("Thread-1",))
             #_thread.start_new_thread(speakout.speakout,(_page.label_list,_page.page_file_path))
-            self.tracking_thread.start()
-            self.speakout_thread.start()
+            self.context.tracking_thread.start()
+            self.context.speakout_thread.start()
 
 
     def get_selected_page(self,_selected_page):
