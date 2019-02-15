@@ -4,3 +4,4 @@
 gui/*.png
 gui/*.jpg
 *.wav
+gui/preferences.json
